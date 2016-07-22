@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="login.aspx.cs" Inherits="Donghui.admin.login" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="login.aspx.cs" Inherits="JadeWeb.admin.login" %>
 <!DOCTYPE html>
 <html>
 <head runat="server">
@@ -45,7 +45,7 @@ a:link {color: #285e8e;}
 </style>
 <script type="text/javascript">
  
-    var COOKIE_NAME = 'DonghuiUserName';
+    var COOKIE_NAME = 'JadeWebUserName';
     $(function () {
         choose_bg();
         //changeCode();

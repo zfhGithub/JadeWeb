@@ -6,7 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 
-namespace Donghui.admin
+namespace JadeWeb.admin
 {
     /// <summary>
     /// ajax 的摘要说明

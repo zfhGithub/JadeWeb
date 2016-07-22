@@ -1,1 +1,1 @@
-﻿<%@ Application Codebehind="Global.asax.cs" Inherits="Donghui.Global" Language="C#" %>
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="JadeWeb.Global" Language="C#" %>

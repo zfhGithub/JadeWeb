@@ -15,7 +15,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>JadeWeb</RootNamespace>
     <AssemblyName>JadeWeb</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
@@ -24,7 +24,6 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -49,32 +48,24 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
-    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="admin\about\aboutinfo.html" />
-    <Content Include="admin\about\contact.html" />
-    <Content Include="admin\advantage\addadvantage.html" />
-    <Content Include="admin\advantage\advantagelist.html" />
-    <Content Include="admin\advantage\mycommit.html" />
-    <Content Include="admin\article\addarticle.html" />
-    <Content Include="admin\article\articlelist.html" />
-    <Content Include="admin\case\addcase.html" />
-    <Content Include="admin\case\caselist.html" />
     <Content Include="admin\changepwd.html" />
     <Content Include="admin\Index.aspx" />
     <Content Include="admin\index_layout.html" />
@@ -625,12 +616,6 @@
     <Content Include="admin\js\js\syntaxhighlighter-2.1.382\styles\shThemeRDark.css" />
     <Content Include="admin\login.aspx" />
     <Content Include="admin\message\messagelist.html" />
-    <Content Include="admin\price\addprice.html" />
-    <Content Include="admin\price\pricelist.html" />
-    <Content Include="admin\product\AddProduct.html" />
-    <Content Include="admin\product\CommentManagement.html" />
-    <Content Include="admin\product\ProductTable.html" />
-    <Content Include="admin\settings\setBanner.html" />
     <Content Include="blog.aspx" />
     <Content Include="login.aspx" />
     <Content Include="packages.config" />
@@ -653,7 +638,6 @@
     <Content Include="admin\js\font\typicons.eot" />
     <Content Include="admin\js\font\typicons.ttf" />
     <Content Include="admin\js\font\typicons.woff" />
-    <None Include="Properties\PublishProfiles\filesystem.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -870,6 +854,7 @@
       <DependentUpon>single.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\SqlOper\SqlOper.csproj">
       <Project>{37abcf99-953d-4325-ae07-37ab9a944629}</Project>

@@ -7,7 +7,7 @@
 // </自动生成>
 //------------------------------------------------------------------------------
 
-namespace Donghui.admin {
+namespace JadeWeb.admin {
     
     
     public partial class login {

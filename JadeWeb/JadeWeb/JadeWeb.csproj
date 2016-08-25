@@ -68,7 +68,6 @@
   <ItemGroup>
     <Content Include="admin\changepwd.html" />
     <Content Include="admin\Index.aspx" />
-    <Content Include="admin\index_layout.html" />
     <Content Include="admin\js\ajax\area_all.html" />
     <Content Include="admin\js\ajax\area_bj.html" />
     <Content Include="admin\js\ajax\area_sh.html" />
@@ -807,6 +806,7 @@
     <Compile Include="com\BaseClass.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="com\settings.cs" />
     <Compile Include="contact.aspx.cs">
       <DependentUpon>contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -854,7 +854,9 @@
       <DependentUpon>single.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="admin\products\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SqlOper\SqlOper.csproj">
       <Project>{37abcf99-953d-4325-ae07-37ab9a944629}</Project>

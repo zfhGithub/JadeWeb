@@ -257,9 +257,9 @@ $(function(){
                                 <li data-id="2" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o" data-url="#">留言管理</li> 
                                 <li data-id="22" data-pid="2" data-url="message/messagelist.html"data-tabid="setBanner6" >留言列表</li>  
                                  
-                                <li data-id="3" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o" data-url="#">领先优势</li> 
-                                <li data-id="32" data-pid="3" data-url="advantage/advantagelist.html"data-tabid="setBanner5" >优势管理</li> 
-                                <li data-id="31" data-pid="3" data-url="advantage/mycommit.html"data-tabid="setBanner4" >我们的承诺</li>  
+                                <li data-id="3" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o" data-url="#">商品管理</li> 
+                                <li data-id="32" data-pid="3" data-url="products/products.html"data-tabid="products" >商品列表</li> 
+                                <li data-id="31" data-pid="3" data-url="products/producttype.html"data-tabid="producttype" >商品类型</li>  
 
                                 <li data-id="4" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o" data-url="#">价格</li> 
                                 <li data-id="42" data-pid="4" data-url="price/pricelist.html"data-tabid="setBanner3" >套餐管理</li> 
@@ -315,7 +315,7 @@ $(function(){
             </div>
         </div>
     </div>
-    <footer id="bjui-footer">Copyright &copy; 2013 - 2015　<a href="../index.aspx" target="_blank">Donghuicaps</a>　
+    <footer id="bjui-footer">Copyright &copy; 2013 - 2015　<a href="../index.aspx" target="_blank">返回主页</a>　
         <!--  
         <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1252983288'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/stat.php%3Fid%3D1252983288%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
         -->

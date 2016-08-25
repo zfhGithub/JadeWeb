@@ -23,6 +23,14 @@ namespace JadeWeb.admin
              
             switch (action)
             {
+                #region 通用
+                case "updatepassword":
+                    string olepassword = req.Params["olepassword"];
+                    string newpassword = req.Params["newpassword"];
+                    res.Write(Utils.GetReulst(200, "修改成功", "修改失败", com.settings.updatePassword(newpassword, olepassword),"true"));
+                    break;
+                #endregion
+
                 case "productlist":
                     context.Response.Write("");
                     break;

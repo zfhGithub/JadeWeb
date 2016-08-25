@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace JadeWeb.admin
+namespace Donghui.admin
 {
-    public partial class Index : JadeWeb.com.BaseClass
+    public partial class Index : Donghui.com.BaseClass
     {
         protected void Page_Load(object sender, EventArgs e)
         {

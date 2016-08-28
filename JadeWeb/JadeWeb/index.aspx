@@ -29,7 +29,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--header-->
 <div class="header">
 	<div class="header-top">
-		<div class="container">
+		<%--<div class="container">
 			<div class="search">
 					<form>
 						<input type="text" value="Search " onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
@@ -54,7 +54,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="clearfix"> </div>
 			</div>
 				<div class="clearfix"> </div>
-		</div>
+		</div>--%>
 		</div>
 		<div class="container">
 			<div class="head-top">
@@ -63,8 +63,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 		  <div class=" h_menu4">
 				<ul class="memenu skyblue">
-					  <li class="active grid"><a class="color8" href="index.aspx">Home</a></li>	
-				      <li><a class="color1" href="#">Men</a>
+					  <li class="active grid"><a class="color8" href="index.aspx">主页</a></li>	
+				      <li><a class="color1" href="#">玉器</a>
 				      	<div class="mepanel">
 						<div class="row">
 							<div class="col1">
@@ -241,7 +241,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="content">
 	<div class="container">
 	<div class="content-top">
-		<h1>NEW RELEASED</h1>
+		<h1>最新产品</h1>
 		<div class="grid-in">
 			<div class="col-md-4 grid-top">
 				<a href="single.aspx" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/pi.jpg" alt="">
@@ -314,7 +314,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!----->
 	
 	<div class="content-top-bottom">
-		<h2>Featured Collections</h2>
+		<h2>热卖产品</h2>
 		<div class="col-md-6 men">
 			<a href="single.aspx" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/t1.jpg" alt="">
 				<div class="b-wrapper">

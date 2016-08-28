@@ -132,7 +132,7 @@ namespace SqlOper
         {
             Bitmap bmp = new Bitmap(filename);
             Graphics g = Graphics.FromImage(bmp);
-            String str = "http://www.bestcaps.cn/";
+            String str = " ";
             Font font = new Font("宋体", 8);
             SolidBrush sbrush = new SolidBrush(Color.Black);
             g.DrawString(str, font, sbrush, new PointF(10, 10));
@@ -194,17 +194,19 @@ namespace SqlOper
             }
         }
 
-        public static string GetReulst(int statusCode, string successMsg, string failureMsg = "", int? count = null, string closeCurrent = "false", string json = "")
+        public static string GetReulst(string successMsg, string failureMsg = "", int? count = null, string closeCurrent = "false", string json = "")
         {
-            string msg = "";
+            string msg = ""; int statusCode=200;
             if (count != null)
             {
                 if (count > 0)
                 {
+                    
                     msg = successMsg;
                 }
                 else
                 {
+                    statusCode = 300;
                     closeCurrent = "false";
                     msg = failureMsg;
                 }
@@ -272,7 +274,7 @@ namespace SqlOper
                 {
                     return "{\"status\":\"0\",\"statusCode\":\"300\"}";
                 }
-                String filepath = HttpContext.Current.Server.MapPath("~") + @"image\head\";
+                String filepath = HttpContext.Current.Server.MapPath("~") + @"images\head\";
                 if (!Directory.Exists(filepath))
                 {
                     Directory.CreateDirectory(filepath);
@@ -282,8 +284,24 @@ namespace SqlOper
 
                 //  string rt = Utils.GetThumbnail(filepath + fileName, filepath + "best-" + fileName, 160, 100, "best-" + fileName);
                 //  Utils.SetPicDescription(filepath + "best-" + fileName, "BESTCAPS", pointX: 0.2f, pointY: 0.5f);
-                return "{ \"statusCode\":\"200\",\"url\":\"/image/head/" + fileName + "\"}"; ;
+                return "{ \"statusCode\":\"200\",\"url\":\"/images/head/" + fileName + "\"}"; ;
                 #endregion
+            } else if (type == "images") {
+                if (file.ContentLength > 2097152)
+                {
+                    return "{\"status\":\"0\",\"statusCode\":\"300\"}";
+                }
+                String filepath = HttpContext.Current.Server.MapPath("~") + @"images\images\";
+                if (!Directory.Exists(filepath))
+                {
+                    Directory.CreateDirectory(filepath);
+                }
+                String fileName = Guid.NewGuid() + ".png";
+                file.SaveAs(filepath + fileName);
+
+                //  string rt = Utils.GetThumbnail(filepath + fileName, filepath + "best-" + fileName, 160, 100, "best-" + fileName);
+                //  Utils.SetPicDescription(filepath + "best-" + fileName, "BESTCAPS", pointX: 0.2f, pointY: 0.5f);
+                return "{ \"statusCode\":\"200\",\"url\":\"/images/images/" + fileName + "\"}"; ;
             }
             else if (type.StartsWith("banner"))
             {
@@ -336,7 +354,7 @@ namespace SqlOper
                 {
                     return "{ \"statusCode\":\"300\",\"message\":\"文件不能超过5兆\"}";
                 }
-                String filepath = HttpContext.Current.Server.MapPath("~") + @"image\detail\";
+                String filepath = HttpContext.Current.Server.MapPath("~") + @"images\detail\";
                 if (!Directory.Exists(filepath))
                 {
                     Directory.CreateDirectory(filepath);
@@ -347,7 +365,7 @@ namespace SqlOper
                     file.SaveAs(filepath + fileName);
                     // return "{ \"statusCode\":\"200\",\"message\":\"上传成功\",\"src\":\""+fileName+"\"}";
                     // Utils.SetPicDescription(filepath + fileName, font: 30, pointX: 0.25f, pointY: 0.5f);
-                    return "{ \"error\":0,\"url\":\"/image/detail/" + fileName + "\"}";
+                    return "{ \"error\":0,\"url\":\"/images/detail/" + fileName + "\"}";
                 }
                 catch
                 {
@@ -395,7 +413,7 @@ namespace SqlOper
                 {
                     return "{ \"statusCode\":\"300\",\"message\":\"文件不能超过5兆\"}";
                 }
-                String filepath = HttpContext.Current.Server.MapPath("~") + @"image\product\";
+                String filepath = HttpContext.Current.Server.MapPath("~") + @"images\product\";
                 if (!Directory.Exists(filepath))
                 {
                     Directory.CreateDirectory(filepath);
@@ -406,7 +424,7 @@ namespace SqlOper
                     file.SaveAs(filepath + fileName);
                     //   Utils.GetThumbnail(filepath + fileName, filepath + "best-" + fileName, 160, 100, "best-" + fileName);
                     // Utils.SetPicDescription(filepath + fileName, font: 23, pointX: 0.25f, pointY: 0.5f);
-                    return "{ \"statusCode\":\"200\",\"message\":\"上传成功\",\"src\":\"" + fileName + "\"}";
+                    return "{ \"statusCode\":\"200\",\"message\":\"上传成功\",\"url\":\"" + fileName + "\"}";
                 }
                 catch
                 {

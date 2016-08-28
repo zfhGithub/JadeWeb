@@ -31,7 +31,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--header-->
 <div class="header">
 	<div class="header-top">
-		<div class="container">
+		<%--<div class="container">
 			<div class="search">
 					<form>
 						<input type="text" value="Search " onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
@@ -58,7 +58,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="clearfix"> </div>
 			</div>
 				<div class="clearfix"> </div>
-		</div>
+		</div>--%>
 		</div>
 		<div class="container">
 			<div class="head-top">

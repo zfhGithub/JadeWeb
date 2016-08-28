@@ -615,6 +615,10 @@
     <Content Include="admin\js\js\syntaxhighlighter-2.1.382\styles\shThemeRDark.css" />
     <Content Include="admin\login.aspx" />
     <Content Include="admin\message\messagelist.html" />
+    <Content Include="admin\products\addmodel.html" />
+    <Content Include="admin\products\addproducts.html" />
+    <Content Include="admin\products\model.html" />
+    <Content Include="admin\products\products.html" />
     <Content Include="blog.aspx" />
     <Content Include="login.aspx" />
     <Content Include="packages.config" />
@@ -806,6 +810,8 @@
     <Compile Include="com\BaseClass.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="com\model.cs" />
+    <Compile Include="com\products.cs" />
     <Compile Include="com\settings.cs" />
     <Compile Include="contact.aspx.cs">
       <DependentUpon>contact.aspx</DependentUpon>
@@ -855,7 +861,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="admin\products\" />
+    <Folder Include="admin\settings\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SqlOper\SqlOper.csproj">

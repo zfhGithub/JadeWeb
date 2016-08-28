@@ -15,12 +15,12 @@ namespace JadeWeb.admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Request.HttpMethod.ToLower() == "post")
+            if (!string.IsNullOrWhiteSpace(Request.QueryString["action"]) && Request.QueryString["action"] == "logout")
             {
-                if (!string.IsNullOrWhiteSpace(Request.QueryString["action"]) && Request.QueryString["action"] == "logout")
-                {
-                    Session["UserInfo"] = null;
-                }
+                Session["UserInfo"] = null;
+            }
+            if (Request.HttpMethod.ToLower() == "post")
+            { 
                 string name = Request.Form["username"];
                 string pwd = Request.Form["passwordmd5"];
                 try

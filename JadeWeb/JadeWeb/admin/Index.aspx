@@ -183,8 +183,7 @@ function MainMenuClick(event, treeId, treeNode) {
         
         zTree.expandNode(treeNode, !treeNode.open, false, true, true)
         return
-    }
-    console.log(treeNode.tabid);
+    } 
     if (treeNode.target && treeNode.target == 'dialog')
         $(event.target).dialog({id:treeNode.tabid, url:treeNode.url, title:treeNode.name})
     else
@@ -252,27 +251,18 @@ $(function(){
                                 <li data-id="1" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o" data-url="#">公司信息</li>                  
                                 <li data-id="12" data-pid="1" data-url="about/aboutinfo.html"data-tabid="addproduct">关于我们</li>
                                 <li data-id="13" data-pid="1" data-url="about/contact.html" data-tabid="contact" data-faicon="check-square-o">联系信息</li>
- 
-                                 
+  
                                 <li data-id="2" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o" data-url="#">留言管理</li> 
                                 <li data-id="22" data-pid="2" data-url="message/messagelist.html"data-tabid="setBanner6" >留言列表</li>  
                                  
                                 <li data-id="3" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o" data-url="#">商品管理</li> 
                                 <li data-id="32" data-pid="3" data-url="products/products.html"data-tabid="products" >商品列表</li> 
-                                <li data-id="31" data-pid="3" data-url="products/producttype.html"data-tabid="producttype" >商品类型</li>  
-
-                                <li data-id="4" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o" data-url="#">价格</li> 
-                                <li data-id="42" data-pid="4" data-url="price/pricelist.html"data-tabid="setBanner3" >套餐管理</li> 
-                                
-                                <li data-id="5" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o" data-url="#">案例</li> 
-                                <li data-id="52" data-pid="5" data-url="case/caselist.html"data-tabid="setBanner2" >案例管理</li> 
-
-                                <li data-id="6" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o" data-url="#">文章管理</li> 
-                                <li data-id="62" data-pid="6" data-url="article/articlelist.html" data-tabid="setBanner1" >文章列表</li> 
+                                <li data-id="31" data-pid="3" data-url="products/model.html"data-tabid="model" >商品类型</li>  
                                   
-                            </ul>                
-
-                           
+                                <li data-id="6" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o" data-url="#">系统设置</li> 
+                                <li data-id="62" data-pid="6" data-url="article/articlelist.html" data-tabid="setbanner" >图片管理</li> 
+                                  
+                            </ul>  
                         </div>    
                     </li>
                   
@@ -315,7 +305,7 @@ $(function(){
             </div>
         </div>
     </div>
-    <footer id="bjui-footer">Copyright &copy; 2013 - 2015　<a href="../index.aspx" target="_blank">返回主页</a>　
+    <footer id="bjui-footer">Copyright &copy; 2013 - 2016　<a href="../index.aspx" target="_blank">返回主页</a>　
         <!--  
         <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1252983288'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/stat.php%3Fid%3D1252983288%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
         -->

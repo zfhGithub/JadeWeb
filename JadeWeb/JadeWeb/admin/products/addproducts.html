@@ -19,9 +19,9 @@
     <input type="text" name="products_number" id="products_number" value="" data-rule="required" size="15">
 </td>
 <td>
-    <input type="checkbox" name="cktj" id="j_custom_tj" data-toggle="icheck" value="true" data-label="主页推荐">
+    <input type="checkbox" name="products_hot" id="products_hot" data-toggle="icheck" value="true" data-label="热卖产品">
 
-    <input type="checkbox" name="ckzs" id="j_custom_zs" data-toggle="icheck" value="true" data-label="主页展示">
+    <!--<input type="checkbox" name="ckzs" id="j_custom_zs" data-toggle="icheck" value="true" data-label="主页展示">-->
 </td>
                     
                 </tr>
@@ -126,6 +126,11 @@
                     for (var i = 0; i < is.length; i++) {
                         $('#products_images_show').append('<table style="float:left"><tr><td><img alt="' + is[i] + '" src="' + is[i] + '" width="160" height="100" /> </td></tr><tr style="text-align:center; "><td><input class="btn btn-red btn-sm" type="button" value="移除" onclick=\"removeImage(this)\" /></td></tr></table>')
                     }
+                 
+                    if (d.hot == "True") {
+                        $("#products_hot").iCheck('check');
+                    }
+
                     $("#products_images").val(d.images);
                     $("#products_subtitle").val(d.title);
                     $("#products_describe").html(d.describe);

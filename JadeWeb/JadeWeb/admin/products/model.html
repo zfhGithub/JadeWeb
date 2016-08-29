@@ -24,7 +24,7 @@
                     var data = json;
                     $.each(data, function (k, v) {
                         html.push("<tr><td>" + v.rowIndex + "</td><td>" + v.name + "</td><td>" + v.created + "</td>");
-                        html.push(" <td><a href='#' onclick='edit_model(this,\"" + v.id + "\",\"" + v.title + "\")' class='btn btn-green' >编辑</a>");
+                        html.push(" <td><a href='#' onclick='edit_model(this,\"" + v.id + "\",\"" + v.name + "\")' class='btn btn-green' >编辑</a>");
                         html.push(" <a href='ajax.ashx?action=deletemodel&id=" + v.id + "' class='btn btn-red' data-toggle='doajax' data-confirm-msg='确定要删除该行信息吗？'>删除</a></td></tr>");
                     });
                     $("#model_list tbody").empty().append(html.join(''));
@@ -130,7 +130,7 @@
     var model_editid;
     function edit_model(_this, id, name) {
         model_editid = id;
-        $(_this).dialog({ id: 'dialog_addmodel', url: '/admin/products/addmodel.html', width: 1060, height: 600, title: "编辑-" + name, reloadWarn: '本页已有打开的内容，确定将刷新本页内容，是否继续？', toggle: 'dialog', onClose: "dialog_modellist_before_close" });
+        $(_this).dialog({ id: 'dialog_addmodel', url: '/admin/products/addmodel.html', width: 450, height: 250, title: "编辑-" + name, reloadWarn: '本页已有打开的内容，确定将刷新本页内容，是否继续？', toggle: 'dialog', onClose: "dialog_modellist_before_close" });
     }
     function dialog_modellist_before_close($dialog) {
         model_editid = undefined;
@@ -160,7 +160,7 @@
             <button type="button" class="btn-default" data-icon="search" onclick="search()">查询</button>&nbsp;
             <button type="reset" class="btn-orange" data-icon="undo">清空查询</button>
             <div class="pull-right">
-                <button type="button" class="btn-blue" data-url="products/addmodel.html" data-id="dialog_addmodel" data-width="1060" data-height="600"
+                <button type="button" class="btn-blue" data-url="products/addmodel.html" data-id="dialog_addmodel" data-width="450" data-height="250"
                         data-toggle="dialog" data-on-close="dialog_modellist_before_close">
                     添加类型
                 </button>

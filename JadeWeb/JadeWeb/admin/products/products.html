@@ -29,7 +29,7 @@
                     da = JSON.parse(da);
                     var data = da["d"];
                     $.each(data, function (k, v) {
-                        html.push("<tr><td>" + v.rowIndex + "</td><td>" + v.name + "</td><td>" + v.number + "</td><td>" + v.price + "</td><td>" + v.model + "</td><td>" + v.title + "</td><td>" + v.created + "</td> <td> <img src='" + v.photo + "' width='70' height='60'/> </td>");
+                        html.push("<tr><td>" + v.rowIndex + "</td><td>" + v.name + "</td><td>" + v.number + "</td><td>" + v.price + "</td><td>" + v.model + "</td><td>" + v.title + "</td><td>" + v.created + "</td><td>" + v.hot + "</td> <td> <img src='" + v.photo + "' width='70' height='60'/> </td>");
                         html.push(" <td><a href='#' onclick='edit_products(this,\"" + v.id + "\",\"" + v.title + "\")' class='btn btn-green' >编辑</a>");
                         html.push(" <a href='ajax.ashx?action=deleteproducts&id=" + v.id + "' class='btn btn-red' data-toggle='doajax' data-confirm-msg='确定要删除该行信息吗？'>删除</a></td></tr>");
                     });
@@ -226,6 +226,7 @@
                 <th data-order-field="model">分类</th>
                 <th data-order-field="title">副标题</th> 
                 <th data-order-field="created">创建时间</th>
+                <th data-order-field="hot">热卖</th>
                 <th data-order-field="photo">图片</th>
                 <th data-order-field="#">操作</th>
             </tr>

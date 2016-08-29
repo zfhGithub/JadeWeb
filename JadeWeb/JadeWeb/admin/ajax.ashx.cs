@@ -41,14 +41,14 @@ namespace JadeWeb.admin
                 case "addproduct":
                     string pname = req.Form["products_name"]; string price = req.Form["products_prict"]; string model = req.Form["product_model"];
                     string photo = req.Form["products_photo"]; string title = req.Form["products_subtitle"]; string describe = req.Form["products_describe"];
-                    string images = req.Form["products_images"]; string number = req.Form["products_number"];
+                    string images = req.Form["products_images"]; string number = req.Form["products_number"];string hot = req.Form["products_hot"];
                     if (com.products.isNumberExists(number))
                     {
                         res.Write(Utils.GetReulst("", "编号已经存在.", -1));
                     }
                     else
                     {
-                        r = com.products.addProduct(pname, price, model, photo, title, describe, images, number);
+                        r = com.products.addProduct(pname, price, model, photo, title, describe, images, number, hot);
                         res.Write(Utils.GetReulst("添加成功.", "添加失败.", r, "true"));
                     }
                     break;
@@ -71,9 +71,9 @@ namespace JadeWeb.admin
                 case "updateproducts":
                     pname = req.Form["products_name"]; price = req.Form["products_prict"]; model = req.Form["product_model"];
                     photo = req.Form["products_photo"]; title = req.Form["products_subtitle"]; describe = req.Form["products_describe"];
-                    images = req.Form["products_images"]; number = req.Form["products_number"];
+                    images = req.Form["products_images"]; number = req.Form["products_number"]; hot = req.Form["products_hot"];
                     id = req.Params["products_id"];
-                    r = com.products.updateProducts(pname, price, model, photo, title, describe, images, number, id);
+                    r = com.products.updateProducts(pname, price, model, photo, title, describe, images, number,hot, id);
                     res.Write(Utils.GetReulst("修改成功.", "修改失败.", r, "true"));
                     break;
                 #endregion
@@ -81,6 +81,27 @@ namespace JadeWeb.admin
                 case "getmodellist":
                     name = req.Form["modellist_name"];  
                     res.Write(Utils.DataTableToJSON(com.model.GetModelList(name)));
+                    break;
+                case "addmodel":
+                    name = req.Form["model_name"];
+                    res.Write(Utils.GetReulst("添加成功.","添加失败.",com.model.AddModel(name),"true"));
+                    break;
+                case "updatemodel":
+                    name = req.Form["model_name"];
+                    id = req.Params["id"];
+                    res.Write( Utils.GetReulst("修改成功.", "修改失败.", com.model.UpdateModel(id, name), "true"));
+                    break;
+                case "getmodelbyid":
+                    id = req.Params["id"];
+                    res.Write(com.model.GetModelByID(id));
+                    break;
+                case "deletemodel":
+                    id = req.Params["id"];
+                   int exists = com.model.ModelExists(id);
+                    if (exists > 0) 
+                        res.Write(Utils.GetReulst("", "删除失败,该型号已经被使用.",  exists)); 
+                    else 
+                        res.Write(Utils.GetReulst("删除成功.", "删除失败.", com.model.DeleteModel(id))); 
                     break;
                     #endregion
             }

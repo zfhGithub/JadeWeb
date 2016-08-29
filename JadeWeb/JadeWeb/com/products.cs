@@ -10,7 +10,7 @@ namespace JadeWeb.com
 {
     public class products
     {
-        public static int addProduct(string name, string price, string model, string photo, string title, string describe, string images, string number)
+        public static int addProduct(string name, string price, string model, string photo, string title, string describe, string images, string number,string hot)
         {
             try
             {
@@ -20,13 +20,14 @@ namespace JadeWeb.com
                        new SqlParameter("name", name), new SqlParameter("describe", describe) ,
                        new SqlParameter("model", model), new SqlParameter("images", images),
                        new SqlParameter("price",price), new SqlParameter("photo",photo) ,
-                       new SqlParameter("title",title),new SqlParameter("number",number)
+                       new SqlParameter("title",title),new SqlParameter("number",number),
+                       new SqlParameter("hot",hot)
                      };
-                string strSql = @"insert into products (name, number, model, title, price, photo, images, describe, created )
-                            values (@name,@number,@model,@title,@price,@photo,@images,@describe,getdate())";
+                string strSql = @"insert into products (name, number, model, title, price, photo, images, describe, created,hot)
+                            values (@name,@number,@model,@title,@price,@photo,@images,@describe,getdate(),@hot)";
                 SqlOper.SQLServerOperating s = new SqlOper.SQLServerOperating();
                 int count = s.ExecuteSql(strSql, msp);
-                return count  ;
+                return count;
             }
             catch (Exception)
             {
@@ -51,7 +52,7 @@ namespace JadeWeb.com
                 where += " and m.id=" + model+" ";
             }
             string strSql = string.Format(@" select top {0} * from (
-                                select  ROW_NUMBER() OVER(order by p.id desc) rowIndex ,p.id,p.name,p.number,title,price,photo,images,describe,p.created,m.name model from products p inner join model m on m.id=p.model 
+                                select  ROW_NUMBER() OVER(order by p.id desc) rowIndex ,p.id,p.name,p.number,title,price,photo,images,describe,p.created,m.name model,hot from products p inner join model m on m.id=p.model 
                                  where deleted=0  "+ where + @"
                               )t where rowIndex > {0} * ({1}-1)", pageCount, currentIndex);
             SQLServerOperating s = new SQLServerOperating();
@@ -80,22 +81,22 @@ namespace JadeWeb.com
 
         public static DataTable getProductsDetailByID(string id)
         {
-            string strSql = @"select p.id,p.name,p.number,title,price,photo,images,describe,p.created,p.model from products p 
+            string strSql = @"select p.id,p.name,p.number,title,price,photo,images,describe,p.created,p.model,hot from products p 
                               where deleted = 0 and id =  " + id;
             SQLServerOperating s = new SQLServerOperating();
             return s.Selects(strSql);
         }
 
-        public static int updateProducts(string name, string price, string model, string photo, string title, string describe, string images, string number, string id)
+        public static int updateProducts(string name, string price, string model, string photo, string title, string describe, string images, string number,string hot, string id)
         {
-            string strSql = @"update products set name=@name,number=@number,title=@title,price=@price,photo=@photo,images=@images,describe=@describe ,model=@model where id=@id";
+            string strSql = @"update products set name=@name,number=@number,title=@title,price=@price,photo=@photo,images=@images,describe=@describe ,model=@model,hot=@hot where id=@id";
 
             SqlParameter[] pars = new SqlParameter[] {
                    new SqlParameter("name", name), new SqlParameter("describe", describe) ,
                        new SqlParameter("model", model), new SqlParameter("images", images),
                        new SqlParameter("price",price), new SqlParameter("photo",photo) ,
                        new SqlParameter("title",title),new SqlParameter("number",number)
-                       ,new SqlParameter ("id",id)
+                       ,new SqlParameter ("id",id),new SqlParameter ("hot",hot)
             };
             SQLServerOperating s = new SQLServerOperating();
             return s.ExecuteSql(strSql, pars);

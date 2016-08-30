@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Home</title>
+<title>首页</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="http://apps.bdimg.com/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -63,7 +63,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 		  <div class=" h_menu4">
 				<ul class="memenu skyblue">
-					  <li class="active grid"><a class="color8" href="index.aspx">主页</a></li>	
+					  <li class="active grid"><a class="color8" href="index.aspx">首页</a></li>	
 				      <li><a class="color1" href="#">玉器</a>
 				      	<div class="mepanel">
 						<div class="row">
@@ -179,78 +179,66 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<li><a class="color4" href="blog.aspx">Blog</a></li>				
 				<li><a class="color6" href="contact.aspx">Conact</a></li>
 			  </ul> 
-			</div>
-				
+			</div> 
 				<div class="clearfix"> </div>
 		</div>
 		</div>
 
 	</div>
 
-	<div class="banner">
-		<div class="container">
-			  <script src="js/responsiveslides.min.js"></script>
-  <script>
-    $(function () {
-      $("#slider").responsiveSlides({
-      	auto: true,
-      	nav: true,
-      	speed: 500,
-        namespace: "callbacks",
-        pager: true,
-      });
-    });
-  </script>
-			<div  id="top" class="callbacks_container">
-			<ul class="rslides" id="slider">
-			    <li>
-					
-						<div class="banner-text">
-							<h3>Lorem Ipsum is not simply dummy  </h3>
-						<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor .</p>
-						<a href="single.aspx">Learn More</a>
-						</div>
-				
-				</li>
-				<li>
-					
-						<div class="banner-text">
-							<h3>There are many variations </h3>
-						<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor .</p>
-												<a href="single.aspx">Learn More</a>
+    <div class="banner">
+        <div class="container">
+            <script src="js/responsiveslides.min.js"></script>
+            <script>
+                $(function () {
+                    $("#slider").responsiveSlides({
+                        auto: true,
+                        nav: true,
+                        speed: 500,
+                        namespace: "callbacks",
+                        pager: true,
+                        before: function () {
+                          
+                        },
+                        after: function () {
+                            var src = $("#slider li.callbacks1_on img").attr("src");
+                            $("div.banner").css({ "background": "url(" + src + ") no-repeat" }); 
+                        }
+                    });
+                });
+            </script>
+            <div id="top" class="callbacks_container">
+                <ul class="rslides" id="slider">
+                    <% for (int i = 0; i < 3; i++)
+                        {
+                            %>
+                        <li>
 
-						</div>
-					
-				</li>
-				<li>
-						<div class="banner-text">
-							<h3>Sed ut perspiciatis unde omnis</h3>
-						<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor .</p>
-								<a href="single.aspx">Learn More</a>
+                            <div class="banner-text">
+                                <h3><%= i %>Lorem Ipsum is not simply dummy  </h3>
+                                <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor .</p>
+                                <a href="single.aspx">Learn More</a>
+                            </div>
+                            <img src="images/<%= i %>.jpg" style="display: none;"/>
+                        </li>
+                      <%
+                        } %>
+                  
+                   
+                </ul>
+            </div>
 
-						</div>
-					
-				</li>
-			</ul>
-		</div>
-
-	</div>
-	</div>
+        </div>
+    </div>
 
 <!--content-->
 <div class="content">
         <div class="container">
             <div class="content-top">
                 <h1>最新产品</h1>
-              
-                    <% for (int i = 0; i < newPro.Rows.Count; i++)
-                        {
-                            bool b = true;
-                            if (i % 3 == 0)
-                            {
-                                b = false;
-                                        %>  <div class="grid-in"><%
-                                    }
+             <div class="grid-in">
+                    <% for (int i = 0; i < ( 3 > newPro.Rows.Count ? newPro.Rows.Count :3); i++)
+                        { 
                             %>
                               <div class="col-md-4 grid-top">
                                 <a href="single.aspx?id=<%= newPro.Rows[i]["id"] %>" class="b-link-stripe b-animate-go  thickbox" target="_blank">
@@ -264,18 +252,54 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                   <p><a href="single.aspx"><%= newPro.Rows[i]["number"] %></a></p>
                                 <p><a href="single.aspx"><%= newPro.Rows[i]["name"] %></a></p>
                             </div>
-                     <%  
-                        if (i % 3 == 0 && b)
-                        {
-                            %> <div class="clearfix"></div> </div><%
-                            }
+                     <%   
                         } %> 
+                 <div class="clearfix"></div>  
+             </div>
+             <div class="grid-in">
+                 <% for (int i = 3; i < ( 6 > newPro.Rows.Count ? newPro.Rows.Count :6); i++)
+                        {   %>
+                              <div class="col-md-4 grid-top">
+                                <a href="single.aspx?id=<%= newPro.Rows[i]["id"] %>" class="b-link-stripe b-animate-go  thickbox" target="_blank">
+                                    <img class="img-responsive" src="<%= newPro.Rows[i]["photo"] %>" alt="">
+                                    <div class="b-wrapper">
+                                        <h3 class="b-animate b-from-left b-delay03 ">
+                                            <span>查看</span>
+                                        </h3>
+                                    </div>
+                                </a> 
+                                  <p><a href="single.aspx"><%= newPro.Rows[i]["number"] %></a></p>
+                                <p><a href="single.aspx"><%= newPro.Rows[i]["name"] %></a></p>
+                            </div>
+                     <%   
+                        } %> 
+                 <div class="clearfix"></div>
+               </div>
+                    <div class="grid-in">
+                 <% for (int i = 6; i < ( 9 > newPro.Rows.Count ? newPro.Rows.Count :9); i++)
+                        {   %>
+                              <div class="col-md-4 grid-top">
+                                <a href="single.aspx?id=<%= newPro.Rows[i]["id"] %>" class="b-link-stripe b-animate-go  thickbox" target="_blank">
+                                    <img class="img-responsive" src="<%= newPro.Rows[i]["photo"] %>" alt="">
+                                    <div class="b-wrapper">
+                                        <h3 class="b-animate b-from-left b-delay03 ">
+                                            <span>查看</span>
+                                        </h3>
+                                    </div>
+                                </a> 
+                                  <p><a href="single.aspx"><%= newPro.Rows[i]["number"] %></a></p>
+                                <p><a href="single.aspx"><%= newPro.Rows[i]["name"] %></a></p>
+                            </div>
+                     <%   
+                        } %> 
+                 <div class="clearfix"></div>
+               </div>
             </div>
             <!----->
            <div class="clearfix"></div>
             <div class="content-top-bottom">
                 <h2>热卖产品</h2>
-                <div class="col-md-6 men">
+               <%-- <div class="col-md-6 men">
                     <a href="single.aspx" class="b-link-stripe b-animate-go  thickbox">
                         <img class="img-responsive" src="images/t1.jpg" alt="">
                         <div class="b-wrapper">
@@ -283,49 +307,71 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <span>Lorem</span>
                             </h3>
                         </div>
-                    </a>
-
-
-                </div>
-                <div class="col-md-6">
-                    <div class="col-md1 ">
-                        <a href="single.aspx" class="b-link-stripe b-animate-go  thickbox">
-                            <img class="img-responsive" style="width: 600px; height: 226px;" src="images/t2.jpg" alt="">
-                            <div class="b-wrapper">
-                                <h3 class="b-animate b-from-top top-in1   b-delay03 ">
-                                    <span>Lorem</span>
-                                </h3>
-                            </div>
-                        </a>
-
-                    </div>
-                    <div class="col-md2">
-                        <div class="col-md-6 men1">
-                            <a href="single.aspx" class="b-link-stripe b-animate-go  thickbox">
-                                <img class="img-responsive" src="images/t3.jpg" alt="">
-                                <div class="b-wrapper">
-                                    <h3 class="b-animate b-from-top top-in2   b-delay03 ">
-                                        <span>Lorem</span>
-                                    </h3>
+                    </a> 
+                </div>--%>
+             
+         <% int count = hotPro.Rows.Count;
+            double frequency =  Math.Ceiling(Convert.ToDouble(Convert.ToDouble(count) / Convert.ToDouble(3)));
+            %>
+                <% for (int i = 0; i < frequency; i++)
+                    {
+                        int len = (i * 3 + 3) > count ? count : (i * 3 + 3);
+                        %> <div class="col-md-6"><%
+                        for (int j = i * 3; j < len; j++)
+                        {
+                            %>
+                            <% if (j < count)
+                                {%>
+                                <div class="col-md1 ">
+                                    <a href="single.aspx?id=<%= hotPro.Rows[j]["id"] %>" class="b-link-stripe b-animate-go  thickbox">
+                                        <img class="img-responsive" style="width: 600px; height: 226px;" src="<%= hotPro.Rows[j]["photo"] %>" alt="">
+                                        <div class="b-wrapper">
+                                            <h3 class="b-animate b-from-top top-in1   b-delay03 ">
+                                                <span><%= hotPro.Rows[j]["name"] %></span>
+                                            </h3>
+                                        </div>
+                                    </a>
+                                </div><%} %>
+                         
+                                <div class="col-md2"> 
+                                       <% j++; if (j < count)
+                                           {%>
+                                    <div class="col-md-6 men1">
+                                        <a href="single.aspx?id=<%= hotPro.Rows[j]["id"] %>" class="b-link-stripe b-animate-go  thickbox">
+                                            <img class="img-responsive" src="<%= hotPro.Rows[j]["photo"] %>" alt="">
+                                            <div class="b-wrapper">
+                                                <h3 class="b-animate b-from-top top-in2   b-delay03 ">
+                                                    <span><%= hotPro.Rows[j]["name"] %></span>
+                                                </h3>
+                                            </div>
+                                        </a> 
+                                    </div>
+                                    <%} %>
+                                       <% j++; if (j < count)
+                                           {%>
+                                    <div class="col-md-6 men2">
+                                        <a href="single.aspx?id=<%= hotPro.Rows[j]["id"] %>" class="b-link-stripe b-animate-go  thickbox">
+                                            <img class="img-responsive" src="<%= hotPro.Rows[j]["photo"] %>" alt="">
+                                            <div class="b-wrapper">
+                                                <h3 class="b-animate b-from-top top-in2   b-delay03 ">
+                                                    <span><%= hotPro.Rows[j]["name"] %></span>
+                                                </h3>
+                                            </div>
+                                        </a> 
+                                    </div>
+                                        <%} %>
+                                    <div class="clearfix"></div>
                                 </div>
-                            </a>
-
-                        </div>
-                        <div class="col-md-6 men2">
-                            <a href="single.aspx" class="b-link-stripe b-animate-go  thickbox">
-                                <img class="img-responsive" src="images/t4.jpg" alt="">
-                                <div class="b-wrapper">
-                                    <h3 class="b-animate b-from-top top-in2   b-delay03 ">
-                                        <span>Lorem</span>
-                                    </h3>
-                                </div>
-                            </a>
-
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
+                            <%
+                        }
+                        %>
+                    <div class="clearfix"></div>
+                               </div>
+                   <% } %>
+                
+                
+             
+              
             </div>
         </div>
         <!---->

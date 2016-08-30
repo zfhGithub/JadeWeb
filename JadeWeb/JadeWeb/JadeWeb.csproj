@@ -619,6 +619,8 @@
     <Content Include="admin\products\addproducts.html" />
     <Content Include="admin\products\model.html" />
     <Content Include="admin\products\products.html" />
+    <Content Include="admin\settings\banner.aspx" />
+    <Content Include="admin\settings\banner.html" />
     <Content Include="blog.aspx" />
     <Content Include="login.aspx" />
     <Content Include="packages.config" />
@@ -786,6 +788,13 @@
     <Compile Include="admin\login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\settings\banner.aspx.cs">
+      <DependentUpon>banner.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\settings\banner.aspx.designer.cs">
+      <DependentUpon>banner.aspx</DependentUpon>
+    </Compile>
     <Compile Include="blog.aspx.cs">
       <DependentUpon>blog.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -860,9 +869,7 @@
       <DependentUpon>single.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="admin\settings\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\SqlOper\SqlOper.csproj">
       <Project>{37abcf99-953d-4325-ae07-37ab9a944629}</Project>

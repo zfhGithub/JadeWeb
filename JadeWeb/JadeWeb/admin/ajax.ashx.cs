@@ -99,7 +99,7 @@ namespace JadeWeb.admin
                     id = req.Params["id"];
                    int exists = com.model.ModelExists(id);
                     if (exists > 0) 
-                        res.Write(Utils.GetReulst("", "删除失败,该型号已经被使用.",  exists)); 
+                        res.Write(Utils.GetReulst("", "删除失败,该型号已经被使用.",  -1)); 
                     else 
                         res.Write(Utils.GetReulst("删除成功.", "删除失败.", com.model.DeleteModel(id))); 
                     break;

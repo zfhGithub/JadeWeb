@@ -260,7 +260,7 @@ $(function(){
                                 <li data-id="31" data-pid="3" data-url="products/model.html"data-tabid="model" >商品类型</li>  
                                   
                                 <li data-id="6" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o" data-url="#">系统设置</li> 
-                                <li data-id="62" data-pid="6" data-url="article/articlelist.html" data-tabid="setbanner" >图片管理</li> 
+                                <li data-id="62" data-pid="6" data-url="settings/banner.html" data-tabid="banner" >图片管理</li> 
                                   
                             </ul>  
                         </div>    

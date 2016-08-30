@@ -11,9 +11,11 @@ namespace JadeWeb
     public partial class index : System.Web.UI.Page
     {
         public DataTable newPro = new DataTable();
+        public DataTable hotPro = new DataTable();
         protected void Page_Load(object sender, EventArgs e)
         {
             newPro = com.products.getProductsList("1","9","","","");
+            hotPro = com.products.GetHotProducts();
         }
     }
 }

@@ -96,7 +96,7 @@ namespace JadeWeb.com
                        new SqlParameter("model", model), new SqlParameter("images", images),
                        new SqlParameter("price",price), new SqlParameter("photo",photo) ,
                        new SqlParameter("title",title),new SqlParameter("number",number)
-                       ,new SqlParameter ("id",id),new SqlParameter ("hot",hot)
+                       ,new SqlParameter ("id",id),new SqlParameter ("hot",string.IsNullOrEmpty( hot) ? "0": hot)
             };
             SQLServerOperating s = new SQLServerOperating();
             return s.ExecuteSql(strSql, pars);
@@ -107,6 +107,13 @@ namespace JadeWeb.com
             string strSql = " select count(id) from products where number ='" + number + "'";
             SQLServerOperating s = new SQLServerOperating();
             return Convert.ToInt32(s.Select(strSql)) > 0;
+        }
+
+        public static DataTable GetHotProducts()
+        {
+            string strSql = "select id, name, number, model, title, price, photo, images, describe, created,  hot  from products where deleted=0 and hot = 1 order by created desc";
+            SQLServerOperating s = new SQLServerOperating();
+            return s.Selects(strSql);
         }
     }
 }

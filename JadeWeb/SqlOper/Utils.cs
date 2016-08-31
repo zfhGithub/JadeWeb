@@ -311,7 +311,7 @@ namespace SqlOper
                 {
                     return "{ \"statusCode\":\"300\",\"message\":\"文件不能超过5兆\"}";
                 }
-                String filepath = HttpContext.Current.Server.MapPath("~") + @"assets\images\banner\";
+                String filepath = HttpContext.Current.Server.MapPath("~") + @"images\banner\";
                 if (!Directory.Exists(filepath))
                 {
                     Directory.CreateDirectory(filepath);
@@ -342,7 +342,7 @@ namespace SqlOper
 
                 // newBanners += fileName + ";"; 
                 s.ExecuteSql("update Company set bannerImages ='" + newBanners + "' ");
-                return "{ \"statusCode\":200,\"url\":\"/assets/images/banner/" + fileName + "\",\"fun\":\"" + type + "\"}";
+                return "{ \"statusCode\":200,\"url\":\"/images/banner/" + fileName + "\",\"fun\":\"" + type + "\"}";
 
                 #endregion
             }
@@ -380,14 +380,14 @@ namespace SqlOper
                 {
                     return "{\"status\":\"0\",\"statusCode\":\"300\"}";
                 }
-                String filepath = HttpContext.Current.Server.MapPath("~") + @"assets\images\";
+                String filepath = HttpContext.Current.Server.MapPath("~") + @"images\";
                 string fileName = "logo.png";
                 if (File.Exists(filepath + fileName))
                 {
                     File.Delete(filepath + fileName);
                 }
                 file.SaveAs(filepath + fileName);
-                return "{ \"statusCode\":\"200\",\"url\":\"assets/images/" + fileName + "\"}"; ;
+                return "{ \"statusCode\":\"200\",\"url\":\"images/" + fileName + "\"}"; ;
                 #endregion
             }
             else if (type == "erweima")

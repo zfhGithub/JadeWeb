@@ -23,7 +23,7 @@
         <button type="submit" class="btn-default" data-icon="search" onclick="search()">查询</button>&nbsp;
         <a class="btn btn-orange" href="javascript:;" data-toggle="reloadsearch" data-clear-query="true" data-icon="undo" onclick="Clear()">清空查询</a>-->
         <div class="pull-right">
-              <button type="button" class="btn-blue" data-url="settings/setLogo.html" data-id="dialog-addprice" data-width="800" data-height="400"
+              <button type="button" class="btn-blue" data-url="settings/setlogo.html" data-id="dialog-addprice" data-width="800" data-height="400"
                     data-toggle="dialog" > 设置LOGO </button>
 
               <button type="button" class="btn-blue" data-url="settings/addBanner.html" data-id="dialog-addprice" data-width="800" data-height="400"
@@ -60,6 +60,7 @@
             <tr>
                 <th data-order-field="rowid">序号</th>
                 <th data-order-field="id">图片</th>  
+                <th data-order-field="product">关联商品</th>
                 <th data-order-field="price">操作</th>  
             </tr>
         </thead>
@@ -72,7 +73,14 @@
             <tr>
                 <td><%= (i + 1) %></td>
                 <td>
-                    <img src="../assets/images/banner/<%=  bannerList[i]  %>" id="imgBanner<%= i %>" alt="" width="650" height="220" /> </td>
+                    <a href="/images/banner/<%=  bannerList[i]  %>" target="_blank">
+                       <img src="/images/banner/<%=  bannerList[i]  %>" id="imgBanner<%= i %>" alt="" width="650" height="220" /> 
+                     </a>   
+                </td>
+              <%--  <td> 
+                    <input type="text" name="banner_join_product_number" value="" placeholder="请输入商品编号" /> 
+                   <button class="btn btn-default" onclick="set_banner_join_product_number('<%=  bannerList[i]  %>')">确定</button>
+                </td>--%>
                 <td>    
                      <div style="display: inline-block; vertical-align: middle;">
                             <div id="u_banner_pic_up<%= i %>" data-toggle="upload" data-uploader="ajax.ashx?action=kindeditor&type=banner-<%=i %>&oldname=<%=  bannerList[i]  %>"

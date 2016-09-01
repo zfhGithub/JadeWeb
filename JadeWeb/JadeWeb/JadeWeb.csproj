@@ -821,6 +821,7 @@
     <Compile Include="com\BaseClass.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="com\message.cs" />
     <Compile Include="com\model.cs" />
     <Compile Include="com\products.cs" />
     <Compile Include="com\settings.cs" />

@@ -11,7 +11,18 @@ namespace JadeWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Request.HttpMethod == "POST")
+            {
+                string name = Request.Form["name"];
+                string phone = Request.Form["phone"];
+                string email = Request.Form["email"];
+                string message = Request.Form["message"];
+                int s = com.message.addMessage(name, email, phone, message);
+                if (s > 0)
+                {
+                    Response.Write("<script>alert('我们已经收到你的留言！');</script>");
+                }
+            }
         }
     }
 }

@@ -56,5 +56,7 @@ namespace JadeWeb.com
             SQLServerOperating s = new SQLServerOperating();
             return Convert.ToInt32(s.Select(strSql));
         }
+
+
     }
 }

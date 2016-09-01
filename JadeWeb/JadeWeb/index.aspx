@@ -162,7 +162,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						  </div>
 						</div>
 			    </li>
-				<li><a class="color4" href="blog.aspx">Blog</a></li>				
+				<li><a class="color4" href="blog.aspx">活动中心</a></li>				
 				<li><a class="color6" href="contact.aspx">Conact</a></li>
 			  </ul> 
 			</div> 
@@ -309,7 +309,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <% if (j < count)
                                 {%>
                                 <div class="col-md1 ">
-                                    <a href="single.aspx?id=<%= hotPro.Rows[j]["id"] %>" class="b-link-stripe b-animate-go  thickbox">
+                                    <a href="single.aspx?id=<%= hotPro.Rows[j]["id"] %>" target="_blank" class="b-link-stripe b-animate-go  thickbox">
                                         <img class="img-responsive" style="width: 600px; height: 226px;" src="<%= hotPro.Rows[j]["photo"] %>" alt="">
                                         <div class="b-wrapper">
                                             <h3 class="b-animate b-from-top top-in1   b-delay03 ">
@@ -323,7 +323,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                        <% j++; if (j < count)
                                            {%>
                                     <div class="col-md-6 men1">
-                                        <a href="single.aspx?id=<%= hotPro.Rows[j]["id"] %>" class="b-link-stripe b-animate-go  thickbox">
+                                        <a href="single.aspx?id=<%= hotPro.Rows[j]["id"] %>" target="_blank" class="b-link-stripe b-animate-go  thickbox">
                                             <img class="img-responsive" src="<%= hotPro.Rows[j]["photo"] %>" alt="">
                                             <div class="b-wrapper">
                                                 <h3 class="b-animate b-from-top top-in2   b-delay03 ">
@@ -336,7 +336,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                        <% j++; if (j < count)
                                            {%>
                                     <div class="col-md-6 men2">
-                                        <a href="single.aspx?id=<%= hotPro.Rows[j]["id"] %>" class="b-link-stripe b-animate-go  thickbox">
+                                        <a href="single.aspx?id=<%= hotPro.Rows[j]["id"] %>" target="_blank" class="b-link-stripe b-animate-go  thickbox">
                                             <img class="img-responsive" src="<%= hotPro.Rows[j]["photo"] %>" alt="">
                                             <div class="b-wrapper">
                                                 <h3 class="b-animate b-from-top top-in2   b-delay03 ">

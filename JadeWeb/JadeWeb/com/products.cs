@@ -21,7 +21,7 @@ namespace JadeWeb.com
                        new SqlParameter("model", model), new SqlParameter("images", images),
                        new SqlParameter("price",price), new SqlParameter("photo",photo) ,
                        new SqlParameter("title",title),new SqlParameter("number",number),
-                       new SqlParameter("hot",hot)
+                       new SqlParameter("hot",string.IsNullOrEmpty(hot) ? "0":hot)
                      };
                 string strSql = @"insert into products (name, number, model, title, price, photo, images, describe, created,hot)
                             values (@name,@number,@model,@title,@price,@photo,@images,@describe,getdate(),@hot)";
@@ -81,8 +81,8 @@ namespace JadeWeb.com
 
         public static DataTable getProductsDetailByID(string id)
         {
-            string strSql = @"select p.id,p.name,p.number,title,price,photo,images,describe,p.created,p.model,hot from products p 
-                              where deleted = 0 and id =  " + id;
+            string strSql = @" select p.id,p.name,p.number,title,price,photo,images,describe,p.created,p.model,m.name modelname,hot from products p inner join Model m on p.model=m.id
+                              where deleted = 0 and p.id =  " + id;
             SQLServerOperating s = new SQLServerOperating();
             return s.Selects(strSql);
         }

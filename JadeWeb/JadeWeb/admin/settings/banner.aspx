@@ -59,8 +59,7 @@
         <thead>
             <tr>
                 <th data-order-field="rowid">序号</th>
-                <th data-order-field="id">图片</th>  
-                <th data-order-field="product">关联商品</th>
+                <th data-order-field="id">图片</th>   
                 <th data-order-field="price">操作</th>  
             </tr>
         </thead>

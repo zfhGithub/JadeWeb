@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Contact</title>
+<title>留言</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="http://apps.bdimg.com/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -198,15 +198,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="contact-form">
 				
 				<div class="col-md-8 contact-grid">
-					<form>	
-						<input type="text" value="Name" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='Name';}">
+					<form action="contact.aspx" method="post">	
+						<input type="text"  placeholder="姓名" name="name" >
 					
-						<input type="text" value="Email" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='Email';}">
-						<input type="text" value="Subject" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='Subject';}">
+						<input type="text" value=""   name="email"  placeholder="Email">
+						<input type="text" value="" name="phone" placeholder="电话">
 						
-						<textarea cols="77" rows="6" value=" " onfocus="this.value='';" onblur="if (this.value == '') {this.value = 'Message';}">Message</textarea>
+						<textarea cols="77" rows="6"  placeholder="内容"></textarea>
 						<div class="send">
-							<input type="submit" value="Send">
+							<input type="submit" value="发送">
 						</div>
 					</form>
 				</div>
@@ -229,7 +229,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="clearfix"> </div>
 			</div>
 			<div class="map">
-				<iframe src="/demo/demomap.aspx"></iframe>
+				<%--<iframe src="/demo/demomap.aspx"></iframe>--%>
 			</div>
 		</div>
 		

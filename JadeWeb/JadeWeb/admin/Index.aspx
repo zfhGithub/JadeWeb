@@ -249,19 +249,26 @@ $(function(){
                         <div class="items hide" data-noinit="true">
                             <ul id="bjui-hnav-tree1" class="ztree ztree_main" data-toggle="ztree" data-on-click="MainMenuClick" data-expand-all="true" data-faicon="check-square-o">
                                 <li data-id="1" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o" data-url="#">公司信息</li>                  
-                                <li data-id="12" data-pid="1" data-url="about/aboutinfo.html"data-tabid="addproduct">关于我们</li>
+                                <li data-id="12" data-pid="1" data-url="about/aboutinfo.html"data-tabid="aboutinfo">关于我们</li>
                                 <li data-id="13" data-pid="1" data-url="about/contact.html" data-tabid="contact" data-faicon="check-square-o">联系信息</li>
+                             
   
                                 <li data-id="2" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o" data-url="#">留言管理</li> 
-                                <li data-id="22" data-pid="2" data-url="message/messagelist.html"data-tabid="setBanner6" >留言列表</li>  
+                                <li data-id="22" data-pid="2" data-url="message/messagelist.html"data-tabid="messagelist" >留言列表</li>  
                                  
                                 <li data-id="3" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o" data-url="#">商品管理</li> 
                                 <li data-id="32" data-pid="3" data-url="products/products.html"data-tabid="products" >商品列表</li> 
                                 <li data-id="31" data-pid="3" data-url="products/model.html"data-tabid="model" >商品类型</li>  
-                                  
-                                <li data-id="6" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o" data-url="#">系统设置</li> 
-                                <li data-id="62" data-pid="6" data-url="settings/banner.aspx" data-tabid="banner" >图片管理</li> 
-                                  
+                                   
+                                <li data-id="4" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o" data-url="#">资讯中心</li>      
+                                <li data-id="42" data-pid="4" data-url="information/knowledge.html" data-tabid="knowledge">玉器知识</li> 
+                                <li data-id="42" data-pid="4" data-url="information/news.html" data-tabid="news">公司新闻</li>      
+                                <li data-id="42" data-pid="4" data-url="information/videos.html" data-tabid="videos">宣传视频</li> 
+                                <li data-id="42" data-pid="4" data-url="information/joinin.html" data-tabid="joinin">投资加盟</li>   
+                                <li data-id="42" data-pid="4" data-url="information/activity.html" data-tabid="activity">平台活动</li>
+                                 
+                                <li data-id="5" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o" data-url="#">系统设置</li> 
+                                <li data-id="54" data-pid="6" data-url="settings/banner.aspx" data-tabid="banner" >图片管理</li> 
                             </ul>  
                         </div>    
                     </li>

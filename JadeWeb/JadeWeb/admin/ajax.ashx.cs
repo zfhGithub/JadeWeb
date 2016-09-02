@@ -103,6 +103,49 @@ namespace JadeWeb.admin
                     else 
                         res.Write(Utils.GetReulst("删除成功.", "删除失败.", com.model.DeleteModel(id))); 
                     break;
+                #endregion
+
+                #region 资讯中心
+                #region 玉器知识
+                case "addknowledge":
+                    string type = req.Params["type"];
+                    com.information infor = new com.information(type);
+                    int status = infor.addNews(req.Form["knowledge_title"], req.Form["knowledge_subtitle"], req.Form["knowledge_photo"], req.Form["knowledge_content"]);
+                    string reulst = Utils.GetReulst("添加成功！", "添加失败！", status, "true");
+                    res.Write(reulst);
+                    break;
+                case "updateknowledge":
+                    type = req.Params["type"];
+                    infor = new com.information(type);
+                    status = infor.updateNews(req.Params["id"], req.Form["knowledge_title"], req.Form["knowledge_subtitle"], req.Form["knowledge_photo"], req.Form["knowledge_content"]);
+                    reulst = Utils.GetReulst("修改成功！", "修改失败！", status, "true");
+                    res.Write(reulst);
+                    break;
+                case "knowledgelist":
+                    currentIndex = req.Form["pageIndex"];
+                    pageCount = req.Form["pageSize"];
+                    title = req.Form["title"];
+                    type = req.Params["type"];
+                    infor = new com.information(type);
+                    jsonDic = new Dictionary<string, string>();
+                    jsonDic.Add("data", Utils.DataTableToJSON(infor.getNewsList(currentIndex, pageCount,title)));
+                    jsonDic.Add("count", infor.getNewsCount());
+                    js = new JavaScriptSerializer();
+                    res.Write(js.Serialize(jsonDic));
+                    break;
+                case "deleteknowledge":
+                    type = req.Params["type"];
+                    infor = new com.information(type);
+                    id = req.QueryString["id"];
+                    res.Write(Utils.GetReulst(  "删除成功！", "删除失败！", infor.deleteNewsById(id)));
+                    break;
+                case "getknowledgedetailbyid":
+                    type = req.Params["type"];
+                    infor = new com.information(type);
+                    id = req.Params["id"];
+                    res.Write(Utils.DataTableToJSON(infor.getNewsDetailById(id)));
+                    break;
+                    #endregion
                     #endregion
             }
         }

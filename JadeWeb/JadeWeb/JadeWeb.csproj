@@ -68,6 +68,12 @@
   <ItemGroup>
     <Content Include="admin\changepwd.html" />
     <Content Include="admin\Index.aspx" />
+    <Content Include="admin\information\activity.html" />
+    <Content Include="admin\information\addknowledge.html" />
+    <Content Include="admin\information\joinin.html" />
+    <Content Include="admin\information\knowledge.html" />
+    <Content Include="admin\information\news.html" />
+    <Content Include="admin\information\videos.html" />
     <Content Include="admin\js\ajax\area_all.html" />
     <Content Include="admin\js\ajax\area_bj.html" />
     <Content Include="admin\js\ajax\area_sh.html" />
@@ -821,6 +827,7 @@
     <Compile Include="com\BaseClass.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="com\information.cs" />
     <Compile Include="com\message.cs" />
     <Compile Include="com\model.cs" />
     <Compile Include="com\products.cs" />
@@ -873,6 +880,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="com\information\" />
     <Folder Include="images\banner\" />
   </ItemGroup>
   <ItemGroup>

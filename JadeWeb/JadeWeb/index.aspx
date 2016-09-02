@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>首页</title>
+<title>东辉珠宝集团-首页</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="http://apps.bdimg.com/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -17,8 +17,9 @@
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 
 <!--fonts-->
-<link href='http://fonts.useso.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>
-<link href='http://fonts.useso.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'><!--//fonts-->
+<%--<link href='http://fonts.useso.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>
+<link href='http://fonts.useso.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>--%>
+    <!--//fonts-->
 <!-- start menu -->
 <link href="css/memenu.css" rel="stylesheet" type="text/css" media="all" />
 <script type="text/javascript" src="js/memenu.js"></script>
@@ -64,7 +65,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		  <div class=" h_menu4">
 				<ul class="memenu skyblue">
 					  <li class="active grid"><a class="color8" href="index.aspx">首页</a></li>	
-				      <li><a class="color1" href="#">玉器</a>
+				      <li><a class="color1" href="#">产品中心</a>
 				      	<div class="mepanel">
 						<div class="row">
                             <div class="col1">
@@ -106,56 +107,29 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						  </div>
 						</div>
 					</li>
-				    <li class="grid"><a class="color2" href="#">	Women</a>
+				    <li class="grid"><a class="color2" href="#">资讯中心</a>
 					  	<div class="mepanel">
 						<div class="row">
 							<div class="col1">
 								<div class="h_nav">
 									<ul>
-										<li><a href="products.aspx">Accessories</a></li>
-										<li><a href="products.aspx">Bags</a></li>
-										<li><a href="products.aspx">Caps & Hats</a></li>
-										<li><a href="products.aspx">Hoodies & Sweatshirts</a></li>
-										<li><a href="products.aspx">Jackets & Coats</a></li>
-										<li><a href="products.aspx">Jeans</a></li>
-										<li><a href="products.aspx">Jewellery</a></li>
-										<li><a href="products.aspx">Jumpers & Cardigans</a></li>
-										<li><a href="products.aspx">Leather Jackets</a></li>
-										<li><a href="products.aspx">Long Sleeve T-Shirts</a></li>
-										<li><a href="products.aspx">Loungewear</a></li>
+										<li><a href="products.aspx">玉器知识</a></li>
+										<li><a href="products.aspx">投资加盟</a></li> 
 									</ul>	
 								</div>							
 							</div>
 							<div class="col1">
 								<div class="h_nav">
 									<ul>
-										<li><a href="products.aspx">Shirts</a></li>
-										<li><a href="products.aspx">Shoes, Boots & Trainers</a></li>
-										<li><a href="products.aspx">Shorts</a></li>
-										<li><a href="products.aspx">Suits & Blazers</a></li>
-										<li><a href="products.aspx">Sunglasses</a></li>
-										<li><a href="products.aspx">Sweatpants</a></li>
-										<li><a href="products.aspx">Swimwear</a></li>
-										<li><a href="products.aspx">Trousers & Chinos</a></li>
-										<li><a href="products.aspx">T-Shirts</a></li>
-										<li><a href="products.aspx">Underwear & Socks</a></li>
-										<li><a href="products.aspx">Vests</a></li>
+										<li><a href="products.aspx">公司新闻</a></li>
+										<li><a href="products.aspx">平台活动</a></li> 
 									</ul>	
 								</div>							
 							</div>
 							<div class="col1">
-								<div class="h_nav">
-									<h4>Popular Brands</h4>
+								<div class="h_nav"> 
 									<ul>
-										<li><a href="products.aspx">Levis</a></li>
-										<li><a href="products.aspx">Persol</a></li>
-										<li><a href="products.aspx">Nike</a></li>
-										<li><a href="products.aspx">Edwin</a></li>
-										<li><a href="products.aspx">New Balance</a></li>
-										<li><a href="products.aspx">Jack & Jones</a></li>
-										<li><a href="products.aspx">Paul Smith</a></li>
-										<li><a href="products.aspx">Ray-Ban</a></li>
-										<li><a href="products.aspx">Wood Wood</a></li>
+										<li><a href="products.aspx">宣传视频</a></li> 
 									</ul>	
 								</div>												
 							</div>
@@ -163,7 +137,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</div>
 			    </li>
 				<li><a class="color4" href="blog.aspx">活动中心</a></li>				
-				<li><a class="color6" href="contact.aspx">Conact</a></li>
+				<li><a class="color6" href="contact.aspx">关于我们</a></li>
 			  </ul> 
 			</div> 
 				<div class="clearfix"> </div>

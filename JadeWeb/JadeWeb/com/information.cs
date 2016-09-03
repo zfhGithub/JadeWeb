@@ -52,9 +52,14 @@ namespace JadeWeb.com
             SqlOper.SQLServerOperating s = new SqlOper.SQLServerOperating();
             return s.ExecuteSql(strSql, sp);
         }
-        public string getNewsCount()
+        public string getNewsCount(string title)
         {
-            string strSql = " select COUNT(*) from News where  deleted=0 and type='" + _type + "'";
+            string where = string.Empty;
+            if (!string.IsNullOrEmpty(title))
+            {
+                where += " and title like '%" + title + "%'";
+            }
+            string strSql = " select COUNT(*) from News where  deleted=0 and type='" + _type + "' "+ where + "";
             SQLServerOperating s = new SQLServerOperating();
             return s.Select(strSql);
         }
@@ -72,5 +77,29 @@ namespace JadeWeb.com
             return s.Selects(strSql);
         }
 
+
+        public int setVideos(string content)
+        {
+            SQLServerOperating s = new SQLServerOperating();
+            string count = s.Select("select count(*) from news where type='videos'");
+            string strSql = "";
+            if (Convert.ToInt32(count) > 0)
+            {
+                strSql = "update News set content=@content where type='videos'";
+                return  s.ExecuteSql(strSql, new SqlParameter[] { new SqlParameter("content", content) });
+            }
+            else
+            {
+                strSql = "insert into news ( type,   content, created)values('videos',@content,getdate())";
+                return s.ExecuteSql(strSql, new SqlParameter[] { new SqlParameter("content", content) });
+            }
+        }
+
+        public DataTable getVideos()
+        {
+            string strSql = "select content from news where type='videos'";
+            SQLServerOperating s = new SQLServerOperating();
+            return s.Selects(strSql);
+        }
     }
 }

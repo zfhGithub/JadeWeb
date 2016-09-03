@@ -129,7 +129,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<div class="col1">
 								<div class="h_nav"> 
 									<ul>
-										<li><a href="products.aspx">宣传视频</a></li> 
+										<li><a href="videos.aspx">宣传视频</a></li> 
 									</ul>	
 								</div>												
 							</div>

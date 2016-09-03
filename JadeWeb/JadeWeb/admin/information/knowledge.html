@@ -2,13 +2,14 @@
     var knowledgelist  = { pageIndex: 1, pageSize: 10, MaxPage: 0, TotalPage :0}
 
     function knowledgelistpage() {
-        var customNo = $("#customNo").val();
-        var customName = $("#customName").val();
+        var title = $("#knowledge_search_title").val();
         $.ajax({
             url: 'ajax.ashx?action=knowledgelist',
                 data: {
                     "pageIndex": knowledgelist.pageIndex,
                     "pageSize": knowledgelist.pageSize,
+                    "title": title,
+                    "type": "knowledge"
                 },
                 type: "post",
                 success: function (result) {
@@ -124,7 +125,7 @@
     $(function () {
         knowledgelistpage();
     });
-    function search() {
+    function knowledge_search() {
         knowledgelist.pageIndex = 1;
         knowledgelistpage();
     }
@@ -154,19 +155,19 @@
      <input type="hidden" name="orderDirection" value="${param.orderDirection}">-->
     <div class="bjui-searchBar">
         &nbsp;
+        <form>
+            <label for="knowledge_search_title">标题：</label><input type="text" value="" id="knowledge_search_title" name="knowledge_search_title" class="form-control" size="25">&nbsp;
+            <button type="button" class="btn-default" data-icon="search" onclick="knowledge_search()">查询</button>&nbsp;
+            <button type="reset" class="btn btn-orange" data-clear-query="true" data-icon="undo">清空查询</button>
 
-
-        <!--<label>商品名称：</label><input type="text" value="" id="customName" name="name" class="form-control" size="8">&nbsp;
-
-        <button type="button" class="showMoreSearch" data-toggle="moresearch" data-name="custom"><i class="fa fa-angle-double-down"></i></button>
-         <button type="submit" class="btn-default" data-icon="search" onclick="search()">查询</button>&nbsp;
-         <a class="btn btn-orange" href="javascript:;" data-toggle="reloadsearch" data-clear-query="true" data-icon="undo" onclick="Clear()">清空查询</a>-->
-        <div class="pull-right">
-            <button type="button" class="btn-blue" data-url="/admin/information/addknowledge.html" data-id="dialog_addknowledge" data-width="860" data-height="500"
-                    data-toggle="dialog" data-on-close="dialog_knowledgelist_before_close">
-                添加
-            </button>
-            <!--  <button type="button" class="btn-blue" data-url="/B-JUI/ajaxDone2.html?id={#bjui-selected}" data-toggle="doajax" data-confirm-msg="确定要删除选中项吗？" data-icon="remove" title="可以在控制台(network)查看被删除ID">删除选中行</button>&nbsp;
+            <!-- <button type="button" class="showMoreSearch" data-toggle="moresearch" data-name="custom"><i class="fa fa-angle-double-down"></i></button>
+         -->
+            <div class="pull-right">
+                <button type="button" class="btn-blue" data-url="/admin/information/addknowledge.html" data-id="dialog_addknowledge" data-width="860" data-height="500"
+                        data-toggle="dialog" data-on-close="dialog_knowledgelist_before_close">
+                    添加玉器知识
+                </button>
+                <!--  <button type="button" class="btn-blue" data-url="/B-JUI/ajaxDone2.html?id={#bjui-selected}" data-toggle="doajax" data-confirm-msg="确定要删除选中项吗？" data-icon="remove" title="可以在控制台(network)查看被删除ID">删除选中行</button>&nbsp;
             <div class="btn-group">
                 <button type="button" class="btn-default dropdown-toggle" data-toggle="dropdown" data-icon="copy">复选框-批量操作<span class="caret"></span></button>
                  <ul class="dropdown-menu right" role="menu">
@@ -176,7 +177,8 @@
                      <li><a href="/B-JUI/ajaxDone2.html" data-toggle="doajaxchecked" data-confirm-msg="确定要删除选中项吗？" data-idname="delids" data-group="ids">删除选中</a></li>
                  </ul>
              </div>-->
-        </div>
+            </div>
+        </form>
     </div>
     <!--<div class="bjui-moreSearch">
         <label>职业：</label><input type="text" value="" name="profession" size="15" />

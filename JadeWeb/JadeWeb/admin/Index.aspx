@@ -268,7 +268,7 @@ $(function(){
                                 <li data-id="42" data-pid="4" data-url="information/activity.html" data-tabid="activity">平台活动</li>
                                  
                                 <li data-id="5" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o" data-url="#">系统设置</li> 
-                                <li data-id="54" data-pid="6" data-url="settings/banner.aspx" data-tabid="banner" >图片管理</li> 
+                                <li data-id="54" data-pid="5" data-url="settings/banner.aspx" data-tabid="banner" >图片管理</li> 
                             </ul>  
                         </div>    
                     </li>

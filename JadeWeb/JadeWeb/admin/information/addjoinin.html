@@ -1,0 +1,92 @@
+﻿<!--新闻-->
+<div class="bjui-pageContent">
+    <form action="ajax.ashx?action=addjoinin&type=joinin" id="j_addjoinin_form" data-toggle="validate" data-alertmsg="false">
+        <table class="table table-condensed table-hover" width="100%">
+            <tbody>
+                <tr>
+                    <td>
+                        <label for="joinin_title" class="control-label x85"> 标题：</label>
+                        <input type="text" name="joinin_title" id="joinin_title" value="" data-rule="required" size="35">
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <label for="joinin_subtitle" class="control-label x85">二级标题：</label>
+                        <textarea name="joinin_subtitle" id="joinin_subtitle" data-toggle="autoheight" cols="60" rows="1" data-rule="required"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <label for="j_custom_note" class="control-label x85">图片：</label>
+                        <div style="display: inline-block; vertical-align: middle;">
+                            <div id="joinin_photo_up" data-toggle="upload" data-uploader="ajax.ashx?action=kindeditor&type=head"
+                                 data-file-size-limit="2097152"
+                                 data-file-type-exts="*.jpg;*.png;*.gif;*.mpg"
+                                 data-multi="true"
+                                 data-drag-drop="true"
+                                 data-on-upload-success="joinin_head_upload_success"
+                                 data-icon="cloud-upload"></div>
+                            <input type="hidden" name="joinin_photo" value="" id="joinin_photo" data-rule="图片:required">
+                            <span id="joinin_photo_show"></span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <label for="joinin_content" class="control-label x85">内容：</label>
+                        <div style="display: inline-block; vertical-align: middle;">
+                            <textarea name="joinin_content" id="joinin_content" class="j-content" style="width: 700px;" data-upload-json="ajax.ashx?action=kindeditor&type=kindeditor"
+                                      data-after-upload="kindeditor_upload_success" data-file-manager-json="ajax.ashx?action=fileManagerJson"
+                                      data-toggle="kindeditor" data-minheight="200"></textarea>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+<div class="bjui-pageFooter">
+    <ul>
+        <li><button type="button" class="btn-close" data-icon="close">取消</button></li>
+        <li><button type="button" class="btn-default" data-icon="save" onclick="addjoinin()">保存</button></li>
+    </ul>
+</div>
+<script type="text/javascript">
+    $(function () {
+        if (joinin_editid) {
+            $.ajax({
+                url: "ajax.ashx?action=getjoinindetailbyid&type=joinin",
+                data: { id: joinin_editid },
+                type: "post",
+                success: function (r) {
+                    var d = JSON.parse(r)["d"][0];
+                    $("#joinin_title").val(d.title);
+                    $("#joinin_subtitle").val(d.subtitle);
+                    $("#joinin_photo").val(d.photo);
+                    $('#joinin_photo_show').html('已上传图片：<img src="' + d.photo + '" width="100">');
+                    $("#joinin_content").html(d.content);
+                    KindEditor.html('#joinin_content', d.content);
+                }, error: function () {
+                    console.log("error");
+                }
+            });
+        }
+    });
+    function joinin_head_upload_success(file, data) {
+        var json = JSON.parse(data);
+        if (json.statusCode == 200)
+        {
+            $("#joinin_photo").val(json.url);
+            $('#joinin_photo_show').html('已上传图片：<img src="' + json.url + '" width="100">')
+        }
+
+    }
+    function addjoinin() {
+        if (joinin_editid) {
+            $("#j_addjoinin_form").attr("action", "ajax.ashx?action=updatejoinin&type=joinin&id=" + joinin_editid);
+        }
+        $("#j_addjoinin_form").submit();
+    }
+</script>

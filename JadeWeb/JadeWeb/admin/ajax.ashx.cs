@@ -129,7 +129,7 @@ namespace JadeWeb.admin
                     infor = new com.information(type);
                     jsonDic = new Dictionary<string, string>();
                     jsonDic.Add("data", Utils.DataTableToJSON(infor.getNewsList(currentIndex, pageCount,title)));
-                    jsonDic.Add("count", infor.getNewsCount());
+                    jsonDic.Add("count", infor.getNewsCount(title));
                     js = new JavaScriptSerializer();
                     res.Write(js.Serialize(jsonDic));
                     break;
@@ -140,6 +140,170 @@ namespace JadeWeb.admin
                     res.Write(Utils.GetReulst(  "删除成功！", "删除失败！", infor.deleteNewsById(id)));
                     break;
                 case "getknowledgedetailbyid":
+                    type = req.Params["type"];
+                    infor = new com.information(type);
+                    id = req.Params["id"];
+                    res.Write(Utils.DataTableToJSON(infor.getNewsDetailById(id)));
+                    break;
+                #endregion
+
+                #region 新闻
+                case "addnews":
+                    type = req.Params["type"];
+                    infor = new com.information(type);
+                    status = infor.addNews(req.Form["news_title"], req.Form["news_subtitle"], req.Form["news_photo"], req.Form["news_content"]);
+                    reulst = Utils.GetReulst("添加成功！", "添加失败！", status, "true");
+                    res.Write(reulst);
+                    break;
+                case "updatenews":
+                    type = req.Params["type"];
+                    infor = new com.information(type);
+                    status = infor.updateNews(req.Params["id"], req.Form["news_title"], req.Form["news_subtitle"], req.Form["news_photo"], req.Form["news_content"]);
+                    reulst = Utils.GetReulst("修改成功！", "修改失败！", status, "true");
+                    res.Write(reulst);
+                    break;
+                case "newslist":
+                    currentIndex = req.Form["pageIndex"];
+                    pageCount = req.Form["pageSize"];
+                    title = req.Form["title"];
+                    type = req.Params["type"];
+                    infor = new com.information(type);
+                    jsonDic = new Dictionary<string, string>();
+                    jsonDic.Add("data", Utils.DataTableToJSON(infor.getNewsList(currentIndex, pageCount, title)));
+                    jsonDic.Add("count", infor.getNewsCount(title));
+                    js = new JavaScriptSerializer();
+                    res.Write(js.Serialize(jsonDic));
+                    break;
+                case "deletenews":
+                    type = req.Params["type"];
+                    infor = new com.information(type);
+                    id = req.QueryString["id"];
+                    res.Write(Utils.GetReulst("删除成功！", "删除失败！", infor.deleteNewsById(id)));
+                    break;
+                case "getnewsdetailbyid":
+                    type = req.Params["type"];
+                    infor = new com.information(type);
+                    id = req.Params["id"];
+                    res.Write(Utils.DataTableToJSON(infor.getNewsDetailById(id)));
+                    break;
+                #endregion
+
+                #region 宣传视频
+                case "addvideos":
+                    type = req.Params["type"];
+                    infor = new com.information(type);
+                    status = infor.addNews(req.Form["videos_title"], string.IsNullOrEmpty( req.Form["videos_subtitle"])?"": req.Form["videos_subtitle"], "", req.Form["videos_content"]);
+                    reulst = Utils.GetReulst("添加成功！", "添加失败！", status, "true");
+                    res.Write(reulst);
+                    break;
+                case "updatevideos":
+                    type = req.Params["type"];
+                    infor = new com.information(type);
+                    status = infor.updateNews(req.Params["id"], req.Form["videos_title"], string.IsNullOrEmpty(req.Form["videos_subtitle"]) ? "" : req.Form["videos_subtitle"], "", req.Form["videos_content"]);
+                    reulst = Utils.GetReulst("修改成功！", "修改失败！", status, "true");
+                    res.Write(reulst);
+                    break;
+                case "videoslist":
+                    currentIndex = req.Form["pageIndex"];
+                    pageCount = req.Form["pageSize"];
+                    title = req.Form["title"];
+                    type = req.Params["type"];
+                    infor = new com.information(type);
+                    jsonDic = new Dictionary<string, string>();
+                    jsonDic.Add("data", Utils.DataTableToJSON(infor.getNewsList(currentIndex, pageCount, title)));
+                    jsonDic.Add("count", infor.getNewsCount(title));
+                    js = new JavaScriptSerializer();
+                    res.Write(js.Serialize(jsonDic));
+                    break;
+                case "deletevideos":
+                    type = req.Params["type"];
+                    infor = new com.information(type);
+                    id = req.QueryString["id"];
+                    res.Write(Utils.GetReulst("删除成功！", "删除失败！", infor.deleteNewsById(id)));
+                    break;
+                case "getvideosdetailbyid":
+                    type = req.Params["type"];
+                    infor = new com.information(type);
+                    id = req.Params["id"];
+                    res.Write(Utils.DataTableToJSON(infor.getNewsDetailById(id)));
+                    break;
+                #endregion
+
+                #region 投资加盟
+                case "addjoinin":
+                    type = req.Params["type"];
+                    infor = new com.information(type);
+                    status = infor.addNews(req.Form["joinin_title"], req.Form["joinin_subtitle"], req.Form["joinin_photo"], req.Form["joinin_content"]);
+                    reulst = Utils.GetReulst("添加成功！", "添加失败！", status, "true");
+                    res.Write(reulst);
+                    break;
+                case "updatejoinin":
+                    type = req.Params["type"];
+                    infor = new com.information(type);
+                    status = infor.updateNews(req.Params["id"], req.Form["joinin_title"], req.Form["joinin_subtitle"], req.Form["joinin_photo"], req.Form["joinin_content"]);
+                    reulst = Utils.GetReulst("修改成功！", "修改失败！", status, "true");
+                    res.Write(reulst);
+                    break;
+                case "joininlist":
+                    currentIndex = req.Form["pageIndex"];
+                    pageCount = req.Form["pageSize"];
+                    title = req.Form["title"];
+                    type = req.Params["type"];
+                    infor = new com.information(type);
+                    jsonDic = new Dictionary<string, string>();
+                    jsonDic.Add("data", Utils.DataTableToJSON(infor.getNewsList(currentIndex, pageCount, title)));
+                    jsonDic.Add("count", infor.getNewsCount(title));
+                    js = new JavaScriptSerializer();
+                    res.Write(js.Serialize(jsonDic));
+                    break;
+                case "deletejoinin":
+                    type = req.Params["type"];
+                    infor = new com.information(type);
+                    id = req.QueryString["id"];
+                    res.Write(Utils.GetReulst("删除成功！", "删除失败！", infor.deleteNewsById(id)));
+                    break;
+                case "getjoinindetailbyid":
+                    type = req.Params["type"];
+                    infor = new com.information(type);
+                    id = req.Params["id"];
+                    res.Write(Utils.DataTableToJSON(infor.getNewsDetailById(id)));
+                    break;
+                #endregion
+
+                #region 活动中心
+                case "addactivity":
+                    type = req.Params["type"];
+                    infor = new com.information(type);
+                    status = infor.addNews(req.Form["activity_title"], req.Form["activity_subtitle"], req.Form["activity_photo"], req.Form["activity_content"]);
+                    reulst = Utils.GetReulst("添加成功！", "添加失败！", status, "true");
+                    res.Write(reulst);
+                    break;
+                case "updateactivity":
+                    type = req.Params["type"];
+                    infor = new com.information(type);
+                    status = infor.updateNews(req.Params["id"], req.Form["activity_title"], req.Form["activity_subtitle"], req.Form["activity_photo"], req.Form["activity_content"]);
+                    reulst = Utils.GetReulst("修改成功！", "修改失败！", status, "true");
+                    res.Write(reulst);
+                    break;
+                case "activitylist":
+                    currentIndex = req.Form["pageIndex"];
+                    pageCount = req.Form["pageSize"];
+                    title = req.Form["title"];
+                    type = req.Params["type"];
+                    infor = new com.information(type);
+                    jsonDic = new Dictionary<string, string>();
+                    jsonDic.Add("data", Utils.DataTableToJSON(infor.getNewsList(currentIndex, pageCount, title)));
+                    jsonDic.Add("count", infor.getNewsCount(title));
+                    js = new JavaScriptSerializer();
+                    res.Write(js.Serialize(jsonDic));
+                    break;
+                case "deleteactivity":
+                    type = req.Params["type"];
+                    infor = new com.information(type);
+                    id = req.QueryString["id"];
+                    res.Write(Utils.GetReulst("删除成功！", "删除失败！", infor.deleteNewsById(id)));
+                    break;
+                case "getactivitydetailbyid":
                     type = req.Params["type"];
                     infor = new com.information(type);
                     id = req.Params["id"];

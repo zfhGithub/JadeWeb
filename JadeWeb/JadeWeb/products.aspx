@@ -206,6 +206,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </div>
                     <div class="tags">
                         <ul>
+                             <li><a href="products.aspx">全部</a></li>
                             <% for (int i = 0; i < modelList.Rows.Count; i++)
                                 {%>
                             <li><a href="products.aspx?id=<%= modelList.Rows[i]["id"] %>"><%= modelList.Rows[i]["name"] %></a></li>

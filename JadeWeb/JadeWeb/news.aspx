@@ -1,8 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="videos.aspx.cs" Inherits="JadeWeb.videos" %>
- <!DOCTYPE html>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="news.aspx.cs" Inherits="JadeWeb.news" %>
+
+
+<!DOCTYPE html>
 <html>
 <head>
-<title>视频中心</title>
+<title>新闻</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="http://apps.bdimg.com/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -18,13 +20,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--fonts-->
 <%--<link href='http://fonts.useso.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>
 <link href='http://fonts.useso.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>--%>
-    <!--//fonts-->
+ <!--//fonts-->
 <!-- start menu -->
 <link href="css/memenu.css" rel="stylesheet" type="text/css" media="all" />
 <script type="text/javascript" src="js/memenu.js"></script>
 <script>$(document).ready(function(){$(".memenu").memenu();});</script>
 <script src="js/simpleCart.min.js"> </script>
-
 </head>
 <body>
 <!--header-->
@@ -37,10 +38,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<input type="submit" value="Go">
 					</form>
 			</div>
-		<div class="header-left">		
+			<div class="header-left">		
 					<ul>
 						<li ><a class="lock"  href="login.aspx"  >Login</a></li>
-						<li><a class="lock" href="register.aspx"  >Register</a></li>
+						<li><a class="lock" href="games.aspx"  >Checkout</a></li>
 						<li>
 </li>
 
@@ -179,7 +180,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						  </div>
 						</div>
 			    </li>
-				<li><a class="color8" href="blog.aspx">Blog</a></li>				
+				<li><a class="color4" href="blog.aspx">Blog</a></li>				
 				<li><a class="color6" href="contact.aspx">Conact</a></li>
 			  </ul> 
 			</div>
@@ -192,44 +193,151 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 	
 <!--content-->
-<div class="blog">
+<!---->
+    <div class="product">
         <div class="container">
-            <%--<h1>视频</h1>--%>
-            <%
-                int length = videoList.Rows.Count;
-                int index = 0;
-                for (int i = 0; i < length; i++)
-                {
-                    if (i % 2 == 0)
-                    {
-                        %>  <div class="blog-top"><%
-                    }
-                    index++;
-                   %>
-                  <div class="col-md-6 grid_3">
-                    <h3><a href="blog_single.aspx?id=<%=videoList.Rows[i]["id"]  %>"><%= videoList.Rows[i]["title"] %></a></h3>
-                    <%= videoList.Rows[i]["content"] %>
-                    <div class="blog-poast-info">
-                        <ul>
-                            <li><a class="admin" href="#"><i></i>Admin </a></li>
-                            <li><span><i class="date"></i><%= videoList.Rows[i]["created"] %></span></li>
-                        <%--<li><a class="p-blog" href="#"><i class="comment"></i>No Comments</a></li>--%>
-                        </ul>
+            <div class="col-md-3 product-price">
+                 
+                <!----> 
+                <div class="sellers">
+                    <div class="of-left-in">
+                        <h3 class="tag" style="white-space:nowrap;">资讯中心</h3>
                     </div>
-                    <p><%= videoList.Rows[i]["subtitle"] %></p>
-               <%--     <div class="button"><a href="#">Read More</a></div>--%>
+                    <div class="tags">
+                        <ul>
+                            <li><a href="knowledge.aspx">玉器文化</a></li>
+                            <li><a href="news.aspx">公司新闻</a></li>
+                            <li><a href="videos.aspx">宣传视频</a></li>
+                            <li><a href="videos.aspx">投资加盟</a></li>
+                            <li><a href="activity.aspx">平台活动</a></li>
+                            <div class="clearfix"></div>
+                        </ul>
+
+                    </div>
+
                 </div>
-                  <% 
-                      if (index==2)
-                      {
-                          index = 0;
-                              %>    <div class="clearfix"></div>
-            </div> <%
-                          }
-                      } %>
-           
+                <!---->
+                <div class="product-bottom">
+                    <div class="of-left-in">
+                        <h3 class="best">Best Sellers</h3>
+                    </div>
+                    <div class="product-go">
+                        <div class=" fashion-grid">
+                            <a href="single.aspx">
+                                <img class="img-responsive " src="images/p1.jpg" alt=""></a>
+
+                        </div>
+                        <div class=" fashion-grid1">
+                            <h6 class="best2"><a href="single.aspx">Lorem ipsum dolor sit
+amet consectetuer  </a></h6>
+
+                            <span class=" price-in1">$40.00</span>
+                        </div>
+
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="product-go">
+                        <div class=" fashion-grid">
+                            <a href="single.aspx">
+                                <img class="img-responsive " src="images/p2.jpg" alt=""></a>
+
+                        </div>
+                        <div class="fashion-grid1">
+                            <h6 class="best2"><a href="single.aspx">Lorem ipsum dolor sit
+amet consectetuer </a></h6>
+
+                            <span class=" price-in1">$40.00</span>
+                        </div>
+
+                        <div class="clearfix"></div>
+                    </div>
+
+                </div>
+                <div class=" per1">
+                    <a href="single.aspx">
+                        <img class="img-responsive" src="images/pro.jpg" alt="">
+                        <div class="six1">
+                            <h4>DISCOUNT</h4>
+                            <p>Up to</p>
+                            <span>60%</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-9 product1">
+               <% 
+                      int index = 0;
+                   for (int i = 0; i < newsList.Rows.Count; i++)
+                   {
+                  
+                       if (i % 3 == 0)
+                       {
+                         
+                           %>
+                                <div class=" bottom-product">
+                           <% }
+                                 index++;
+                            %>
+                                    <div class="col-md-4 bottom-cd simpleCart_shelfItem">
+                                        <div class="product-at ">
+                                            <a href="blog_single.aspx?id=<%=newsList.Rows[i]["id"] %>" target="_blank">
+                                                <img class="img-responsive" src="<%=newsList.Rows[i]["photo"]  %>" alt="" style="height:170px;width:255px;">
+                                                <div class="pro-grid">
+                                                    <span class="buy-in">查看</span>
+                                                </div>
+                                            </a>
+                                        </div>   
+                                        <div class="blog-poast-info">
+                                            <ul>
+                                                <li><a class="admin" href="#"><i></i>Admin </a></li>
+                                                <li><span><i class="date"></i><%= newsList.Rows[i]["created"] %></span></li>
+                                            <%--<li><a class="p-blog" href="#"><i class="comment"></i>No Comments</a></li>--%>
+                                            </ul>
+                                        </div>
+                                        <p class="tun"><%= newsList.Rows[i]["title"]  %></p>
+                                   
+                                    </div>
+                       <% 
+                           if (index == 3)
+                           {
+                               index = 0;
+                               %>
+                                        <div class="clearfix"></div>
+                </div>
+                           <%    }
+                           } %>
+             </div>
+            <div class="clearfix"></div>
+            <nav class="in">
+                <ul class="pagination">
+                   
+                    <%
+                        double pages = Math.Ceiling( Convert.ToDouble( Convert.ToDouble( newstListCount)/  Convert.ToDouble( 12)));
+                        int prev = Convert.ToInt32(currentIndex) -1 > 1 ? Convert.ToInt32(currentIndex) -1 : 1;
+                        int next = Convert.ToInt32(currentIndex) +1 >  Convert.ToInt32(pages) ?  Convert.ToInt32(pages): Convert.ToInt32(currentIndex) +1;
+                        %>
+                     <li class=""><a href="news.aspx?page=<%= prev %>&id=<%= modelid %>" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+                     <%
+                        for (int i = 0; i < pages ; i++)
+                        {
+                            string className = "";
+                            if(currentIndex == (i+1).ToString())
+                            {
+                                className = "active";
+                            }
+                            %>
+                          <li class="<%= className %>"><a href="news.aspx?page=<%= (i+1) %>&id=<%= modelid %>"> <%= (i+1) %> </a></li>
+                        <%} %>
+                  <%--  <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li> --%>
+                    <li><a href="news.aspx?page=<%= next %>&id=<%= modelid %>" aria-label="Next"><span aria-hidden="true">»</span> </a></li>
+                </ul>
+            </nav>
         </div>
+
     </div>
+			
+				<!---->
+
 <!--//content-->
 <div class="footer">
 				<div class="container">

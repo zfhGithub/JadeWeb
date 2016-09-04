@@ -113,16 +113,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<div class="col1">
 								<div class="h_nav">
 									<ul>
-										<li><a href="products.aspx">玉器知识</a></li>
-										<li><a href="products.aspx">投资加盟</a></li> 
+										<li><a href="knowledge.aspx">玉器文化</a></li>
+										<li><a href="joinin.aspx">投资加盟</a></li> 
 									</ul>	
 								</div>							
 							</div>
 							<div class="col1">
 								<div class="h_nav">
 									<ul>
-										<li><a href="products.aspx">公司新闻</a></li>
-										<li><a href="products.aspx">平台活动</a></li> 
+										<li><a href="news.aspx">公司新闻</a></li>
+										<li><a href="activity.aspx">平台活动</a></li> 
 									</ul>	
 								</div>							
 							</div>

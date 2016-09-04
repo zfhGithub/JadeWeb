@@ -1,8 +1,9 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="videos.aspx.cs" Inherits="JadeWeb.videos" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="activity.aspx.cs" Inherits="JadeWeb.activity" %>
+
  <!DOCTYPE html>
 <html>
 <head>
-<title>视频中心</title>
+<title>活动中心</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="http://apps.bdimg.com/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -196,7 +197,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="container">
             <%--<h1>视频</h1>--%>
             <%
-                int length = videoList.Rows.Count;
+                int length = activityList.Rows.Count;
                 int index = 0;
                 for (int i = 0; i < length; i++)
                 {
@@ -207,16 +208,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     index++;
                    %>
                   <div class="col-md-6 grid_3">
-                    <h3><a href="blog_single.aspx?id=<%=videoList.Rows[i]["id"]  %>"><%= videoList.Rows[i]["title"] %></a></h3>
-                    <%= videoList.Rows[i]["content"] %>
+                    <h3><a href="blog_single.aspx?id=<%=activityList.Rows[i]["id"]  %>"><%= activityList.Rows[i]["title"] %></a></h3>
+                  	<a href="blog_single.aspx?id=<%= activityList.Rows[i]["id"] %>"><img src="<%= activityList.Rows[i]["photo"] %>" class="img-responsive" alt=""/></a>
                     <div class="blog-poast-info">
                         <ul>
                             <li><a class="admin" href="#"><i></i>Admin </a></li>
-                            <li><span><i class="date"></i><%= videoList.Rows[i]["created"] %></span></li>
+                            <li><span><i class="date"></i><%= activityList.Rows[i]["created"] %></span></li>
                         <%--<li><a class="p-blog" href="#"><i class="comment"></i>No Comments</a></li>--%>
                         </ul>
                     </div>
-                    <p><%= videoList.Rows[i]["subtitle"] %></p>
+                    <p><%= activityList.Rows[i]["subtitle"] %></p>
                <%--     <div class="button"><a href="#">Read More</a></div>--%>
                 </div>
                   <% 

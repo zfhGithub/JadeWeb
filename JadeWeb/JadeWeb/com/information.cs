@@ -72,7 +72,7 @@ namespace JadeWeb.com
         }
         public DataTable getNewsDetailById(string id)
         {
-            string strSql = "select id, type, title, subtitle, photo, content, created, deleted from News where type = '" + _type + "' and deleted = 0 and id=" + id;
+            string strSql = "select id, type, title, subtitle, photo, content, created, deleted from News where deleted = 0 and id=" + id;
             SQLServerOperating s = new SQLServerOperating();
             return s.Selects(strSql);
         }

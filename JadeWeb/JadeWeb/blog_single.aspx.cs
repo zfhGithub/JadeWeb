@@ -11,8 +11,10 @@ namespace JadeWeb
     public partial class blog_single : System.Web.UI.Page
     {
         public Dictionary<string, string> detailNew = new Dictionary<string, string>();
+        public DataTable modelList = new DataTable();
         protected void Page_Load(object sender, EventArgs e)
         {
+            modelList = com.model.GetModelList();
             int id = 0;
             try
             {

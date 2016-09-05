@@ -67,6 +67,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="activity.aspx" />
+    <Content Include="admin\about\aboutinfo.html" />
+    <Content Include="admin\about\contact.html" />
     <Content Include="admin\changepwd.html" />
     <Content Include="admin\Index.aspx" />
     <Content Include="admin\information\activity.html" />
@@ -819,6 +821,7 @@
     <Compile Include="admin\settings\banner.aspx.designer.cs">
       <DependentUpon>banner.aspx</DependentUpon>
     </Compile>
+    <Compile Include="com\aboutinfo.cs" />
     <Compile Include="joinin.aspx.cs">
       <DependentUpon>joinin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

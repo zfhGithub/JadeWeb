@@ -13,9 +13,10 @@ namespace JadeWeb
         public DataTable newsList = new DataTable();
         public int newstListCount = 0;
         public string currentIndex = "1", pageCount = "12", modelid = "";
+        public DataTable modelList = new DataTable();
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            modelList = com.model.GetModelList();
             if (!string.IsNullOrEmpty(Request.QueryString["page"]))
             {
                 try

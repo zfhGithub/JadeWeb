@@ -11,8 +11,10 @@ namespace JadeWeb
     public partial class videos : System.Web.UI.Page
     {
         public DataTable videoList = new DataTable();
+        public DataTable modelList = new DataTable();
         protected void Page_Load(object sender, EventArgs e)
         {
+            modelList = com.model.GetModelList();
             com.information infor = new com.information("videos");
             videoList= infor.getNewsList("1","12",""); 
         }

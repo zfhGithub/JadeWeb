@@ -13,9 +13,10 @@ namespace JadeWeb
         public DataTable joinList = new DataTable();
         public int joinListCount = 0;
         public string currentIndex = "1", pageCount = "20", modelid = "";
+        public DataTable modelList = new DataTable();
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            modelList = com.model.GetModelList();
             if (!string.IsNullOrEmpty(Request.QueryString["page"]))
             {
                 try

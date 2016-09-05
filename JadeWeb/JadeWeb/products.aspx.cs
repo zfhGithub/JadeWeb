@@ -15,7 +15,7 @@ namespace JadeWeb
         public int productListCount = 0;
         public string currentIndex = "1", pageCount = "12", modelid = ""; 
         protected void Page_Load(object sender, EventArgs e)
-        {
+        { 
             modelList = com.model.GetModelList(); 
             if (!string.IsNullOrEmpty(Request.QueryString["page"]))
             {

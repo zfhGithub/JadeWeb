@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -9,8 +10,12 @@ namespace JadeWeb
 {
     public partial class contact : System.Web.UI.Page
     {
+        public DataTable contactDt = new DataTable();
+        public DataTable modelList = new DataTable();
         protected void Page_Load(object sender, EventArgs e)
         {
+            modelList = com.model.GetModelList();
+            contactDt = com.aboutinfo.getAboutInfo();
             if (Request.HttpMethod == "POST")
             {
                 string name = Request.Form["name"];

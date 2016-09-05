@@ -13,8 +13,10 @@ namespace JadeWeb
         public Dictionary<string, string> pDic = new Dictionary<string, string>();
         public List<string> imgList = new List<string>();
 
+        public DataTable modelList = new DataTable();
         protected void Page_Load(object sender, EventArgs e)
         {
+            modelList = com.model.GetModelList();
             try
             {
                int pid =  int.Parse(Request.QueryString["id"]);

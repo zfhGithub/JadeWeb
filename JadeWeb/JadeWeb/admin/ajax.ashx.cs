@@ -37,6 +37,21 @@ namespace JadeWeb.admin
                     break;
                 #endregion
 
+                #region 关于我们
+                case "getaboutinfo":
+                    res.Write(Utils.DataTableToJSON(com.aboutinfo.getAboutInfo()));
+                    break;
+                case "setaboutus":
+                    string aboutusText = req.Form["about_aboutus"];
+                    int status = com.aboutinfo.setAboutInfo(aboutusText);
+                    context.Response.Write(Utils.GetReulst("设置成功", "设置失败", status));
+                    break; 
+                case "setcontact":
+                    status = com.aboutinfo.setContact(req.Form["cname"], req.Form["caddress"], req.Form["cemail"], req.Form["cphone"]);
+                    context.Response.Write(Utils.GetReulst("设置成功", "设置失败", status));
+                    break;
+                #endregion
+
                 #region 商品管理 
                 case "addproduct":
                     string pname = req.Form["products_name"]; string price = req.Form["products_prict"]; string model = req.Form["product_model"];
@@ -110,7 +125,7 @@ namespace JadeWeb.admin
                 case "addknowledge":
                     string type = req.Params["type"];
                     com.information infor = new com.information(type);
-                    int status = infor.addNews(req.Form["knowledge_title"], req.Form["knowledge_subtitle"], req.Form["knowledge_photo"], req.Form["knowledge_content"]);
+                    status = infor.addNews(req.Form["knowledge_title"], req.Form["knowledge_subtitle"], req.Form["knowledge_photo"], req.Form["knowledge_content"]);
                     string reulst = Utils.GetReulst("添加成功！", "添加失败！", status, "true");
                     res.Write(reulst);
                     break;

@@ -159,7 +159,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="container">
             <div class="col-md-3 product-price">
 
-                <div class=" rsidebar span_1_of_left">
+               <%-- <div class=" rsidebar span_1_of_left">
                     <div class="of-left">
                         <h3 class="cate">Categories</h3>
                     </div>
@@ -201,7 +201,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             </ul>
                         </li>
                     </ul>
-                </div>
+                </div>--%>
                 <!--initiate accordion-->
                 <script type="text/javascript">
                     $(function () {
@@ -223,33 +223,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     });
 		</script>
                 <!---->
-                <div class="product-middle">
+                <%--<div class="product-middle">
 
                     <div class="fit-top">
-                        <h6 class="shop-top">Lorem Ipsum</h6>
-                        <a href="#" class="shop-now">SHOP NOW</a>
+                        <h6 class="shop-top"> </h6>
+                        <a href="products.aspx" class="shop-now">查看全部商品</a>
                         <div class="clearfix"></div>
                     </div>
-                </div>
+                </div>--%>
                 <div class="sellers">
                     <div class="of-left-in">
-                        <h3 class="tag">Tags</h3>
+                        <h3 class="tag">分类</h3>
                     </div>
                     <div class="tags">
                         <ul>
-                            <li><a href="#">design</a></li>
-                            <li><a href="#">fashion</a></li>
-                            <li><a href="#">lorem</a></li>
-                            <li><a href="#">dress</a></li>
-                            <li><a href="#">fashion</a></li>
-                            <li><a href="#">dress</a></li>
-                            <li><a href="#">design</a></li>
-                            <li><a href="#">dress</a></li>
-                            <li><a href="#">design</a></li>
-                            <li><a href="#">fashion</a></li>
-                            <li><a href="#">lorem</a></li>
-                            <li><a href="#">dress</a></li>
-
+                              <li><a href="products.aspx">全部</a></li>
+                            <% for (int i = 0; i < modelList.Rows.Count; i++)
+                                {%>
+                            <li><a href="products.aspx?id=<%= modelList.Rows[i]["id"] %>"><%= modelList.Rows[i]["name"] %></a></li>
+                            <% } %>
                             <div class="clearfix"></div>
                         </ul>
 
@@ -258,51 +250,41 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </div>
                 <!---->
                 <div class="product-bottom">
-                    <div class="of-left-in">
-                        <h3 class="best">Best Sellers</h3>
+                     <div class="of-left-in">
+                        <h3 class="best">畅销</h3>
                     </div>
-                    <div class="product-go">
+                    <% for (int i = 0; i < hotList.Rows.Count; i++)
+                        {%>
+                       <div class="product-go">
                         <div class=" fashion-grid">
-                            <a href="#">
-                                <img class="img-responsive " src="images/p1.jpg" alt=""></a>
+                            <a href="single.aspx?id=<%= hotList.Rows[i]["id"] %>">
+                                <img class="img-responsive " src="<%= hotList.Rows[i]["photo"] %> " alt=""></a>
 
                         </div>
                         <div class=" fashion-grid1">
-                            <h6 class="best2"><a href="#">Lorem ipsum dolor sit
-amet consectetuer  </a></h6>
+                            <h6 class="best2"><a href="single.aspx?id=<%= hotList.Rows[i]["id"] %>"> <%= hotList.Rows[i]["name"] %> </a></h6>
 
-                            <span class=" price-in1">$40.00</span>
+                            <span class=" price-in1">¥<%= hotList.Rows[i]["price"] %> </span>
                         </div>
 
                         <div class="clearfix"></div>
                     </div>
-                    <div class="product-go">
-                        <div class=" fashion-grid">
-                            <a href="#">
-                                <img class="img-responsive " src="images/p2.jpg" alt=""></a>
-
-                        </div>
-                        <div class="fashion-grid1">
-                            <h6 class="best2"><a href="#">Lorem ipsum dolor sit
-amet consectetuer </a></h6>
-
-                            <span class=" price-in1">$40.00</span>
-                        </div>
-
-                        <div class="clearfix"></div>
-                    </div>
+                        <%} %>
 
                 </div>
-                <div class=" per1">
-                    <a href="#">
-                        <img class="img-responsive" src="images/pro.jpg" alt="">
-                        <div class="six1">
-                            <h4>DISCOUNT</h4>
-                            <p>Up to</p>
-                            <span>60%</span>
-                        </div>
-                    </a>
-                </div>
+                <% for (int i = 0; i < activityList.Rows.Count; i++)
+                    {%>
+                        <div class=" per1">
+                                        <a href="blog_single.aspx?id=<%= activityList.Rows[i]["id"] %>">
+                                            <img class="img-responsive" src="<%= activityList.Rows[i]["photo"] %>" alt="">
+                                            <div class="six1">
+                                                <h4><%= activityList.Rows[i]["title"] %></h4>
+                                               <%-- <p>Up to</p>
+                                                <span>60%</span>--%>
+                                            </div>
+                                        </a>
+                            </div>
+                    <%} %>
             </div>
             <div class="col-md-9 product-price1">
                 <div class="col-md-5 single-top">
@@ -449,48 +431,32 @@ amet consectetuer </a></h6>
                     </ul>
                 </div>
                 <div class=" bottom-product">
-                    <div class="col-md-4 bottom-cd simpleCart_shelfItem">
+                    <div class="of-left-in">
+                        <h3 class="tag">猜你喜欢</h3>
+                    </div> <br />
+                    <% for (int i = 0; i < likeList.Rows.Count; i++)
+                        {%>
+                        <div class="col-md-4 bottom-cd simpleCart_shelfItem">
                         <div class="product-at ">
-                            <a href="#">
-                                <img class="img-responsive" src="images/pi3.jpg" alt="">
+                            <a href="single.aspx?id=<%= likeList.Rows[i]["id"] %>">
+                                <img class="img-responsive" src="<%= likeList.Rows[i]["photo"] %>" alt="">
                                 <div class="pro-grid">
-                                    <span class="buy-in">Buy Now</span>
+                                    <span class="buy-in">查看</span>
                                 </div>
                             </a>
                         </div>
-                        <p class="tun">It is a long established fact that a reader</p>
-                        <a href="#" class="item_add">
-                            <p class="number item_price"><i></i>$500.00</p>
+                        <p class="tun"><%= likeList.Rows[i]["name"] %></p>
+                        <a href="single.aspx?id=<%= likeList.Rows[i]["id"] %>" class="item_add">
+                            <p class="number item_price"><i></i>¥<%= likeList.Rows[i]["price"] %>元</p>
                         </a>
                     </div>
-                    <div class="col-md-4 bottom-cd simpleCart_shelfItem">
-                        <div class="product-at ">
-                            <a href="#">
-                                <img class="img-responsive" src="images/pi1.jpg" alt="">
-                                <div class="pro-grid">
-                                    <span class="buy-in">Buy Now</span>
-                                </div>
-                            </a>
-                        </div>
-                        <p class="tun">It is a long established fact that a reader</p>
-                        <a href="#" class="item_add">
-                            <p class="number item_price"><i></i>$500.00</p>
-                        </a>
-                    </div>
-                    <div class="col-md-4 bottom-cd simpleCart_shelfItem">
-                        <div class="product-at ">
-                            <a href="#">
-                                <img class="img-responsive" src="images/pi4.jpg" alt="">
-                                <div class="pro-grid">
-                                    <span class="buy-in">Buy Now</span>
-                                </div>
-                            </a>
-                        </div>
-                        <p class="tun">It is a long established fact that a reader</p>
-                        <a href="#" class="item_add">
-                            <p class="number item_price"><i></i>$500.00</p>
-                        </a>
-                    </div>
+                        <%
+                                if ((i +1)  % 3 == 0)
+                                {
+                                    %>  <div class="clearfix"></div> <div class="clearfix"></div> <br/> <br/> <%
+                                }
+                            } %>
+                     
                     <div class="clearfix"></div>
                 </div>
             </div>
@@ -500,7 +466,7 @@ amet consectetuer </a></h6>
     </div>
     <!--//content-->
     <div class="footer">
-        <div class="container">
+        <%--<div class="container">
             <div class="footer-top-at">
 
                 <div class="col-md-4 amet-sed">
@@ -542,9 +508,9 @@ and promo
                 </div>
                 <div class="clearfix"></div>
             </div>
-        </div>
+        </div>--%>
         <div class="footer-class">
-            <p>Copyright &copy; 2015.Company name All rights reserved.</p>
+            <p>Copyright &copy; 2016.Company name All rights reserved.</p>
         </div>
     </div>
 </body>

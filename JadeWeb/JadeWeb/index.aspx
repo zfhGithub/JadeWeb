@@ -334,8 +334,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
               
             </div>
         </div>
-        <!---->
-        <div class="content-bottom">
+    <div class="content-bottom"></div>
+        <!-- 友情链接 -->
+     <%--   <div class="content-bottom">
             <ul>
                 <li><a href="#">
                     <img class="img-responsive" src="images/lo.png" alt=""></a></li>
@@ -351,7 +352,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <img class="img-responsive" src="images/lo5.png" alt=""></a></li>
                 <div class="clearfix"></div>
             </ul>
-        </div>
+        </div>--%>
     </div>
     <div class="footer">
         <%--<div class="container">

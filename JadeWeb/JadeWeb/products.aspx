@@ -179,50 +179,42 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <!---->
                 <div class="product-bottom">
                     <div class="of-left-in">
-                        <h3 class="best">Best Sellers</h3>
+                        <h3 class="best">畅销</h3>
                     </div>
-                    <div class="product-go">
+                    <% for (int i = 0; i < hotList.Rows.Count; i++)
+                        {%>
+                       <div class="product-go">
                         <div class=" fashion-grid">
-                            <a href="single.aspx">
-                                <img class="img-responsive " src="images/p1.jpg" alt=""></a>
+                            <a href="single.aspx?id=<%= hotList.Rows[i]["id"] %>">
+                                <img class="img-responsive " src="<%= hotList.Rows[i]["photo"] %> " alt=""></a>
 
                         </div>
                         <div class=" fashion-grid1">
-                            <h6 class="best2"><a href="single.aspx">Lorem ipsum dolor sit
-amet consectetuer  </a></h6>
+                            <h6 class="best2"><a href="single.aspx?id=<%= hotList.Rows[i]["id"] %>"> <%= hotList.Rows[i]["name"] %> </a></h6>
 
-                            <span class=" price-in1">$40.00</span>
+                            <span class=" price-in1">¥<%= hotList.Rows[i]["price"] %> </span>
                         </div>
 
                         <div class="clearfix"></div>
                     </div>
-                    <div class="product-go">
-                        <div class=" fashion-grid">
-                            <a href="single.aspx">
-                                <img class="img-responsive " src="images/p2.jpg" alt=""></a>
-
-                        </div>
-                        <div class="fashion-grid1">
-                            <h6 class="best2"><a href="single.aspx">Lorem ipsum dolor sit
-amet consectetuer </a></h6>
-
-                            <span class=" price-in1">$40.00</span>
-                        </div>
-
-                        <div class="clearfix"></div>
-                    </div>
-
+                        <%} %>
+                 
+                  
                 </div>
-                <div class=" per1">
-                    <a href="single.aspx">
-                        <img class="img-responsive" src="images/pro.jpg" alt="">
-                        <div class="six1">
-                            <h4>DISCOUNT</h4>
-                            <p>Up to</p>
-                            <span>60%</span>
-                        </div>
-                    </a>
-                </div>
+                <% for (int i = 0; i < activityList.Rows.Count; i++)
+                    {%>
+                        <div class=" per1">
+                                        <a href="blog_single.aspx?id=<%= activityList.Rows[i]["id"] %>">
+                                            <img class="img-responsive" src="<%= activityList.Rows[i]["photo"] %>" alt="">
+                                            <div class="six1">
+                                                <h4><%= activityList.Rows[i]["title"] %></h4>
+                                               <%-- <p>Up to</p>
+                                                <span>60%</span>--%>
+                                            </div>
+                                        </a>
+                            </div>
+                    <%} %>
+               
             </div>
             <div class="col-md-9 product1">
                <% 
@@ -248,9 +240,9 @@ amet consectetuer </a></h6>
                                             </a>
                                         </div>
                                         <p class="tun"><%=productList.Rows[i]["name"]  %></p>
-                                        <a href="#" class="item_add">
-                                            <p class="number item_price">¥<%=productList.Rows[i]["price"]  %>元</p>
-                                        </a>
+                                         <a href="single.aspx?id=<%= productList.Rows[i]["id"] %>" class="item_add">
+                                                <p class="number item_price"><i></i>¥<%= productList.Rows[i]["price"] %>元</p>
+                                            </a>
                                     </div>
                        <% 
                            if (index == 3)
@@ -294,51 +286,54 @@ amet consectetuer </a></h6>
 				<!---->
 
 <!--//content-->
-<div class="footer">
-				<div class="container">
-			<div class="footer-top-at">
-			
-				<div class="col-md-4 amet-sed">
-				<h4>MORE INFO</h4>
-				<ul class="nav-bottom">
-						<li><a href="#">How to order</a></li>
-						<li><a href="#">FAQ</a></li>
-						<li><a href="contact.aspx">Location</a></li>
-						<li><a href="#">Shipping</a></li>
-						<li><a href="#">Membership</a></li>	
-					</ul>	
-				</div>
-				<div class="col-md-4 amet-sed ">
-				<h4>CONTACT US</h4>
-				
-					<p>
-Contrary to popular belief</p>
-					<p>The standard chunk</p>
-					<p>office:  +12 34 995 0792</p>
-					<ul class="social">
-						<li><a href="#"><i> </i></a></li>						
-						<li><a href="#"><i class="twitter"> </i></a></li>
-						<li><a href="#"><i class="rss"> </i></a></li>
-						<li><a href="#"><i class="gmail"> </i></a></li>
-						
-					</ul>
-				</div>
-				<div class="col-md-4 amet-sed">
-					<h4>Newsletter</h4>
-					<p>Sign Up to get all news update
-and promo</p>
-					<form>
-						<input type="text" value="" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}">
-						<input type="submit" value="Sign up">
-					</form>
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-		</div>
-		<div class="footer-class">
-		<p >Copyright &copy; 2015.Company name All rights reserved.</p>
-		</div>
-		</div>
+    <div class="footer">
+        <%--<div class="container">
+            <div class="footer-top-at">
+
+                <div class="col-md-4 amet-sed">
+                    <h4>MORE INFO</h4>
+                    <ul class="nav-bottom">
+                        <li><a href="#">How to order</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="contact.aspx">Location</a></li>
+                        <li><a href="#">Shipping</a></li>
+                        <li><a href="#">Membership</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 amet-sed ">
+                    <h4>CONTACT US</h4>
+
+                    <p>
+                        Contrary to popular belief
+                    </p>
+                    <p>The standard chunk</p>
+                    <p>office:  +12 34 995 0792</p>
+                    <ul class="social">
+                        <li><a href="#"><i></i></a></li>
+                        <li><a href="#"><i class="twitter"></i></a></li>
+                        <li><a href="#"><i class="rss"></i></a></li>
+                        <li><a href="#"><i class="gmail"></i></a></li>
+
+                    </ul>
+                </div>
+                <div class="col-md-4 amet-sed">
+                    <h4>Newsletter</h4>
+                    <p>
+                        Sign Up to get all news update
+and promo
+                    </p>
+                    <form>
+                        <input type="text" value="" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}">
+                        <input type="submit" value="Sign up">
+                    </form>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>--%>
+        <div class="footer-class">
+            <p>Copyright &copy; 2016.Company name All rights reserved.</p>
+        </div>
+    </div>
 </body>
 </html>
 			

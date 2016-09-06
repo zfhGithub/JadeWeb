@@ -200,7 +200,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </div>
 <!--//content-->
 <div class="footer">
-				<div class="container">
+			<%--	<div class="container">
 			<div class="footer-top-at">
 			
 				<div class="col-md-4 amet-sed">
@@ -239,9 +239,9 @@ and promo</p>
 				</div>
 				<div class="clearfix"> </div>
 			</div>
-		</div>
+		</div>--%>
 		<div class="footer-class">
-		<p >Copyright &copy; 2015.Company name All rights reserved.</p>
+		<p >Copyright &copy; 2016.Company name All rights reserved.</p>
 		</div>
 		</div>
 </body>

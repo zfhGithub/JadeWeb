@@ -12,15 +12,20 @@ namespace JadeWeb
     {
         public Dictionary<string, string> pDic = new Dictionary<string, string>();
         public List<string> imgList = new List<string>();
-
+        public DataTable hotList = new DataTable();
+        public DataTable activityList = new DataTable();
         public DataTable modelList = new DataTable();
+        public DataTable likeList = new DataTable();
         protected void Page_Load(object sender, EventArgs e)
         {
             modelList = com.model.GetModelList();
             try
             {
-               int pid =  int.Parse(Request.QueryString["id"]);
-               DataTable dt = com.products.getProductsDetailByID(pid.ToString());
+                activityList = new com.information("activity").getNewsList("1", "1", "");
+
+                hotList = com.products.GetHotProducts("5");
+                int pid = int.Parse(Request.QueryString["id"]);
+                DataTable dt = com.products.getProductsDetailByID(pid.ToString());
                 foreach (DataRow row in dt.Rows)
                 {
                     foreach (DataColumn dc in dt.Columns)
@@ -28,7 +33,8 @@ namespace JadeWeb
                         pDic[dc.ColumnName] = row[dc.ColumnName].ToString();
                     }
                 }
-               string[] imgs = pDic["images"].Split(';');
+                likeList = com.products.getProductsList("1", "6", "", "", pDic["model"]);
+                string[] imgs = pDic["images"].Split(';');
                 for (int i = 0; i < imgs.Length; i++)
                 {
                     if (!string.IsNullOrEmpty(imgs[i]))

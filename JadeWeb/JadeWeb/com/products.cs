@@ -109,9 +109,14 @@ namespace JadeWeb.com
             return Convert.ToInt32(s.Select(strSql)) > 0;
         }
 
-        public static DataTable GetHotProducts()
+        public static DataTable GetHotProducts(string count = "")
         {
-            string strSql = "select id, name, number, model, title, price, photo, images, describe, created,  hot  from products where deleted=0 and hot = 1 order by created desc";
+            string top = "";
+            if (string.Empty != count)
+            {
+                top = " top "+count;
+            }
+            string strSql = "select "+ top+" id, name, number, model, title, price, photo, images, describe, created,  hot  from products where deleted=0 and hot = 1 order by created desc";
             SQLServerOperating s = new SQLServerOperating();
             return s.Selects(strSql);
         }

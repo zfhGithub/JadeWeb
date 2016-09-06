@@ -29,14 +29,18 @@ namespace JadeWeb.com
         }
         public DataTable getNewsList(string currentIndex, string pageCount,string title)
         {
-            string where = string.Empty;
+            string where = "";
+            if (!string.IsNullOrEmpty(_type))
+            {
+                  where += "  and type='" + _type + "' ";
+            }
             if (!string .IsNullOrEmpty(title))
             {
                 where += " and title like '%"+title+"%'";
             }
             string strSql = string.Format(@" select top {0} * from (
                                  select ROW_NUMBER() OVER(order by id desc) rowIndex , id, type,  title, subtitle, photo, content, created, deleted from News
-                                where deleted=0 and type='"+ _type + @"'" + where + @"
+                                where deleted=0 " + where + @"
                                 )t where rowIndex > {0} * ({1}-1)", pageCount, currentIndex);
             SQLServerOperating s = new SQLServerOperating();
             return s.Selects(strSql);

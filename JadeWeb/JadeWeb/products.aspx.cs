@@ -13,6 +13,8 @@ namespace JadeWeb
         public DataTable modelList = new DataTable();
         public DataTable productList = new DataTable();
         public int productListCount = 0;
+        public DataTable hotList = new DataTable();
+        public DataTable activityList = new DataTable();
         public string currentIndex = "1", pageCount = "12", modelid = ""; 
         protected void Page_Load(object sender, EventArgs e)
         { 
@@ -39,7 +41,8 @@ namespace JadeWeb
                     modelid = "";
                 }
             }
-
+            activityList = new com.information("activity").getNewsList("1", "1", "");
+            hotList = com.products.GetHotProducts("5");
             productList = com.products.getProductsList(currentIndex, pageCount, "", "", modelid);
             productListCount = Convert.ToInt32(com.products.getProductsCount("", "", modelid));
         }

@@ -1916,6 +1916,7 @@ h6.best2 {
 	float:none;
 	width:100%;
 }
+ 
 /*--product--*/
 .bottom-cd{
 float:left;
@@ -2144,7 +2145,7 @@ a.item_add p.number {
 }
 .logo {
   width: 41%;
-}
+} 
 .h_menu4 {
   margin: 1px 0 0px;
 }

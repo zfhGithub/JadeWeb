@@ -17,8 +17,8 @@
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 
 <!--fonts-->
-<link href='http://fonts.useso.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>
-<link href='http://fonts.useso.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'><!--//fonts-->
+<%--<link href='http://fonts.useso.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>
+<link href='http://fonts.useso.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>--%><!--//fonts-->
 <!-- start menu -->
 <link href="css/memenu.css" rel="stylesheet" type="text/css" media="all" />
 <script type="text/javascript" src="js/memenu.js"></script>
@@ -31,19 +31,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="header-top">
 		<div class="container">
 			<div class="search">
-				<%--	<form>
+					<form>
 						<input type="text" value="Search " onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
 						<input type="submit" value="Go">
-					</form>--%>
+					</form>
 			</div>
 			<div class="header-left">		
 					<ul>
-						<%--<li ><a class="lock"  href="login.aspx"  >Login</a></li>
+						<li ><a class="lock"  href="login.aspx"  >Login</a></li>
 						<li><a class="lock" href="register.aspx"  >Register</a></li>
-						<li> </li>--%>
+						<li>
+</li>
 
 					</ul>
-					<%--<div class="cart box_1">
+					<div class="cart box_1">
 						<a href="checkout.aspx">
 						<h3> <div class="total">
 							<span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
@@ -51,7 +52,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</a>
 												<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
 
-					</div>--%>
+					</div>
 					<div class="clearfix"> </div>
 			</div>
 				<div class="clearfix"> </div>

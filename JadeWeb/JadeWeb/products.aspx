@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Products</title>
+<title>产品中心</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="http://apps.bdimg.com/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -17,8 +17,9 @@
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 
 <!--fonts-->
-<link href='http://fonts.useso.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>
-<link href='http://fonts.useso.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'><!--//fonts-->
+<%--<link href='http://fonts.useso.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>
+<link href='http://fonts.useso.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>--%>
+ <!--//fonts-->
 <!-- start menu -->
 <link href="css/memenu.css" rel="stylesheet" type="text/css" media="all" />
 <script type="text/javascript" src="js/memenu.js"></script>
@@ -29,21 +30,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--header-->
 <div class="header">
 	<div class="header-top">
-		<div class="container">
+		<%--<div class="container">
 			<div class="search">
-				<%--	<form>
+					<form>
 						<input type="text" value="Search " onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
 						<input type="submit" value="Go">
-					</form>--%>
+					</form>
 			</div>
 			<div class="header-left">		
 					<ul>
-			<%--			<li ><a class="lock"  href="login.aspx"  >Login</a></li>
+						<li ><a class="lock"  href="login.aspx"  >Login</a></li>
 						<li><a class="lock" href="games.aspx"  >Checkout</a></li>
-						<li></li>--%>
+						<li>
+</li>
 
 					</ul>
-					<%--<div class="cart box_1">
+					<div class="cart box_1">
 						<a href="checkout.aspx">
 						<h3> <div class="total">
 							<span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
@@ -51,136 +53,95 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</a>
 						<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
 
-					</div>--%>
+					</div>
 					<div class="clearfix"> </div>
 			</div>
 				<div class="clearfix"> </div>
-		</div>
+		</div>--%>
 		</div>
 		<div class="container">
 			<div class="head-top">
 				<div class="logo">
 					<a href="index.aspx"><img src="images/logo.png" alt=""></a>	
 				</div>
-		  <div class=" h_menu4">
+		  	  <div class=" h_menu4">
 				<ul class="memenu skyblue">
-					  <li class="active grid"><a class="color8" href="index.aspx">Home</a></li>	
-				      <li><a class="color1" href="#">Shop</a>
+					  <li class="active grid"><a class="color8" href="index.aspx">首页</a></li>	
+				      <li><a class="color1" href="#">产品中心</a>
 				      	<div class="mepanel">
 						<div class="row">
-							<div class="col1">
+                            <div class="col1">
 								<div class="h_nav">
 									<ul>
-										<li><a href="products.aspx">Accessories</a></li>
-										<li><a href="products.aspx">Bags</a></li>
-										<li><a href="products.aspx">Caps & Hats</a></li>
-										<li><a href="products.aspx">Hoodies & Sweatshirts</a></li>
-										<li><a href="products.aspx">Jackets & Coats</a></li>
-										<li><a href="products.aspx">Jeans</a></li>
-										<li><a href="products.aspx">Jewellery</a></li>
-										<li><a href="products.aspx">Jumpers & Cardigans</a></li>
-										<li><a href="products.aspx">Leather Jackets</a></li>
-										<li><a href="products.aspx">Long Sleeve T-Shirts</a></li>
-										<li><a href="products.aspx">Loungewear</a></li>
-									</ul>	
+                            <%
+                                int modelLeng = modelList.Rows.Count;
+                                for (int i = 0; i < modelLeng; i=i+3)
+                                {%>
+                                    	<li><a href="products.aspx?id=<%= modelList.Rows[i]["id"] %>"><%= modelList.Rows[i]["name"] %></a></li>
+                              <%  } 
+                            %> 
+						        	</ul>	
 								</div>							
 							</div>
-							<div class="col1">
-								<div class="h_nav">
-									<ul>
-										<li><a href="products.aspx">Shirts</a></li>
-										<li><a href="products.aspx">Shoes, Boots & Trainers</a></li>
-										<li><a href="products.aspx">Shorts</a></li>
-										<li><a href="products.aspx">Suits & Blazers</a></li>
-										<li><a href="products.aspx">Sunglasses</a></li>
-										<li><a href="products.aspx">Sweatpants</a></li>
-										<li><a href="products.aspx">Swimwear</a></li>
-										<li><a href="products.aspx">Trousers & Chinos</a></li>
-										<li><a href="products.aspx">T-Shirts</a></li>
-										<li><a href="products.aspx">Underwear & Socks</a></li>
-										<li><a href="products.aspx">Vests</a></li>
-									</ul>	
-								</div>							
-							</div>
-							<div class="col1">
-								<div class="h_nav">
-									<h4>Popular Brands</h4>
-									<ul>
-										<li><a href="products.aspx">Levis</a></li>
-										<li><a href="products.aspx">Persol</a></li>
-										<li><a href="products.aspx">Nike</a></li>
-										<li><a href="products.aspx">Edwin</a></li>
-										<li><a href="products.aspx">New Balance</a></li>
-										<li><a href="products.aspx">Jack & Jones</a></li>
-										<li><a href="products.aspx">Paul Smith</a></li>
-										<li><a href="products.aspx">Ray-Ban</a></li>
-										<li><a href="products.aspx">Wood Wood</a></li>
-									</ul>	
-								</div>												
-							</div>
+                            	<div class="col1">
+								    <div class="h_nav">
+								    	<ul>
+                               <%  for (int i = 1; i < modelLeng; i=i+3)
+                                  {%>
+                                       <li><a href="products.aspx?id=<%= modelList.Rows[i]["id"] %>"><%= modelList.Rows[i]["name"] %></a></li>
+                                 <% } %>
+							          </ul>	
+								    </div>							
+							    </div>
+										<div class="col1">
+								    <div class="h_nav">
+								    	<ul>	 
+								<% 
+                                    for (int i = 2; i < modelLeng; i=i+3)
+                                    {%>
+                                      <li><a href="products.aspx?id=<%= modelList.Rows[i]["id"] %>"><%= modelList.Rows[i]["name"] %></a></li>
+                                  <%  }
+                                    %>
+                                              </ul>	
+								    </div>							
+							    </div>
+					 
 						  </div>
 						</div>
 					</li>
-				    <li class="grid"><a class="color2" href="#">	Lookbook</a>
+				    <li class="grid"><a class="color2" href="#">资讯中心</a>
 					  	<div class="mepanel">
 						<div class="row">
 							<div class="col1">
 								<div class="h_nav">
 									<ul>
-										<li><a href="products.aspx">Accessories</a></li>
-										<li><a href="products.aspx">Bags</a></li>
-										<li><a href="products.aspx">Caps & Hats</a></li>
-										<li><a href="products.aspx">Hoodies & Sweatshirts</a></li>
-										<li><a href="products.aspx">Jackets & Coats</a></li>
-										<li><a href="products.aspx">Jeans</a></li>
-										<li><a href="products.aspx">Jewellery</a></li>
-										<li><a href="products.aspx">Jumpers & Cardigans</a></li>
-										<li><a href="products.aspx">Leather Jackets</a></li>
-										<li><a href="products.aspx">Long Sleeve T-Shirts</a></li>
-										<li><a href="products.aspx">Loungewear</a></li>
+										<li><a href="knowledge.aspx">玉器文化</a></li>
+										<li><a href="joinin.aspx">投资加盟</a></li> 
 									</ul>	
 								</div>							
 							</div>
 							<div class="col1">
 								<div class="h_nav">
 									<ul>
-										<li><a href="products.aspx">Shirts</a></li>
-										<li><a href="products.aspx">Shoes, Boots & Trainers</a></li>
-										<li><a href="products.aspx">Shorts</a></li>
-										<li><a href="products.aspx">Suits & Blazers</a></li>
-										<li><a href="products.aspx">Sunglasses</a></li>
-										<li><a href="products.aspx">Sweatpants</a></li>
-										<li><a href="products.aspx">Swimwear</a></li>
-										<li><a href="products.aspx">Trousers & Chinos</a></li>
-										<li><a href="products.aspx">T-Shirts</a></li>
-										<li><a href="products.aspx">Underwear & Socks</a></li>
-										<li><a href="products.aspx">Vests</a></li>
+										<li><a href="news.aspx">公司新闻</a></li>
+										<li><a href="activity.aspx">平台活动</a></li> 
 									</ul>	
 								</div>							
 							</div>
 							<div class="col1">
-								<div class="h_nav">
-									<h4>Popular Brands</h4>
+								<div class="h_nav"> 
 									<ul>
-										<li><a href="products.aspx">Levis</a></li>
-										<li><a href="products.aspx">Persol</a></li>
-										<li><a href="products.aspx">Nike</a></li>
-										<li><a href="products.aspx">Edwin</a></li>
-										<li><a href="products.aspx">New Balance</a></li>
-										<li><a href="products.aspx">Jack & Jones</a></li>
-										<li><a href="products.aspx">Paul Smith</a></li>
-										<li><a href="products.aspx">Ray-Ban</a></li>
-										<li><a href="products.aspx">Wood Wood</a></li>
+										<li><a href="videos.aspx">宣传视频</a></li> 
 									</ul>	
 								</div>												
 							</div>
 						  </div>
 						</div>
 			    </li>
-				<li><a class="color4" href="blog.aspx">Blog</a></li>				
-				<li><a class="color6" href="contact.aspx">Conact</a></li>
+				<li><a class="color4" href="activity.aspx">活动中心</a></li>				
+				<li><a class="color6" href="contact.aspx">关于我们</a></li>
 			  </ul> 
-			</div>
+			</div> 
 				
 				<div class="clearfix"> </div>
 		</div>
@@ -191,323 +152,188 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	
 <!--content-->
 <!---->
-		<div class="product">
-			<div class="container">
-				<div class="col-md-3 product-price">
-					  
-				<div class=" rsidebar span_1_of_left">
-					<div class="of-left">
-						<h3 class="cate">Categories</h3>
-					</div>
-		 <ul class="menu">
-		<li class="item1"><a href="#">Men </a>
-			<ul class="cute">
-				<li class="subitem1"><a href="single.aspx">Cute Kittens </a></li>
-				<li class="subitem2"><a href="single.aspx">Strange Stuff </a></li>
-				<li class="subitem3"><a href="single.aspx">Automatic Fails </a></li>
-			</ul>
-		</li>
-		<li class="item2"><a href="#">Women </a>
-			<ul class="cute">
-				<li class="subitem1"><a href="single.aspx">Cute Kittens </a></li>
-				<li class="subitem2"><a href="single.aspx">Strange Stuff </a></li>
-				<li class="subitem3"><a href="single.aspx">Automatic Fails </a></li>
-			</ul>
-		</li>
-		<li class="item3"><a href="#">Kids</a>
-			<ul class="cute">
-				<li class="subitem1"><a href="single.aspx">Cute Kittens </a></li>
-				<li class="subitem2"><a href="single.aspx">Strange Stuff </a></li>
-				<li class="subitem3"><a href="single.aspx">Automatic Fails</a></li>
-			</ul>
-		</li>
-		<li class="item4"><a href="#">Accesories</a>
-			<ul class="cute">
-				<li class="subitem1"><a href="single.aspx">Cute Kittens </a></li>
-				<li class="subitem2"><a href="single.aspx">Strange Stuff </a></li>
-				<li class="subitem3"><a href="single.aspx">Automatic Fails</a></li>
-			</ul>
-		</li>
-				
-		<li class="item4"><a href="#">Shoes</a>
-			<ul class="cute">
-				<li class="subitem1"><a href="product.aspx">Cute Kittens </a></li>
-				<li class="subitem2"><a href="product.aspx">Strange Stuff </a></li>
-				<li class="subitem3"><a href="product.aspx">Automatic Fails </a></li>
-			</ul>
-		</li>
-	</ul>
-					</div>
-				<!--initiate accordion-->
-		<script type="text/javascript">
-			$(function() {
-			    var menu_ul = $('.menu > li > ul'),
-			           menu_a  = $('.menu > li > a');
-			    menu_ul.hide();
-			    menu_a.click(function(e) {
-			        e.preventDefault();
-			        if(!$(this).hasClass('active')) {
-			            menu_a.removeClass('active');
-			            menu_ul.filter(':visible').slideUp('normal');
-			            $(this).addClass('active').next().stop(true,true).slideDown('normal');
-			        } else {
-			            $(this).removeClass('active');
-			            $(this).next().stop(true,true).slideUp('normal');
-			        }
-			    });
-			
-			});
-		</script>
-<!---->
-	<div class="product-middle">
-		
-					<div class="fit-top">
-						<h6 class="shop-top">Lorem Ipsum</h6>
-						<a href="single.aspx" class="shop-now">SHOP NOW</a>
-<div class="clearfix"> </div>
-	</div>
-				</div>	 
-						<div class="sellers">
-							<div class="of-left-in">
-								<h3 class="tag">Tags</h3>
-							</div>
-								<div class="tags">
-									<ul>
-										<li><a href="#">design</a></li>
-										<li><a href="#">fashion</a></li>
-										<li><a href="#">lorem</a></li>
-										<li><a href="#">dress</a></li>
-										<li><a href="#">fashion</a></li>
-										<li><a href="#">dress</a></li>
-										<li><a href="#">design</a></li>
-										<li><a href="#">dress</a></li>
-										<li><a href="#">design</a></li>
-										<li><a href="#">fashion</a></li>
-										<li><a href="#">lorem</a></li>
-										<li><a href="#">dress</a></li>
-										
-										<div class="clearfix"> </div>
-									</ul>
-								
-								</div>
-								
-		</div>
-				<!---->
-				<div class="product-bottom">
-					<div class="of-left-in">
-								<h3 class="best">Best Sellers</h3>
-							</div>
-					<div class="product-go">
-						<div class=" fashion-grid">
-									<a href="single.aspx"><img class="img-responsive " src="images/p1.jpg" alt=""></a>
-									
-								</div>
-							<div class=" fashion-grid1">
-								<h6 class="best2"><a href="single.aspx" >Lorem ipsum dolor sit
-amet consectetuer  </a></h6>
-								
-								<span class=" price-in1"> $40.00</span>
-							</div>
-								
-							<div class="clearfix"> </div>
-							</div>
-							<div class="product-go">
-						<div class=" fashion-grid">
-									<a href="single.aspx"><img class="img-responsive " src="images/p2.jpg" alt=""></a>
-									
-								</div>
-							<div class="fashion-grid1">
-								<h6 class="best2"><a href="single.aspx" >Lorem ipsum dolor sit
-amet consectetuer </a></h6>
-								
-								<span class=" price-in1"> $40.00</span>
-							</div>
-								
-							<div class="clearfix"> </div>
-							</div>
-					
-				</div>
-<div class=" per1">
-				<a href="single.aspx" ><img class="img-responsive" src="images/pro.jpg" alt="">
-				<div class="six1">
-					<h4>DISCOUNT</h4>
-					<p>Up to</p>
-					<span>60%</span>
-				</div></a>
-			</div>
-				</div>
-				<div class="col-md-9 product1">
-				<div class=" bottom-product">
-					<div class="col-md-4 bottom-cd simpleCart_shelfItem">
-						<div class="product-at ">
-							<a href="single.aspx"><img class="img-responsive" src="images/pi3.jpg" alt="">
-							<div class="pro-grid">
-										<span class="buy-in">Buy Now</span>
-							</div>
-						</a>	
-						</div>
-						<p class="tun">It is a long established fact that a reader</p>
-						<a href="#" class="item_add"><p class="number item_price"><i> </i>$500.00</p></a>						
-					</div>
-					<div class="col-md-4 bottom-cd simpleCart_shelfItem">
-						<div class="product-at ">
-							<a href="single.aspx"><img class="img-responsive" src="images/pi1.jpg" alt="">
-							<div class="pro-grid">
-										<span class="buy-in">Buy Now</span>
-							</div>
-						</a>	
-						</div>
-						<p class="tun">It is a long established fact that a reader</p>
-<a href="#" class="item_add"><p class="number item_price"><i> </i>$500.00</p></a>					</div>
-					<div class="col-md-4 bottom-cd simpleCart_shelfItem">
-						<div class="product-at ">
-							<a href="single.aspx"><img class="img-responsive" src="images/pi4.jpg" alt="">
-							<div class="pro-grid">
-										<span class="buy-in">Buy Now</span>
-							</div>
-						</a>	
-						</div>
-						<p class="tun">It is a long established fact that a reader</p>
-<a href="#" class="item_add"><p class="number item_price"><i> </i>$500.00</p></a>					</div>
-					<div class="clearfix"> </div>
-				</div>
-					<div class=" bottom-product">
-					<div class="col-md-4 bottom-cd simpleCart_shelfItem">
-						<div class="product-at ">
-							<a href="single.aspx"><img class="img-responsive" src="images/pi5.jpg" alt="">
-							<div class="pro-grid">
-										<span class="buy-in">Buy Now</span>
-							</div>
-						</a>	
-						</div>
-						<p class="tun">It is a long established fact that a reader</p>
-<a href="#" class="item_add"><p class="number item_price"><i> </i>$500.00</p></a>					</div>
-					<div class="col-md-4 bottom-cd simpleCart_shelfItem">
-						<div class="product-at ">
-							<a href="single.aspx"><img class="img-responsive" src="images/pi.jpg" alt="">
-							<div class="pro-grid">
-										<span class="buy-in">Buy Now</span>
-							</div>
-						</a>	
-						</div>
-						<p class="tun">It is a long established fact that a reader</p>
-<a href="#" class="item_add"><p class="number item_price"><i> </i>$500.00</p></a>					
-</div>
-					<div class="col-md-4 bottom-cd simpleCart_shelfItem">
-						<div class="product-at ">
-							<a href="single.aspx"><img class="img-responsive" src="images/pi1.jpg" alt="">
-							<div class="pro-grid">
-										<span class="buy-in">Buy Now</span>
-							</div>
-						</a>	
-						</div>
-						<p class="tun">It is a long established fact that a reader</p>
-<a href="#" class="item_add"><p class="number item_price"><i> </i>$500.00</p></a>					</div>
-					<div class="clearfix"> </div>
-				</div>
-					<div class=" bottom-product">
-					<div class="col-md-4 bottom-cd simpleCart_shelfItem">
-						<div class="product-at ">
-							<a href="single.aspx"><img class="img-responsive" src="images/pi3.jpg" alt="">
-							<div class="pro-grid">
-										<span class="buy-in">Buy Now</span>
-							</div>
-						</a>	
-						</div>
-						<p class="tun">It is a long established fact that a reader</p>
-					<a href="#" class="item_add"><p class="number item_price"><i> </i>$500.00</p></a>					
+    <div class="product">
+        <div class="container">
+            <div class="col-md-3 product-price">
 
-					</div>
-					<div class="col-md-4 bottom-cd simpleCart_shelfItem">
-						<div class="product-at ">
-							<a href="single.aspx"><img class="img-responsive" src="images/pi4.jpg" alt="">
-							<div class="pro-grid">
-										<span class="buy-in">Buy Now</span>
-							</div>
-						</a>	
-						</div>
-						<p class="tun">It is a long established fact that a reader</p>
-<a href="#" class="item_add"><p class="number item_price"><i> </i>$500.00</p></a>					
-</div>
-					<div class="col-md-4 bottom-cd simpleCart_shelfItem">
-						<div class="product-at ">
-							<a href="single.aspx"><img class="img-responsive" src="images/pi5.jpg" alt="">
-							<div class="pro-grid">
-										<span class="buy-in">Buy Now</span>
-							</div>
-						</a>	
-						</div>
-						<p class="tun">It is a long established fact that a reader</p>
-<a href="#" class="item_add"><p class="number item_price"><i> </i>$500.00</p></a>					
-</div>
-					<div class="clearfix"> </div>
-				</div>
-				
-				</div>
-		<div class="clearfix"> </div>
-		<nav class="in">
-				  <ul class="pagination">
-					<li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-					<li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-					<li><a href="#">2 <span class="sr-only"></span></a></li>
-					<li><a href="#">3 <span class="sr-only"></span></a></li>
-					<li><a href="#">4 <span class="sr-only"></span></a></li>
-					<li><a href="#">5 <span class="sr-only"></span></a></li>
-					 <li> <a href="#" aria-label="Next"><span aria-hidden="true">»</span> </a> </li>
-				  </ul>
-				</nav>
-		</div>
-		
-		</div>
+
+                <!---->
+
+                <div class="sellers">
+                    <div class="of-left-in">
+                        <h3 class="tag">分类</h3>
+                    </div>
+                    <div class="tags">
+                        <ul>
+                             <li><a href="products.aspx">全部</a></li>
+                            <% for (int i = 0; i < modelList.Rows.Count; i++)
+                                {%>
+                            <li><a href="products.aspx?id=<%= modelList.Rows[i]["id"] %>"><%= modelList.Rows[i]["name"] %></a></li>
+                            <% } %>
+                            <div class="clearfix"></div>
+                        </ul>
+
+                    </div>
+
+                </div>
+                <!---->
+                <div class="product-bottom">
+                    <div class="of-left-in">
+                        <h3 class="best">畅销</h3>
+                    </div>
+                    <% for (int i = 0; i < hotList.Rows.Count; i++)
+                        {%>
+                       <div class="product-go">
+                        <div class=" fashion-grid">
+                            <a href="single.aspx?id=<%= hotList.Rows[i]["id"] %>">
+                                <img class="img-responsive " src="<%= hotList.Rows[i]["photo"] %> " alt=""></a>
+
+                        </div>
+                        <div class=" fashion-grid1">
+                            <h6 class="best2"><a href="single.aspx?id=<%= hotList.Rows[i]["id"] %>"> <%= hotList.Rows[i]["name"] %> </a></h6>
+
+                            <span class=" price-in1">¥<%= hotList.Rows[i]["price"] %> </span>
+                        </div>
+
+                        <div class="clearfix"></div>
+                    </div>
+                        <%} %>
+                 
+                  
+                </div>
+                <% for (int i = 0; i < activityList.Rows.Count; i++)
+                    {%>
+                        <div class=" per1">
+                                        <a href="blog_single.aspx?id=<%= activityList.Rows[i]["id"] %>">
+                                            <img class="img-responsive" src="<%= activityList.Rows[i]["photo"] %>" alt="">
+                                            <div class="six1">
+                                                <h4><%= activityList.Rows[i]["title"] %></h4>
+                                               <%-- <p>Up to</p>
+                                                <span>60%</span>--%>
+                                            </div>
+                                        </a>
+                            </div>
+                    <%} %>
+               
+            </div>
+            <div class="col-md-9 product1">
+               <% 
+                      int index = 0;
+                   for (int i = 0; i < productList.Rows.Count; i++)
+                   {
+                  
+                       if (i % 3 == 0)
+                       {
+                         
+                           %>
+                                <div class=" bottom-product">
+                           <% }
+                                 index++;
+                            %>
+                                    <div class="col-md-4 bottom-cd simpleCart_shelfItem">
+                                        <div class="product-at ">
+                                            <a href="single.aspx?id=<%=productList.Rows[i]["id"] %>" target="_blank">
+                                                <img class="img-responsive" src="<%=productList.Rows[i]["photo"]  %>" alt="" style="height:170px;width:255px;">
+                                                <div class="pro-grid">
+                                                    <span class="buy-in">查看</span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <p class="tun"><%=productList.Rows[i]["name"]  %></p>
+                                         <a href="single.aspx?id=<%= productList.Rows[i]["id"] %>" class="item_add">
+                                                <p class="number item_price"><i></i>¥<%= productList.Rows[i]["price"] %>元</p>
+                                            </a>
+                                    </div>
+                       <% 
+                           if (index == 3)
+                           {
+                               index = 0;
+                               %>
+                                        <div class="clearfix"></div>
+                </div>
+                           <%    }
+                           } %>
+             </div>
+            <div class="clearfix"></div>
+            <nav class="in">
+                <ul class="pagination">
+                   
+                    <%
+                        double pages = Math.Ceiling( Convert.ToDouble( Convert.ToDouble( productListCount )/  Convert.ToDouble( 12)));
+                        int prev = Convert.ToInt32(currentIndex) -1 > 1 ? Convert.ToInt32(currentIndex) -1 : 1;
+                        int next = Convert.ToInt32(currentIndex) +1 >  Convert.ToInt32(pages) ?  Convert.ToInt32(pages): Convert.ToInt32(currentIndex) +1;
+                        %>
+                     <li class=""><a href="products.aspx?page=<%= prev %>&id=<%= modelid %>" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+                     <%
+                        for (int i = 0; i < pages ; i++)
+                        {
+                            string className = "";
+                            if(currentIndex == (i+1).ToString())
+                            {
+                                className = "active";
+                            }
+                            %>
+                          <li class="<%= className %>"><a href="products.aspx?page=<%= (i+1) %>&id=<%= modelid %>"> <%= (i+1) %> </a></li>
+                        <%} %>
+                  <%--  <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li> --%>
+                    <li><a href="products.aspx?page=<%= next %>&id=<%= modelid %>" aria-label="Next"><span aria-hidden="true">»</span> </a></li>
+                </ul>
+            </nav>
+        </div>
+
+    </div>
 			
 				<!---->
 
 <!--//content-->
-<div class="footer">
-				<div class="container">
-			<div class="footer-top-at">
-			
-				<div class="col-md-4 amet-sed">
-				<h4>MORE INFO</h4>
-				<ul class="nav-bottom">
-						<li><a href="#">How to order</a></li>
-						<li><a href="#">FAQ</a></li>
-						<li><a href="contact.aspx">Location</a></li>
-						<li><a href="#">Shipping</a></li>
-						<li><a href="#">Membership</a></li>	
-					</ul>	
-				</div>
-				<div class="col-md-4 amet-sed ">
-				<h4>CONTACT US</h4>
-				
-					<p>
-Contrary to popular belief</p>
-					<p>The standard chunk</p>
-					<p>office:  +12 34 995 0792</p>
-					<ul class="social">
-						<li><a href="#"><i> </i></a></li>						
-						<li><a href="#"><i class="twitter"> </i></a></li>
-						<li><a href="#"><i class="rss"> </i></a></li>
-						<li><a href="#"><i class="gmail"> </i></a></li>
-						
-					</ul>
-				</div>
-				<div class="col-md-4 amet-sed">
-					<h4>Newsletter</h4>
-					<p>Sign Up to get all news update
-and promo</p>
-					<form>
-						<input type="text" value="" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}">
-						<input type="submit" value="Sign up">
-					</form>
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-		</div>
-		<div class="footer-class">
-		<p >Copyright &copy; 2015.Company name All rights reserved.</p>
-		</div>
-		</div>
+    <div class="footer">
+        <%--<div class="container">
+            <div class="footer-top-at">
+
+                <div class="col-md-4 amet-sed">
+                    <h4>MORE INFO</h4>
+                    <ul class="nav-bottom">
+                        <li><a href="#">How to order</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="contact.aspx">Location</a></li>
+                        <li><a href="#">Shipping</a></li>
+                        <li><a href="#">Membership</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 amet-sed ">
+                    <h4>CONTACT US</h4>
+
+                    <p>
+                        Contrary to popular belief
+                    </p>
+                    <p>The standard chunk</p>
+                    <p>office:  +12 34 995 0792</p>
+                    <ul class="social">
+                        <li><a href="#"><i></i></a></li>
+                        <li><a href="#"><i class="twitter"></i></a></li>
+                        <li><a href="#"><i class="rss"></i></a></li>
+                        <li><a href="#"><i class="gmail"></i></a></li>
+
+                    </ul>
+                </div>
+                <div class="col-md-4 amet-sed">
+                    <h4>Newsletter</h4>
+                    <p>
+                        Sign Up to get all news update
+and promo
+                    </p>
+                    <form>
+                        <input type="text" value="" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}">
+                        <input type="submit" value="Sign up">
+                    </form>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>--%>
+        <div class="footer-class">
+            <p>Copyright &copy; 2016.Company name All rights reserved.</p>
+        </div>
+    </div>
 </body>
 </html>
 			

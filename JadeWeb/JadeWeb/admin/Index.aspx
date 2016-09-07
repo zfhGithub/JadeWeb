@@ -183,8 +183,7 @@ function MainMenuClick(event, treeId, treeNode) {
         
         zTree.expandNode(treeNode, !treeNode.open, false, true, true)
         return
-    }
-    console.log(treeNode.tabid);
+    } 
     if (treeNode.target && treeNode.target == 'dialog')
         $(event.target).dialog({id:treeNode.tabid, url:treeNode.url, title:treeNode.name})
     else
@@ -250,29 +249,27 @@ $(function(){
                         <div class="items hide" data-noinit="true">
                             <ul id="bjui-hnav-tree1" class="ztree ztree_main" data-toggle="ztree" data-on-click="MainMenuClick" data-expand-all="true" data-faicon="check-square-o">
                                 <li data-id="1" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o" data-url="#">公司信息</li>                  
-                                <li data-id="12" data-pid="1" data-url="about/aboutinfo.html"data-tabid="addproduct">关于我们</li>
+                                <li data-id="12" data-pid="1" data-url="about/aboutinfo.html"data-tabid="aboutinfo">关于我们</li>
                                 <li data-id="13" data-pid="1" data-url="about/contact.html" data-tabid="contact" data-faicon="check-square-o">联系信息</li>
- 
-                                 
+                             
+  
                                 <li data-id="2" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o" data-url="#">留言管理</li> 
-                                <li data-id="22" data-pid="2" data-url="message/messagelist.html"data-tabid="setBanner6" >留言列表</li>  
+                                <li data-id="22" data-pid="2" data-url="message/messagelist.html"data-tabid="messagelist" >留言列表</li>  
                                  
-                                <li data-id="3" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o" data-url="#">领先优势</li> 
-                                <li data-id="32" data-pid="3" data-url="advantage/advantagelist.html"data-tabid="setBanner5" >优势管理</li> 
-                                <li data-id="31" data-pid="3" data-url="advantage/mycommit.html"data-tabid="setBanner4" >我们的承诺</li>  
-
-                                <li data-id="4" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o" data-url="#">价格</li> 
-                                <li data-id="42" data-pid="4" data-url="price/pricelist.html"data-tabid="setBanner3" >套餐管理</li> 
-                                
-                                <li data-id="5" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o" data-url="#">案例</li> 
-                                <li data-id="52" data-pid="5" data-url="case/caselist.html"data-tabid="setBanner2" >案例管理</li> 
-
-                                <li data-id="6" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o" data-url="#">文章管理</li> 
-                                <li data-id="62" data-pid="6" data-url="article/articlelist.html" data-tabid="setBanner1" >文章列表</li> 
-                                  
-                            </ul>                
-
-                           
+                                <li data-id="3" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o" data-url="#">商品管理</li> 
+                                <li data-id="32" data-pid="3" data-url="products/products.html"data-tabid="products" >商品列表</li> 
+                                <li data-id="31" data-pid="3" data-url="products/model.html"data-tabid="model" >商品类型</li>  
+                                   
+                                <li data-id="4" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o" data-url="#">资讯中心</li>      
+                                <li data-id="42" data-pid="4" data-url="information/knowledge.html" data-tabid="knowledge">玉器知识</li> 
+                                <li data-id="42" data-pid="4" data-url="information/news.html" data-tabid="news">公司新闻</li>      
+                                <li data-id="42" data-pid="4" data-url="information/videos.html" data-tabid="videos">宣传视频</li> 
+                                <li data-id="42" data-pid="4" data-url="information/joinin.html" data-tabid="joinin">投资加盟</li>   
+                                <li data-id="42" data-pid="4" data-url="information/activity.html" data-tabid="activity">平台活动</li>
+                                 
+                                <li data-id="5" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o" data-url="#">系统设置</li> 
+                                <li data-id="54" data-pid="5" data-url="settings/banner.aspx" data-tabid="banner" >图片管理</li> 
+                            </ul>  
                         </div>    
                     </li>
                   
@@ -315,7 +312,7 @@ $(function(){
             </div>
         </div>
     </div>
-    <footer id="bjui-footer">Copyright &copy; 2013 - 2015　<a href="../index.aspx" target="_blank">Donghuicaps</a>　
+    <footer id="bjui-footer">Copyright &copy; 2016　<a href="../index.aspx" target="_blank">返回主页</a>　
         <!--  
         <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1252983288'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/stat.php%3Fid%3D1252983288%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
         -->

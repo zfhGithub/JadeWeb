@@ -1,0 +1,220 @@
+﻿<script type="text/javascript">
+    var modellist  = { pageIndex: 1, pageSize: 10, MaxPage: 0, TotalPage :0}
+
+    function modellistpage() {
+        var name = $("#modellist_name").val();
+       
+        $.ajax({
+            url: 'ajax.ashx?action=getmodellist',
+                data: {
+                    "pageIndex": modellist.pageIndex,
+                    "pageSize": modellist.pageSize,
+                    "modellist_name": name,
+                },
+                type: "post",
+                success: function (result) {
+                    var html = [];
+                    var json = JSON.parse(result).d;
+                    
+                
+                    modellist.TotalPage = json.length;//总记录数
+                    //求出最大页
+                    modellist.MaxPage = Math.ceil(modellist.TotalPage / modellist.pageSize);
+                      
+                    var data = json;
+                    $.each(data, function (k, v) {
+                        html.push("<tr><td>" + v.rowIndex + "</td><td>" + v.name + "</td><td>" + v.created + "</td>");
+                        html.push(" <td><a href='#' onclick='edit_model(this,\"" + v.id + "\",\"" + v.name + "\")' class='btn btn-green' >编辑</a>");
+                        html.push(" <a href='ajax.ashx?action=deletemodel&id=" + v.id + "' class='btn btn-red' data-toggle='doajax' data-confirm-msg='确定要删除该行信息吗？'>删除</a></td></tr>");
+                    });
+                    $("#model_list tbody").empty().append(html.join(''));
+                    html = [];
+
+                    $("#modellist_total").html(modellist.TotalPage);//共..条数据
+                    html.push("<ul class='pagination'>");
+                    html.push("<li class='j-first'><a href='javascript:' onclick='modellistfirst()'><span class='first'><i class='fa fa-step-backward'></i>首页</span></a></li>");
+                    html.push("<li class='j-prev'><a href='javascript:' onclick='modellistPrepage()'><span class='previous'><i class='fa fa-backward'></i>上一页</span></li>");
+
+                    for (var i = 1; i <= modellist.MaxPage; i++) {
+                        var c = "j-num";
+                        if (i == modellist.pageIndex) {
+                            c = "selected " + c;
+                        }
+                        html.push("<li class='" + c + "'><a href='javascript:' onclick='modellist_page_click(this)'> " + i + "</a></li>");
+                    }
+                    html.push("<li class='j-next'><a href='javascript:' onclick='modellistnext()'><span class='next' ><i class='fa fa-forward'></i>下一页</span></li>");
+                    html.push("<li class='j-last'><a href='javascript:' onclick='modellistweiye()'><i class='fa fa-step-forward'></i>末页</a></li>")
+                    html.push("<li class='jumpto'><span class='p-input'><input  id='modellistputvalue' class='form-control input-sm-pages' type='text' size='2.6' value='' title='跳转页号'></span><a class='goto' href='javascript:' onclick='modellistLetgo()' title='跳转'><i class='fa fa-chevron-right'></i></a></li>")
+                    html.push("<ul>");
+                    $("#modellistination").empty().append(html.join(''));
+                    //如果当前页等于1就让首页、上一页不可点击
+                    if (modellist.pageIndex == 1) {
+                        $("#modellistination .j-first").addClass("disabled");
+                        $("#modellistination .j-prev").addClass("disabled");
+
+                    }
+                    if (modellist.pageIndex == modellist.MaxPage)
+                    {
+                        $("#modellistination .j-next").addClass("disabled");
+                        $("#modellistination .j-last").addClass("disabled");
+                    }
+            }
+        });
+    }
+    //下一页
+    function modellistnext() {
+        modellist.pageIndex++;
+        if (modellist.pageIndex > modellist.MaxPage) {
+            modellist.pageIndex = modellist.MaxPage;
+        }
+        modellistpage();
+    }
+    //上一页
+    function modellistPrepage () {
+        modellist.pageIndex--;
+        if (modellist.pageIndex < 1) {
+            modellist.pageIndex = 1;
+        }
+        modellistpage();
+    }
+    //首页
+    function modellistfirst() {
+        modellist.pageIndex = 1;
+        modellistpage();
+    }
+
+    //尾页
+    function modellistweiye() {
+        modellist.pageIndex = modellist.MaxPage;
+        modellistpage();
+
+    }
+    function modellistLetgo() {
+        var InputValue = $("#modellistputvalue").val();
+        if (InputValue > modellist.MaxPage) {
+            $(this).alertmsg('info', '你输入的数字超过页面范围');
+            return;
+        }
+        if (InputValue < 1) {
+            $(this).alertmsg('info', '请输入大于第一页的数字');
+            return;
+        }
+        if (isNaN(Number(InputValue)) || InputValue == "") {
+            $(this).alertmsg('info', '请输入数字');
+            return;
+        }
+        modellist.pageIndex = InputValue;
+        modellistpage();
+    }
+    function modellist_page_size_change(_this) {
+        var checkText = $(_this).find("option:selected").text();
+        modellist.pageIndex = 1;
+        modellist.pageSize = checkText;
+        modellistpage();
+    }
+    function modellist_page_click(_this) {
+        $(_this).attr("class", "selected");
+        var Sum = $(_this).text();
+        modellist.pageIndex = Sum;
+        modellistpage();
+    }
+
+    $(function () {
+      
+        modellistpage();
+    });
+    function search() {
+        modellist.pageIndex = 1;
+        modellistpage();
+    }
+    var model_editid;
+    function edit_model(_this, id, name) {
+        model_editid = id;
+        $(_this).dialog({ id: 'dialog_addmodel', url: '/admin/products/addmodel.html', width: 450, height: 250, title: "编辑-" + name, reloadWarn: '本页已有打开的内容，确定将刷新本页内容，是否继续？', toggle: 'dialog', onClose: "dialog_modellist_before_close" });
+    }
+    function dialog_modellist_before_close($dialog) {
+        model_editid = undefined;
+        $("body").navtab("refresh", "model");
+        return true;
+    }
+</script>
+<div class="bjui-pageHeader">
+    <form>
+        <div class="pull-right">
+            <!--<div class="btn-group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" data-icon="copy"> 复选框-批量操作<span class="caret"></span></button>
+                <ul class="dropdown-menu right" role="menu" style="min-width: 153px;">
+                    <li><a href="ajax.ashx?action=ProductDels" data-toggle="doajaxchecked" data-confirm-msg="确定要删除选中项吗？" data-idname="del" data-group="ids">删除选中</a></li>
+                </ul>
+            </div>-->
+        </div>
+        <!--<input type="hidden" name="pageSize" value="${model.pageSize}">
+         <input type="hidden" name="pageCurrent" value="${model.pageCurrent}">
+         <input type="hidden" name="orderField" value="${param.orderField}">
+         <input type="hidden" name="orderDirection" value="${param.orderDirection}">-->
+        <div class="bjui-searchBar">
+            &nbsp;
+           
+            <label>名称：</label><input type="text" value="" id="modellist_name" name="modellist_name" class="form-control" size="15">&nbsp;
+         
+            <button type="button" class="btn-default" data-icon="search" onclick="search()">查询</button>&nbsp;
+            <button type="reset" class="btn-orange" data-icon="undo">清空查询</button>
+            <div class="pull-right">
+                <button type="button" class="btn-blue" data-url="products/addmodel.html" data-id="dialog_addmodel" data-width="450" data-height="250"
+                        data-toggle="dialog" data-on-close="dialog_modellist_before_close">
+                    添加类型
+                </button>
+                <!--  <button type="button" class="btn-blue" data-url="/B-JUI/ajaxDone2.html?id={#bjui-selected}" data-toggle="doajax" data-confirm-msg="确定要删除选中项吗？" data-icon="remove" title="可以在控制台(network)查看被删除ID">删除选中行</button>&nbsp;
+                <div class="btn-group">
+                    <button type="button" class="btn-default dropdown-toggle" data-toggle="dropdown" data-icon="copy">复选框-批量操作<span class="caret"></span></button>
+                     <ul class="dropdown-menu right" role="menu">
+                         <li><a href="book1.xlsx" data-toggle="doexport" data-confirm-msg="确定要导出信息吗？">导出<span style="color: green;">全部</span></a></li>
+                         <li><a href="book1.xlsx" data-toggle="doexportchecked" data-confirm-msg="确定要导出选中项吗？" data-idname="expids" data-group="ids">导出<span style="color: red;">选中</span></a></li>
+                         <li class="divider"></li>
+                         <li><a href="/B-JUI/ajaxDone2.html" data-toggle="doajaxchecked" data-confirm-msg="确定要删除选中项吗？" data-idname="delids" data-group="ids">删除选中</a></li>
+                     </ul>
+                 </div>-->
+            </div>
+
+        </div>
+        <!--<div class="bjui-moreSearch">
+            <label>职业：</label><input type="text" value="" name="profession" size="15" />
+            <label>&nbsp;性别:</label>
+            <select name="sex" data-toggle="selectpicker">
+                <option value="">全部</option>
+                <option value="true">男</option>
+                <option value="false">女</option>
+            </select>
+            <label>&nbsp;手机:</label>
+            <input type="text" value="" name="mobile" size="10">
+        </div>-->
+    </form>
+</div>
+<div class="bjui-pageContent tableContent">
+    <table class="table table-bordered table-hover table-striped table-top" data-selected-multi="true" id="model_list">
+        <thead>
+            <tr>
+                <th data-order-field="rowid">序号</th>
+                <th data-order-field="model">类型</th> 
+                <th data-order-field="created">创建时间</th> 
+                <th data-order-field="#">操作</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+<div class="bjui-pageFooter">
+    <div class="pages">
+        <span>每页&nbsp;</span>
+        <div class="selectPagesize" onchange="modellist_page_size_change(this)">
+            <select data-toggle="selectpicker">
+                <option value="10" id="three">10</option>
+                <option value="20" id="six">20</option>
+                <option value="30">30</option>
+            </select>
+        </div>
+        <span>&nbsp;条, 共&nbsp;<span id="modellist_total"> </span> 条</span>
+    </div>
+    <div class="pagination-box" id="modellistination" data-total="10" data-page-size="2" data-page-current="1">
+    </div>
+</div>

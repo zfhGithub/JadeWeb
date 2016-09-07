@@ -1,0 +1,58 @@
+﻿
+<div class="bjui-pageContent">
+    <form action="ajax.ashx?action=addmodel" id="addmodel_form" data-toggle="validate" data-alertmsg="false">
+        <input type="hidden" name="custom.id" value="edce142bc2ed4ec6b623aacaf602a4de">
+        <table class="table table-condensed table-hover" width="100%">
+            <tbody>
+                <tr>
+                    <td>
+                        <br /><br /><br />
+                        <label for="model_name" class="control-label x85"> 名称：</label>
+                        <input type="text" name="model_name" id="model_name" value="" data-rule="required" size="25">
+                        <br /><br /><br />
+                    </td> 
+                </tr>
+                
+            </tbody>
+        </table>
+    </form>
+</div>
+<div class="bjui-pageFooter">
+    <ul>
+        <li><button type="button" class="btn-close" data-icon="close">取消</button></li>
+        <li><button type="button" class="btn-default" data-icon="save" onclick="addlvlive()">保存</button></li>
+    </ul>
+</div>
+<script type="text/javascript">
+    $(function () {
+        if (model_editid) {
+            $.ajax({
+                url: "ajax.ashx?action=getmodelbyid",
+                data: { id: model_editid },
+                type: "post",
+                success: function (r) {
+                   
+                    $("#model_name").val(r);
+                    
+                }, error: function () {
+                    console.log("error");
+                }
+            });
+        }
+    });
+    function head_upload_success(file, data) {
+        var json = JSON.parse(data);
+        if (json.statusCode == 200)
+        {
+            $("#model_photo").val(json.url);
+            $('#model_photo_show').html('已上传图片：<img src="' + json.url + '" width="100">')
+        }
+
+    }
+    function addlvlive() {
+        if (model_editid) {
+            $("#addmodel_form").attr("action", "ajax.ashx?action=updatemodel&id=" + model_editid);
+        }
+        $("#addmodel_form").submit();
+    }
+</script>

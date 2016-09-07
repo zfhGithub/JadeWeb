@@ -1,0 +1,225 @@
+﻿<script type="text/javascript">
+    var videoslist  = { pageIndex: 1, pageSize: 5, MaxPage: 0, TotalPage :0}
+
+    function videoslistpage() {
+        var title = $("#videos_search_title").val();
+        $.ajax({
+            url: 'ajax.ashx?action=videoslist',
+                data: {
+                    "pageIndex": videoslist.pageIndex,
+                    "pageSize": videoslist.pageSize,
+                    "title": title,
+                    "type": "videos"
+                },
+                type: "post",
+                success: function (result) {
+                    var html = [];
+                    var json = JSON.parse(result);
+                    var count = json["count"];
+                    count = JSON.parse(count);
+                    videoslist.TotalPage = json["count"];//总记录数
+                    //求出最大页
+                    videoslist.MaxPage = Math.ceil(videoslist.TotalPage / videoslist.pageSize);
+
+                    var da = json["data"];
+                    da = JSON.parse(da);
+                    var data = da["d"];
+                    $.each(data, function (k, v) {
+                        html.push("<tr><td>" + v.rowIndex + "</td><td>" + v.title + "</td><td>" + v.subtitle + "</td><td>" + v.created + "</td> <td>  " + v.content + "  </td>");
+                        html.push(" <td><a href='#' onclick='edit_videos(this,\"" + v.id + "\",\"" + v.title + "\")' class='btn btn-green' >编辑</a>");
+                        html.push(" <a href='ajax.ashx?action=deletevideos&id=" + v.id + "' class='btn btn-red' data-toggle='doajax' data-confirm-msg='确定要删除该行信息吗？'>删除</a></td></tr>");
+                    });
+                    $("#videoslist tbody").empty().append(html.join(''));
+                    html = [];
+
+                    $("#videoslist_total").html(videoslist.TotalPage);//共..条数据
+                    html.push("<ul class='pagination'>");
+                    html.push("<li class='j-first'><a href='javascript:' onclick='videoslistfirst()'><span class='first'><i class='fa fa-step-backward'></i>首页</span></a></li>");
+                    html.push("<li class='j-prev'><a href='javascript:' onclick='videoslistPrepage()'><span class='previous'><i class='fa fa-backward'></i>上一页</span></li>");
+
+                    for (var i = 1; i <= videoslist.MaxPage; i++) {
+                        var c = "j-num";
+                        if (i == videoslist.pageIndex) {
+                            c = "selected " + c;
+                        }
+                        html.push("<li class='" + c + "'><a href='javascript:' onclick='videoslist_page_click(this)'> " + i + "</a></li>");
+                    }
+                    html.push("<li class='j-next'><a href='javascript:' onclick='videoslistnext()'><span class='next' ><i class='fa fa-forward'></i>下一页</span></li>");
+                    html.push("<li class='j-last'><a href='javascript:' onclick='videoslistweiye()'><i class='fa fa-step-forward'></i>末页</a></li>")
+                    html.push("<li class='jumpto'><span class='p-input'><input  id='videoslistputvalue' class='form-control input-sm-pages' type='text' size='2.6' value='' title='跳转页号'></span><a class='goto' href='javascript:' onclick='videoslistLetgo()' title='跳转'><i class='fa fa-chevron-right'></i></a></li>")
+                    html.push("<ul>");
+                    $("#videoslistination").empty().append(html.join(''));
+                    //如果当前页等于1就让首页、上一页不可点击
+                    if (videoslist.pageIndex == 1) {
+                        $("#videoslistination .j-first").addClass("disabled");
+                        $("#videoslistination .j-prev").addClass("disabled");
+
+                    }
+                    if (videoslist.pageIndex == videoslist.MaxPage)
+                    {
+                        $("#videoslistination .j-next").addClass("disabled");
+                        $("#videoslistination .j-last").addClass("disabled");
+                    }
+            }
+        });
+    }
+    //下一页
+    function videoslistnext() {
+        videoslist.pageIndex++;
+        if (videoslist.pageIndex > videoslist.MaxPage) {
+            videoslist.pageIndex = videoslist.MaxPage;
+        }
+        videoslistpage();
+    }
+    //上一页
+    function videoslistPrepage () {
+        videoslist.pageIndex--;
+        if (videoslist.pageIndex < 1) {
+            videoslist.pageIndex = 1;
+        }
+        videoslistpage();
+    }
+    //首页
+    function videoslistfirst() {
+        videoslist.pageIndex = 1;
+        videoslistpage();
+    }
+
+    //尾页
+    function videoslistweiye() {
+
+        videoslist.pageIndex = videoslist.MaxPage;
+        videoslistpage();
+
+    }
+    function videoslistLetgo() {
+        var InputValue = $("#videoslistputvalue").val();
+        if (InputValue > videoslist.MaxPage) {
+            $(this).alertmsg('info', '你输入的数字超过页面范围');
+            return;
+        }
+        if (InputValue < 1) {
+            $(this).alertmsg('info', '请输入大于第一页的数字');
+            return;
+        }
+        if (isNaN(Number(InputValue)) || InputValue == "") {
+            $(this).alertmsg('info', '请输入数字');
+            return;
+        }
+        videoslist.pageIndex = InputValue;
+        videoslistpage();
+    }
+    function videoslist_page_size_change(_this) {
+        var checkText = $(_this).find("option:selected").text();
+        videoslist.pageIndex = 1;
+        videoslist.pageSize = checkText;
+        videoslistpage();
+    }
+    function videoslist_page_click(_this) {
+        $(_this).attr("class", "selected");
+        var Sum = $(_this).text();
+        videoslist.pageIndex = Sum;
+        videoslistpage();
+    }
+
+    $(function () {
+        videoslistpage();
+    });
+    function videos_search() {
+        videoslist.pageIndex = 1;
+        videoslistpage();
+    }
+    var videos_editid;
+    function edit_videos(_this, id, name) {
+        videos_editid = id;
+        $(_this).dialog({ id: 'dialog_addvideos', url: '/admin/information/addvideos.html', width: 860, height: 500, title: "编辑-" + name, reloadWarn: '本页已有打开的内容，确定将刷新本页内容，是否继续？', toggle: 'dialog', onClose: "dialog_videoslist_before_close" });
+    }
+    function dialog_videoslist_before_close($dialog) {
+        videos_editid = undefined;
+        $("body").navtab("refresh", "videos");
+        return true;
+    }
+</script>
+<div class="bjui-pageHeader">
+    <div class="pull-right">
+        <!--<div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" data-icon="copy"> 复选框-批量操作<span class="caret"></span></button>
+            <ul class="dropdown-menu right" role="menu" style="min-width: 153px;">
+                <li><a href="ajax.ashx?action=ProductDels" data-toggle="doajaxchecked" data-confirm-msg="确定要删除选中项吗？" data-idname="del" data-group="ids">删除选中</a></li>
+            </ul>
+        </div>-->
+    </div>
+    <!--<input type="hidden" name="pageSize" value="${model.pageSize}">
+     <input type="hidden" name="pageCurrent" value="${model.pageCurrent}">
+     <input type="hidden" name="orderField" value="${param.orderField}">
+     <input type="hidden" name="orderDirection" value="${param.orderDirection}">-->
+    <div class="bjui-searchBar">
+        &nbsp;
+        <form>
+            <label for="videos_search_title">标题：</label><input type="text" value="" id="videos_search_title" name="videos_search_title" class="form-control" size="25">&nbsp;
+            <button type="button" class="btn-default" data-icon="search" onclick="videos_search()">查询</button>&nbsp;
+            <button type="reset" class="btn btn-orange" data-clear-query="true" data-icon="undo">清空查询</button>
+
+            <!-- <button type="button" class="showMoreSearch" data-toggle="moresearch" data-name="custom"><i class="fa fa-angle-double-down"></i></button>
+            -->
+            <div class="pull-right">
+                <button type="button" class="btn-blue" data-url="/admin/information/addvideos.html" data-id="dialog_addvideos" data-width="860" data-height="500"
+                        data-toggle="dialog" data-on-close="dialog_videoslist_before_close">
+                    添加视频
+                </button>
+                <!--  <button type="button" class="btn-blue" data-url="/B-JUI/ajaxDone2.html?id={#bjui-selected}" data-toggle="doajax" data-confirm-msg="确定要删除选中项吗？" data-icon="remove" title="可以在控制台(network)查看被删除ID">删除选中行</button>&nbsp;
+                <div class="btn-group">
+                    <button type="button" class="btn-default dropdown-toggle" data-toggle="dropdown" data-icon="copy">复选框-批量操作<span class="caret"></span></button>
+                     <ul class="dropdown-menu right" role="menu">
+                         <li><a href="book1.xlsx" data-toggle="doexport" data-confirm-msg="确定要导出信息吗？">导出<span style="color: green;">全部</span></a></li>
+                         <li><a href="book1.xlsx" data-toggle="doexportchecked" data-confirm-msg="确定要导出选中项吗？" data-idname="expids" data-group="ids">导出<span style="color: red;">选中</span></a></li>
+                         <li class="divider"></li>
+                         <li><a href="/B-JUI/ajaxDone2.html" data-toggle="doajaxchecked" data-confirm-msg="确定要删除选中项吗？" data-idname="delids" data-group="ids">删除选中</a></li>
+                     </ul>
+                 </div>-->
+            </div>
+        </form>
+    </div>
+    <!--<div class="bjui-moreSearch">
+        <label>职业：</label><input type="text" value="" name="profession" size="15" />
+        <label>&nbsp;性别:</label>
+        <select name="sex" data-toggle="selectpicker">
+            <option value="">全部</option>
+            <option value="true">男</option>
+            <option value="false">女</option>
+        </select>
+        <label>&nbsp;手机:</label>
+        <input type="text" value="" name="mobile" size="10">
+    </div>-->
+</div>
+<div class="bjui-pageContent tableContent">
+    <table class="table table-bordered table-hover table-striped table-top" data-selected-multi="true" id="videoslist">
+        <thead>
+            <tr>
+                <th data-order-field="rowid">序号</th>
+                <th data-order-field="id">标题</th>
+                <th data-order-field="name">二级标题</th>
+                <th data-order-field="created">创建时间</th>
+                <th data-order-field="birthplace">图片</th>
+                <th data-order-field="#">操作</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+<div class="bjui-pageFooter">
+    <div class="pages">
+        <span>每页&nbsp;</span>
+        <div class="selectPagesize" onchange="videoslist_page_size_change(this)">
+            <select data-toggle="selectpicker">
+                <option value="5" id="">5</option>
+                <option value="10" id="three">10</option>
+                <option value="20" id="six">20</option>
+                <option value="30">30</option>
+            </select>
+        </div>
+        <span>&nbsp;条, 共&nbsp;<span id="videoslist_total"> </span> 条</span>
+    </div>
+    <div class="pagination-box" id="videoslistination" data-total="10" data-page-size="2" data-page-current="1">
+    </div>
+</div>

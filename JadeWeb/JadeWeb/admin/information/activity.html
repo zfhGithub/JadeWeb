@@ -1,0 +1,224 @@
+﻿<script type="text/javascript">
+    var activitylist  = { pageIndex: 1, pageSize: 10, MaxPage: 0, TotalPage :0}
+
+    function activitylistpage() {
+        var title = $("#activity_search_title").val();
+        $.ajax({
+            url: 'ajax.ashx?action=activitylist',
+                data: {
+                    "pageIndex": activitylist.pageIndex,
+                    "pageSize": activitylist.pageSize,
+                    "title": title,
+                    "type": "activity"
+                },
+                type: "post",
+                success: function (result) {
+                    var html = [];
+                    var json = JSON.parse(result);
+                    var count = json["count"];
+                    count = JSON.parse(count);
+                    activitylist.TotalPage = json["count"];//总记录数
+                    //求出最大页
+                    activitylist.MaxPage = Math.ceil(activitylist.TotalPage / activitylist.pageSize);
+
+                    var da = json["data"];
+                    da = JSON.parse(da);
+                    var data = da["d"];
+                    $.each(data, function (k, v) {
+                        html.push("<tr><td>" + v.rowIndex + "</td><td>" + v.title + "</td><td>" + v.subtitle + "</td><td>" + v.created + "</td> <td> <img src='" + v.photo + "' width='70' height='60'/> </td>");
+                        html.push(" <td><a href='#' onclick='edit_activity(this,\"" + v.id + "\",\"" + v.title + "\")' class='btn btn-green' >编辑</a>");
+                        html.push(" <a href='ajax.ashx?action=deleteactivity&id=" + v.id + "' class='btn btn-red' data-toggle='doajax' data-confirm-msg='确定要删除该行信息吗？'>删除</a></td></tr>");
+                    });
+                    $("#activitylist tbody").empty().append(html.join(''));
+                    html = [];
+
+                    $("#activitylist_total").html(activitylist.TotalPage);//共..条数据
+                    html.push("<ul class='pagination'>");
+                    html.push("<li class='j-first'><a href='javascript:' onclick='activitylistfirst()'><span class='first'><i class='fa fa-step-backward'></i>首页</span></a></li>");
+                    html.push("<li class='j-prev'><a href='javascript:' onclick='activitylistPrepage()'><span class='previous'><i class='fa fa-backward'></i>上一页</span></li>");
+
+                    for (var i = 1; i <= activitylist.MaxPage; i++) {
+                        var c = "j-num";
+                        if (i == activitylist.pageIndex) {
+                            c = "selected " + c;
+                        }
+                        html.push("<li class='" + c + "'><a href='javascript:' onclick='activitylist_page_click(this)'> " + i + "</a></li>");
+                    }
+                    html.push("<li class='j-next'><a href='javascript:' onclick='activitylistnext()'><span class='next' ><i class='fa fa-forward'></i>下一页</span></li>");
+                    html.push("<li class='j-last'><a href='javascript:' onclick='activitylistweiye()'><i class='fa fa-step-forward'></i>末页</a></li>")
+                    html.push("<li class='jumpto'><span class='p-input'><input  id='activitylistputvalue' class='form-control input-sm-pages' type='text' size='2.6' value='' title='跳转页号'></span><a class='goto' href='javascript:' onclick='activitylistLetgo()' title='跳转'><i class='fa fa-chevron-right'></i></a></li>")
+                    html.push("<ul>");
+                    $("#activitylistination").empty().append(html.join(''));
+                    //如果当前页等于1就让首页、上一页不可点击
+                    if (activitylist.pageIndex == 1) {
+                        $("#activitylistination .j-first").addClass("disabled");
+                        $("#activitylistination .j-prev").addClass("disabled");
+
+                    }
+                    if (activitylist.pageIndex == activitylist.MaxPage)
+                    {
+                        $("#activitylistination .j-next").addClass("disabled");
+                        $("#activitylistination .j-last").addClass("disabled");
+                    }
+            }
+        });
+    }
+    //下一页
+    function activitylistnext() {
+        activitylist.pageIndex++;
+        if (activitylist.pageIndex > activitylist.MaxPage) {
+            activitylist.pageIndex = activitylist.MaxPage;
+        }
+        activitylistpage();
+    }
+    //上一页
+    function activitylistPrepage () {
+        activitylist.pageIndex--;
+        if (activitylist.pageIndex < 1) {
+            activitylist.pageIndex = 1;
+        }
+        activitylistpage();
+    }
+    //首页
+    function activitylistfirst() {
+        activitylist.pageIndex = 1;
+        activitylistpage();
+    }
+
+    //尾页
+    function activitylistweiye() {
+
+        activitylist.pageIndex = activitylist.MaxPage;
+        activitylistpage();
+
+    }
+    function activitylistLetgo() {
+        var InputValue = $("#activitylistputvalue").val();
+        if (InputValue > activitylist.MaxPage) {
+            $(this).alertmsg('info', '你输入的数字超过页面范围');
+            return;
+        }
+        if (InputValue < 1) {
+            $(this).alertmsg('info', '请输入大于第一页的数字');
+            return;
+        }
+        if (isNaN(Number(InputValue)) || InputValue == "") {
+            $(this).alertmsg('info', '请输入数字');
+            return;
+        }
+        activitylist.pageIndex = InputValue;
+        activitylistpage();
+    }
+    function activitylist_page_size_change(_this) {
+        var checkText = $(_this).find("option:selected").text();
+        activitylist.pageIndex = 1;
+        activitylist.pageSize = checkText;
+        activitylistpage();
+    }
+    function activitylist_page_click(_this) {
+        $(_this).attr("class", "selected");
+        var Sum = $(_this).text();
+        activitylist.pageIndex = Sum;
+        activitylistpage();
+    }
+
+    $(function () {
+        activitylistpage();
+    });
+    function activity_search() {
+        activitylist.pageIndex = 1;
+        activitylistpage();
+    }
+    var activity_editid;
+    function edit_activity(_this, id, name) {
+        activity_editid = id;
+        $(_this).dialog({ id: 'dialog_addactivity', url: '/admin/information/addactivity.html', width: 860, height: 500, title: "编辑-" + name, reloadWarn: '本页已有打开的内容，确定将刷新本页内容，是否继续？', toggle: 'dialog', onClose: "dialog_activitylist_before_close" });
+    }
+    function dialog_activitylist_before_close($dialog) {
+        activity_editid = undefined;
+        $("body").navtab("refresh", "activity");
+        return true;
+    }
+</script>
+<div class="bjui-pageHeader">
+    <div class="pull-right">
+        <!--<div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" data-icon="copy"> 复选框-批量操作<span class="caret"></span></button>
+            <ul class="dropdown-menu right" role="menu" style="min-width: 153px;">
+                <li><a href="ajax.ashx?action=ProductDels" data-toggle="doajaxchecked" data-confirm-msg="确定要删除选中项吗？" data-idname="del" data-group="ids">删除选中</a></li>
+            </ul>
+        </div>-->
+    </div>
+    <!--<input type="hidden" name="pageSize" value="${model.pageSize}">
+     <input type="hidden" name="pageCurrent" value="${model.pageCurrent}">
+     <input type="hidden" name="orderField" value="${param.orderField}">
+     <input type="hidden" name="orderDirection" value="${param.orderDirection}">-->
+    <div class="bjui-searchBar">
+        &nbsp;
+        <form>
+            <label for="activity_search_title">标题：</label><input type="text" value="" id="activity_search_title" name="activity_search_title" class="form-control" size="25">&nbsp;
+            <button type="button" class="btn-default" data-icon="search" onclick="activity_search()">查询</button>&nbsp;
+            <button type="reset" class="btn btn-orange" data-clear-query="true" data-icon="undo">清空查询</button>
+
+            <!-- <button type="button" class="showMoreSearch" data-toggle="moresearch" data-name="custom"><i class="fa fa-angle-double-down"></i></button>
+            -->
+            <div class="pull-right">
+                <button type="button" class="btn-blue" data-url="/admin/information/addactivity.html" data-id="dialog_addactivity" data-width="860" data-height="500"
+                        data-toggle="dialog" data-on-close="dialog_activitylist_before_close">
+                    添加活动
+                </button>
+                <!--  <button type="button" class="btn-blue" data-url="/B-JUI/ajaxDone2.html?id={#bjui-selected}" data-toggle="doajax" data-confirm-msg="确定要删除选中项吗？" data-icon="remove" title="可以在控制台(network)查看被删除ID">删除选中行</button>&nbsp;
+                <div class="btn-group">
+                    <button type="button" class="btn-default dropdown-toggle" data-toggle="dropdown" data-icon="copy">复选框-批量操作<span class="caret"></span></button>
+                     <ul class="dropdown-menu right" role="menu">
+                         <li><a href="book1.xlsx" data-toggle="doexport" data-confirm-msg="确定要导出信息吗？">导出<span style="color: green;">全部</span></a></li>
+                         <li><a href="book1.xlsx" data-toggle="doexportchecked" data-confirm-msg="确定要导出选中项吗？" data-idname="expids" data-group="ids">导出<span style="color: red;">选中</span></a></li>
+                         <li class="divider"></li>
+                         <li><a href="/B-JUI/ajaxDone2.html" data-toggle="doajaxchecked" data-confirm-msg="确定要删除选中项吗？" data-idname="delids" data-group="ids">删除选中</a></li>
+                     </ul>
+                 </div>-->
+            </div>
+        </form>
+    </div>
+    <!--<div class="bjui-moreSearch">
+        <label>职业：</label><input type="text" value="" name="profession" size="15" />
+        <label>&nbsp;性别:</label>
+        <select name="sex" data-toggle="selectpicker">
+            <option value="">全部</option>
+            <option value="true">男</option>
+            <option value="false">女</option>
+        </select>
+        <label>&nbsp;手机:</label>
+        <input type="text" value="" name="mobile" size="10">
+    </div>-->
+</div>
+<div class="bjui-pageContent tableContent">
+    <table class="table table-bordered table-hover table-striped table-top" data-selected-multi="true" id="activitylist">
+        <thead>
+            <tr>
+                <th data-order-field="rowid">序号</th>
+                <th data-order-field="id">标题</th>
+                <th data-order-field="name">二级标题</th>
+                <th data-order-field="created">创建时间</th>
+                <th data-order-field="birthplace">图片</th>
+                <th data-order-field="#">操作</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+<div class="bjui-pageFooter">
+    <div class="pages">
+        <span>每页&nbsp;</span>
+        <div class="selectPagesize" onchange="activitylist_page_size_change(this)">
+            <select data-toggle="selectpicker">
+                <option value="10" id="three">10</option>
+                <option value="20" id="six">20</option>
+                <option value="30">30</option>
+            </select>
+        </div>
+        <span>&nbsp;条, 共&nbsp;<span id="activitylist_total"> </span> 条</span>
+    </div>
+    <div class="pagination-box" id="activitylistination" data-total="10" data-page-size="2" data-page-current="1">
+    </div>
+</div>

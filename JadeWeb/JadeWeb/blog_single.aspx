@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Blog_Single</title>
+<title><%= detailNew["title"] %> </title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="http://apps.bdimg.com/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -17,8 +17,8 @@
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 
 <!--fonts-->
-<link href='http://fonts.useso.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>
-<link href='http://fonts.useso.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'><!--//fonts-->
+<%--<link href='http://fonts.useso.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>
+<link href='http://fonts.useso.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>--%><!--//fonts-->
 <!-- start menu -->
 <link href="css/memenu.css" rel="stylesheet" type="text/css" media="all" />
 <script type="text/javascript" src="js/memenu.js"></script>
@@ -29,21 +29,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--header-->
 <div class="header">
 	<div class="header-top">
-		<div class="container">
+		<%--<div class="container">
 			<div class="search">
-				<%--	<form>
+					<form>
 						<input type="text" value="Search " onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
 						<input type="submit" value="Go">
-					</form>--%>
+					</form>
 			</div>
 			<div class="header-left">		
 					<ul>
-					<%--	<li ><a class="lock"  href="login.aspx"  >Login</a></li>
+						<li ><a class="lock"  href="login.aspx"  >Login</a></li>
 						<li><a class="lock" href="register.aspx"  >Register</a></li>
-						<li> </li>--%>
+						<li>
+</li>
 
 					</ul>
-					<%--<div class="cart box_1">
+					<div class="cart box_1">
 						<a href="checkout.aspx">
 						<h3> <div class="total">
 							<span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
@@ -51,11 +52,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</a>
 						<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
 
-					</div>--%>
+					</div>
 					<div class="clearfix"> </div>
 			</div>
 				<div class="clearfix"> </div>
-		</div>
+		</div>--%>
 		</div>
 		<div class="container">
 			<div class="head-top">
@@ -64,173 +65,118 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 		  <div class=" h_menu4">
 				<ul class="memenu skyblue">
-					  <li class="active grid"><a class="color8" href="index.aspx">Home</a></li>	
-				      <li><a class="color1" href="#">Shop</a>
+					  <li class="active grid"><a class="color8" href="index.aspx">首页</a></li>	
+				      <li><a class="color1" href="#">产品中心</a>
 				      	<div class="mepanel">
 						<div class="row">
-							<div class="col1">
+                            <div class="col1">
 								<div class="h_nav">
 									<ul>
-										<li><a href="products.aspx">Accessories</a></li>
-										<li><a href="products.aspx">Bags</a></li>
-										<li><a href="products.aspx">Caps & Hats</a></li>
-										<li><a href="products.aspx">Hoodies & Sweatshirts</a></li>
-										<li><a href="products.aspx">Jackets & Coats</a></li>
-										<li><a href="products.aspx">Jeans</a></li>
-										<li><a href="products.aspx">Jewellery</a></li>
-										<li><a href="products.aspx">Jumpers & Cardigans</a></li>
-										<li><a href="products.aspx">Leather Jackets</a></li>
-										<li><a href="products.aspx">Long Sleeve T-Shirts</a></li>
-										<li><a href="products.aspx">Loungewear</a></li>
-									</ul>	
+                            <%
+                                int modelLeng = modelList.Rows.Count;
+                                for (int i = 0; i < modelLeng; i=i+3)
+                                {%>
+                                    	<li><a href="products.aspx?id=<%= modelList.Rows[i]["id"] %>"><%= modelList.Rows[i]["name"] %></a></li>
+                              <%  } 
+                            %> 
+						        	</ul>	
 								</div>							
 							</div>
-							<div class="col1">
-								<div class="h_nav">
-									<ul>
-										<li><a href="products.aspx">Shirts</a></li>
-										<li><a href="products.aspx">Shoes, Boots & Trainers</a></li>
-										<li><a href="products.aspx">Shorts</a></li>
-										<li><a href="products.aspx">Suits & Blazers</a></li>
-										<li><a href="products.aspx">Sunglasses</a></li>
-										<li><a href="products.aspx">Sweatpants</a></li>
-										<li><a href="products.aspx">Swimwear</a></li>
-										<li><a href="products.aspx">Trousers & Chinos</a></li>
-										<li><a href="products.aspx">T-Shirts</a></li>
-										<li><a href="products.aspx">Underwear & Socks</a></li>
-										<li><a href="products.aspx">Vests</a></li>
-									</ul>	
-								</div>							
-							</div>
-							<div class="col1">
-								<div class="h_nav">
-									<h4>Popular Brands</h4>
-									<ul>
-										<li><a href="products.aspx">Levis</a></li>
-										<li><a href="products.aspx">Persol</a></li>
-										<li><a href="products.aspx">Nike</a></li>
-										<li><a href="products.aspx">Edwin</a></li>
-										<li><a href="products.aspx">New Balance</a></li>
-										<li><a href="products.aspx">Jack & Jones</a></li>
-										<li><a href="products.aspx">Paul Smith</a></li>
-										<li><a href="products.aspx">Ray-Ban</a></li>
-										<li><a href="products.aspx">Wood Wood</a></li>
-									</ul>	
-								</div>												
-							</div>
+                            	<div class="col1">
+								    <div class="h_nav">
+								    	<ul>
+                               <%  for (int i = 1; i < modelLeng; i=i+3)
+                                  {%>
+                                       <li><a href="products.aspx?id=<%= modelList.Rows[i]["id"] %>"><%= modelList.Rows[i]["name"] %></a></li>
+                                 <% } %>
+							          </ul>	
+								    </div>							
+							    </div>
+										<div class="col1">
+								    <div class="h_nav">
+								    	<ul>	 
+								<% 
+                                    for (int i = 2; i < modelLeng; i=i+3)
+                                    {%>
+                                      <li><a href="products.aspx?id=<%= modelList.Rows[i]["id"] %>"><%= modelList.Rows[i]["name"] %></a></li>
+                                  <%  }
+                                    %>
+                                              </ul>	
+								    </div>							
+							    </div>
+					 
 						  </div>
 						</div>
 					</li>
-				    <li class="grid"><a class="color2" href="#">	Lookbook</a>
+				    <li class="grid"><a class="color2" href="#">资讯中心</a>
 					  	<div class="mepanel">
 						<div class="row">
 							<div class="col1">
 								<div class="h_nav">
 									<ul>
-										<li><a href="products.aspx">Accessories</a></li>
-										<li><a href="products.aspx">Bags</a></li>
-										<li><a href="products.aspx">Caps & Hats</a></li>
-										<li><a href="products.aspx">Hoodies & Sweatshirts</a></li>
-										<li><a href="products.aspx">Jackets & Coats</a></li>
-										<li><a href="products.aspx">Jeans</a></li>
-										<li><a href="products.aspx">Jewellery</a></li>
-										<li><a href="products.aspx">Jumpers & Cardigans</a></li>
-										<li><a href="products.aspx">Leather Jackets</a></li>
-										<li><a href="products.aspx">Long Sleeve T-Shirts</a></li>
-										<li><a href="products.aspx">Loungewear</a></li>
+										<li><a href="knowledge.aspx">玉器文化</a></li>
+										<li><a href="joinin.aspx">投资加盟</a></li> 
 									</ul>	
 								</div>							
 							</div>
 							<div class="col1">
 								<div class="h_nav">
 									<ul>
-										<li><a href="products.aspx">Shirts</a></li>
-										<li><a href="products.aspx">Shoes, Boots & Trainers</a></li>
-										<li><a href="products.aspx">Shorts</a></li>
-										<li><a href="products.aspx">Suits & Blazers</a></li>
-										<li><a href="products.aspx">Sunglasses</a></li>
-										<li><a href="products.aspx">Sweatpants</a></li>
-										<li><a href="products.aspx">Swimwear</a></li>
-										<li><a href="products.aspx">Trousers & Chinos</a></li>
-										<li><a href="products.aspx">T-Shirts</a></li>
-										<li><a href="products.aspx">Underwear & Socks</a></li>
-										<li><a href="products.aspx">Vests</a></li>
+										<li><a href="news.aspx">公司新闻</a></li>
+										<li><a href="activity.aspx">平台活动</a></li> 
 									</ul>	
 								</div>							
 							</div>
 							<div class="col1">
-								<div class="h_nav">
-									<h4>Popular Brands</h4>
+								<div class="h_nav"> 
 									<ul>
-										<li><a href="products.aspx">Levis</a></li>
-										<li><a href="products.aspx">Persol</a></li>
-										<li><a href="products.aspx">Nike</a></li>
-										<li><a href="products.aspx">Edwin</a></li>
-										<li><a href="products.aspx">New Balance</a></li>
-										<li><a href="products.aspx">Jack & Jones</a></li>
-										<li><a href="products.aspx">Paul Smith</a></li>
-										<li><a href="products.aspx">Ray-Ban</a></li>
-										<li><a href="products.aspx">Wood Wood</a></li>
+										<li><a href="videos.aspx">宣传视频</a></li> 
 									</ul>	
 								</div>												
 							</div>
 						  </div>
 						</div>
 			    </li>
-				<li><a class="color4" href="blog.aspx">Blog</a></li>				
-				<li><a class="color6" href="contact.aspx">Conact</a></li>
+				<li><a class="color4" href="activity.aspx">活动中心</a></li>				
+				<li><a class="color6" href="contact.aspx">关于我们</a></li>
 			  </ul> 
-			</div>
-				
+			</div> 
 				<div class="clearfix"> </div>
 		</div>
 		</div>
 
 	</div>
 
-	
+	<script type="text/javascript">
+	    $(function () {
+	        $("#content img").parent("p").css({ "text-align": "center" });
+	    });
+	</script>
 <!--content-->
 <div class="blog">
-<div class="container">
-	       <div class="blog-top">
-			  <div class=" grid_3 grid-1">
-					<h3><a href="blog_single.aspx">Lorem Ipsum is simply</a></h3>
-					<a href="blog_single.aspx"><img src="images/blo.jpg" class="img-responsive" alt=""/></a>
-					
-					<div class="blog-poast-info">
-						<ul>
-							<li><a class="admin" href="#"><i> </i> Admin </a></li>
-							<li><span><i class="date"> </i>12-04-2015</span></li>
-							<li><a class="p-blog" href="#"><i class="comment"> </i>No Comments</a></li>
-						</ul>
-				    </div>
-				    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
-					</div>
-				<div class="single-bottom">
-		
-			<h3>Leave A Comment</h3>
-				<form>
-						
-						<input type="text" value="Name" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='Name';}">
-						
-						<input type="text" value="Email" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='Email';}">
-						
-						<input type="text" value="Subject" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='Subject';}">
-						
-						
-						<textarea cols="77" rows="6" value=" " onfocus="this.value='';" onblur="if (this.value == '') {this.value = 'Message';}">Message</textarea>
-						
-							<input type="submit" value="Send">
-						
-				</form>
-			</div>
-			  </div>
-      </div>
-</div>
+        <div class="container">
+            <div class="blog-bottom">
+                <h2 style="text-align: center"><%= detailNew["title"] %> </h2>
+                <div class="blog-poast-info" style="text-align: center">
+                    <ul>
+                        <li><a class="admin" href="#"><i></i>Admin </a></li>
+                        <li><span><i class="date"></i><%= detailNew["created"] %></span></li>
+                        <%-- <li><a class="p-blog" href="#"><i class="comment"></i>No Comments</a></li>--%>
+                    </ul>
+                </div>
+                <div class="grid_3 grid-1" id="content">
+
+                    <p><%= detailNew["content"] %>   </p>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+ 
 <!--//content-->
 <div class="footer">
-				<div class="container">
+			<%--	<div class="container">
 			<div class="footer-top-at">
 			
 				<div class="col-md-4 amet-sed">
@@ -269,7 +215,7 @@ and promo</p>
 				</div>
 				<div class="clearfix"> </div>
 			</div>
-		</div>
+		</div>--%>
 		<div class="footer-class">
 		<p >Copyright &copy; 2015.Company name All rights reserved.</p>
 		</div>

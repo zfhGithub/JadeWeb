@@ -1,0 +1,184 @@
+﻿
+<div class="bjui-pageContent">
+    <form action="ajax.ashx?action=addproduct" id="j_addproducts_form" data-toggle="validate" data-alertmsg="false">
+        <input type="hidden" name="custom.id" value="edce142bc2ed4ec6b623aacaf602a4de">
+        <table class="table table-condensed table-hover" width="100%">
+            <tbody>
+                <tr>
+                    
+                    <td>
+    <label for="products_name" class="control-label x85">商品名称：</label>
+    <input type="text" name="products_name" id="products_name" value="" data-rule="required" size="25">
+</td>
+<td>
+    <label for="products_prict" class="control-label x85">商品价格：</label>
+    <input type="text" name="products_prict" id="products_prict" value="1" size="12" data-toggle="spinner" data-min="0" data-max="100000" data-step="100" data-rule="integer">元
+</td>
+<td>
+    <label for="products_number" class="control-label x85">商品编号：</label>
+    <input type="text" name="products_number" id="products_number" value="" data-rule="required" size="15">
+</td>
+<td>
+    <input type="checkbox" name="products_hot" id="products_hot" data-toggle="icheck" value="true" data-label="热卖产品">
+
+    <!--<input type="checkbox" name="ckzs" id="j_custom_zs" data-toggle="icheck" value="true" data-label="主页展示">-->
+</td>
+                    
+                </tr>
+                <tr>
+                <td>
+    <label for="product_model" class="control-label x85">所属分类：</label>
+    <select name="product_model" id="product_model"  data-toggle="selectpicker" data-rule="required">
+            
+    </select>
+</td>
+                    <td>
+    <label class="control-label x85">商品头像：</label>
+    <div style="display: inline-block; vertical-align: middle;">
+        <div id="products_photo_up" data-toggle="upload" data-uploader="ajax.ashx?action=kindeditor&type=head"
+             data-file-size-limit="2097152"
+             data-file-type-exts="*.jpg;*.png;*.gif;*.mpg"
+             data-multi="false"
+             data-drag-drop="true"
+             data-on-upload-success="products_upload_success"
+             data-icon="cloud-upload"></div>
+        <input type="hidden" name="products_photo" value="" id="products_photo" data-rule="商品头像:required">
+        <span id="products_photo_show"></span>
+    </div>
+</td>
+                 </tr>
+                <tr>
+                    <td colspan="4">
+                        <label for="products_subtitle" class="control-label x85">二级标题：</label>
+                        <textarea name="products_subtitle" id="products_subtitle" data-toggle="autoheight" cols="60" rows="1" data-rule="required"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <label for="products_images_up" class="control-label x85">图片：</label>
+                        <div style="display: inline-block; vertical-align: middle;">
+                            <div id="products_images_up" data-toggle="upload" data-uploader="ajax.ashx?action=kindeditor&type=images"
+                                 data-file-size-limit="2097152"
+                                 data-file-type-exts="*.jpg;*.png;*.gif;*.mpg"
+                                 data-multi="true"
+                                 data-drag-drop="true"
+                                 data-on-upload-success="products_images_upload_success"
+                                 data-icon="cloud-upload"></div>
+                            <input type="hidden" name="products_images" value="" id="products_images" data-rule="图片:required">
+                            <span id="products_images_show"></span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <label for="products_describe" class="control-label x85">内容：</label>
+                        <div style="display: inline-block; vertical-align: middle;">
+                            <textarea name="products_describe" id="products_describe" class="j-content" style="width: 700px;" data-upload-json="ajax.ashx?action=kindeditor&type=kindeditor"
+                                      data-after-upload="kindeditor_upload_success" data-file-manager-json="ajax.ashx?action=fileManagerJson"
+                                      data-toggle="kindeditor" data-minheight="200"></textarea>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+<div class="bjui-pageFooter">
+    <ul>
+        <li><button type="button" class="btn-close" data-icon="close">取消</button></li>
+        <li><button type="button" class="btn-default" data-icon="save" onclick="addproducts()">保存</button></li>
+    </ul>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $.ajax({
+            url: "ajax.ashx?action=getmodellist",
+            data: {},
+            type: "post",
+            success: function (r) {
+                var d = JSON.parse(r).d;
+                var html = [];
+                for (var i = 0; i < d.length; i++) {
+                    html.push(' <option value="'+d[i].id+'">' + d[i].name + '</option>');
+                }
+                $("#product_model").append(html.join(''));
+                $("#product_model").selectpicker('refresh');
+               // $("#product_model").selectpicker('val', d.ClassID);
+            }
+        });
+
+        if (products_editid) {
+            $.ajax({
+                url: "ajax.ashx?action=getproductsdetailbyid",
+                data: { product_id: products_editid },
+                type: "post",
+                success: function (r) {
+                    var d = JSON.parse(r)["d"][0];
+                    $("#products_name").val(d.name);
+                    $("#products_prict").val(d.price);
+                    $("#products_number").val(d.number);
+                    $("#product_model").selectpicker('val', d.model);
+                    $("#product_model").selectpicker('refresh');
+                    $("#products_photo").val(d.photo); 
+                    $('#products_photo_show').html('已上传图片：<img src="' + d.photo + '" width="100">');
+
+                    var is = d.images.split(";");
+                    for (var i = 0; i < is.length; i++) {
+                        $('#products_images_show').append('<table style="float:left"><tr><td><img alt="' + is[i] + '" src="' + is[i] + '" width="160" height="100" /> </td></tr><tr style="text-align:center; "><td><input class="btn btn-red btn-sm" type="button" value="移除" onclick=\"removeImage(this)\" /></td></tr></table>')
+                    }
+                 
+                    if (d.hot == "True") {
+                        $("#products_hot").iCheck('check');
+                    }
+
+                    $("#products_images").val(d.images);
+                    $("#products_subtitle").val(d.title);
+                    $("#products_describe").html(d.describe);
+                    KindEditor.html('#products_describe', d.describe);
+                }, error: function () {
+                    console.log("error");
+                }
+            });
+        }
+
+       
+
+    });
+    function products_upload_success(file, data) {
+        var json = JSON.parse(data);
+        if (json.statusCode == 200)
+        {
+            $("#products_photo").val(json.url);
+            $('#products_photo_show').html('已上传图片：<img src="' + json.url + '" width="100">')
+        }
+    }
+    function products_images_upload_success(file, data) {
+        var json = $.parseJSON(data);
+        if ($("#products_images").val() == "")
+            $("#products_images").val(json.url);
+        else
+            $("#products_images").val($("#products_images").val() + ";" + json.url);
+        $('#products_images_show').append('<table style="float:left"><tr><td><img alt="' + json.url + '" src="' + json.url + '" width="160" height="100" /> </td></tr><tr style="text-align:center; "><td><input class="btn btn-red btn-sm" type="button" value="移除" onclick=\"removeImage(this)\" /></td></tr></table>')
+    }
+    function removeImage(_this) {
+
+        var src = $(_this).parent().parent().parent().find("img").attr("alt");
+
+        var val = $("#products_images").val();
+        val = val.replace(src + ";", "").replace(src, "");
+        $("#products_images").val(val);
+ 
+        $(_this).parent().parent().parent().remove();
+    }
+    function kindeditor_upload_success(url) {
+        console.log(url);
+    }
+    function addproducts() {
+        if (products_editid) {
+            $("#j_addproducts_form").attr("action", "ajax.ashx?action=updateproducts&products_id=" + products_editid);
+        }
+        $("#j_addproducts_form").submit();
+    }
+    
+   
+</script>

@@ -1,0 +1,73 @@
+﻿<!--新闻-->
+<div class="bjui-pageContent">
+    <form action="ajax.ashx?action=addvideos&type=videos" id="j_addvideos_form" data-toggle="validate" data-alertmsg="false">
+        <table class="table table-condensed table-hover" width="100%">
+            <tbody>
+                <tr>
+                    <td>
+                        <label for="videos_title" class="control-label x85"> 标题：</label>
+                        <input type="text" name="videos_title" id="videos_title" value="" data-rule="required" size="35">
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <label for="videos_subtitle" class="control-label x85">二级标题：</label>
+                        <textarea name="videos_subtitle" id="videos_subtitle" data-toggle="autoheight" cols="60" rows="1"></textarea>
+                    </td>
+                </tr>
+              
+                <tr>
+                    <td colspan="4">
+                        <label for="videos_content" class="control-label x85">视频代码：</label>
+                        <textarea name="videos_content" id="videos_content" data-toggle="autoheight" cols="60" rows="3" data-rule="required"></textarea>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+<div class="bjui-pageFooter">
+    <ul>
+        <li><button type="button" class="btn-close" data-icon="close">取消</button></li>
+        <li><button type="button" class="btn-default" data-icon="save" onclick="addvideos()">保存</button></li>
+    </ul>
+</div>
+<script type="text/javascript">
+    $(function () {
+        if (videos_editid) {
+            $.ajax({
+                url: "ajax.ashx?action=getvideosdetailbyid&type=videos",
+                data: { id: videos_editid },
+                type: "post",
+                success: function (r) {
+                    var d = JSON.parse(r)["d"][0];
+                    $("#videos_title").val(d.title);
+                    $("#videos_subtitle").val(d.subtitle);
+                    $("#videos_photo").val(d.photo);
+                    $('#videos_photo_show').html('已上传图片：<img src="' + d.photo + '" width="100">');
+                    $("#videos_content").html(d.content);
+                    KindEditor.html('#videos_content', d.content);
+                }, error: function () {
+                    console.log("error");
+                }
+            });
+        }
+    });
+    function videos_head_upload_success(file, data) {
+        var json = JSON.parse(data);
+        if (json.statusCode == 200)
+        {
+            $("#videos_photo").val(json.url);
+            $('#videos_photo_show').html('已上传图片：<img src="' + json.url + '" width="100">')
+        }
+
+    }
+    function addvideos() {
+        if (videos_editid) {
+            $("#j_addvideos_form").attr("action", "ajax.ashx?action=updatevideos&type=videos&id=" + videos_editid);
+        }
+        $("#j_addvideos_form").submit();
+    }
+</script>

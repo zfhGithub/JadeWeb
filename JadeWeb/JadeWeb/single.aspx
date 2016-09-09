@@ -355,9 +355,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             </ul>
                         </div>--%>
                         <ul class="tag-men">
+                            <li><span>商品编号:</span>
+                                <span class="women1"> <%= pDic["number"] %></span></li>
                             <li><span>发布时间:</span>
                                 <span class="women1"> <%= pDic["created"] %></span></li>
-                            <li><span>&nbsp&nbsp&nbsp&nbsp  分类: </span>
+                            <li><span>&nbsp&nbsp 分类: </span>
                                 <span class="women1"><%= pDic["modelname"] %></span></li>
                         </ul>
                         <a href="#" class="add-cart item_add">购买</a>

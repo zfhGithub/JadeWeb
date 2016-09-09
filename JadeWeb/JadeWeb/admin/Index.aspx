@@ -269,6 +269,8 @@ $(function(){
                                  
                                 <li data-id="5" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o" data-url="#">系统设置</li> 
                                 <li data-id="54" data-pid="5" data-url="settings/banner.aspx" data-tabid="banner" >图片管理</li> 
+                                <li data-id="55" data-pid="5" data-url="settings/seo.html" data-tabid="seo" >SEO设置</li> 
+                                 <li data-id="55" data-pid="5" data-url="http://tongji.baidu.com/web/welcome/login" data-tabid="tongji" >访问统计</li> 
                             </ul>  
                         </div>    
                     </li>

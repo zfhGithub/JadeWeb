@@ -634,6 +634,7 @@
     <Content Include="admin\settings\addbanner.html" />
     <Content Include="admin\settings\banner.aspx" />
     <Content Include="admin\settings\banner.html" />
+    <Content Include="admin\settings\seo.html" />
     <Content Include="admin\settings\setlogo.html" />
     <Content Include="joinin.aspx" />
     <Content Include="knowledge.aspx" />

@@ -324,7 +324,24 @@ namespace JadeWeb.admin
                     id = req.Params["id"];
                     res.Write(Utils.DataTableToJSON(infor.getNewsDetailById(id)));
                     break;
-                    #endregion
+                #endregion
+                #endregion
+
+                #region 留言管理
+
+                case "messagelist":
+                      currentIndex = req.Form["pageIndex"];
+                      pageCount = req.Form["pageSize"];
+                     jsonDic = new Dictionary<string, string>();
+                    jsonDic.Add("data", Utils.DataTableToJSON(com.message.getMessageList(currentIndex, pageCount)));
+                    jsonDic.Add("count", com.message.getMessageListCount());
+                    js = new JavaScriptSerializer();
+                    res.Write(js.Serialize(jsonDic));
+                    break;
+                case "deletemessage":
+                      id = req.Params["pid"];
+                    res.Write(Utils.GetReulst( "删除成功", "删除失败", com.message.deleteMessage(id)));
+                    break;
                     #endregion
             }
         }

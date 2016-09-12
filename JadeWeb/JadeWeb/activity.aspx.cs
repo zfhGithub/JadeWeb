@@ -14,6 +14,7 @@ namespace JadeWeb
         public int activityListCount = 0;
         public string currentIndex = "1", pageCount = "20", modelid = "";
         public DataTable modelList = new DataTable();
+        public Dictionary<string, string> aboutusDic = new Dictionary<string, string>();
         protected void Page_Load(object sender, EventArgs e)
         {
             modelList = com.model.GetModelList();
@@ -28,6 +29,7 @@ namespace JadeWeb
                     currentIndex = "1";
                 }
             }
+            aboutusDic = com.settings.getAboutUsInfo();
             com.information infor = new com.information("activity");
             activityList = infor.getNewsList(currentIndex, pageCount, "");
             activityListCount = Convert.ToInt32(infor.getNewsCount("")); 

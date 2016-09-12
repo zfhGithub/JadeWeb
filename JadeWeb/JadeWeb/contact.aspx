@@ -2,8 +2,8 @@
 
 <!DOCTYPE html>
 <html>
-<head>
-<title>关于我们</title>
+<head> 
+<title>关于我们<%=aboutusDic["SeoTitle"] %></title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="http://apps.bdimg.com/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -13,8 +13,8 @@
 <!--//theme-style-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="New Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<meta name="keywords" content="<%= aboutusDic["SeoKeywords"] %>" />
+<meta name="description" content="<%= aboutusDic["SeoDescription"] %>">
 
 <!--fonts-->
 <%--<link href='http://fonts.useso.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>
@@ -25,6 +25,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="text/javascript" src="js/memenu.js"></script>
 <script>$(document).ready(function(){$(".memenu").memenu();});</script>
 <script src="js/simpleCart.min.js"> </script>
+
+        <link href="js/customerservice/customer-service.css" rel="stylesheet" />
+    <link href="js/customerservice/lanren.css" rel="stylesheet" />
+    <script src="js/customerservice/js.js"></script>
 </head>
 <body>
 <!--header-->
@@ -244,6 +248,55 @@ and promo</p>
 		<p >Copyright &copy; 2016.Company name All rights reserved.</p>
 		</div>
 		</div>
+
+     <!-- 客服 -->
+
+        <div id="rightArrow" class="open-im">&nbsp;</div> 
+        <div id="floatDivBoxs">
+            <div class="floatDtt">在线客服</div>
+            <div class="floatShadow">
+                <ul class="floatDqq">
+                    <%
+                        Dictionary<string,string> qqList =  JadeWeb. com.settings.getQQs();
+                        List<string> phoneList =  JadeWeb.com.settings.getPhones();
+                        foreach (KeyValuePair<string, string> item in qqList)
+                        {
+                            if (item.Key.Split('-').Length > 0)
+                            {
+                    %>
+                    <li><a target="_blank" href="tencent://message/?uin=<%= item.Key.Split('-')[0] %>&Site=sc.chinaz.com&Menu=yes">
+                        <img src="js/customerservice/images/qq.png" align="absmiddle"><%= item.Value %></a></li>
+                    <%}
+                        }
+                    %>
+                </ul>
+                <div class="floatDtxt">热线电话</div>
+                <div class="floatDtel">
+                    <ul class="floatDphone">
+                        <%
+                            for (int i = 0; i < phoneList.Count; i++)
+                            {%>
+                        <li><a href="javascript:;">
+                            <img src="js/customerservice/images/phone.png" align="absmiddle">
+                            <%= phoneList[i] %> </a></li>
+                        <%}
+                        %>
+                    </ul>
+                    <div class="floatImg">
+                        <img src="js/customerservice/images/erweima.jpg" width="100%">微信公众账号
+                    </div>
+                </div>
+                <div class="floatDbg"></div>
+            </div>
+        </div>
+    <%-- <div class="lanrenzhijia_m" id="lanrenzhijia_m">
+        <ul>
+            <a href="javascript:;" class="close" name="close"></a>
+            <a href="tencent://message/?uin=639083793&Site=sc.chinaz.com&Menu=yes" target="_blank" style="left: 145px;"></a>
+            <a href="javascript:;" name="close" style="left: 235px;"></a>
+        </ul>
+    </div>--%>
+        <!--客服end-->
 </body>
 </html>
 			

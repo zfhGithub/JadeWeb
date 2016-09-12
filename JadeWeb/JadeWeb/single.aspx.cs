@@ -10,6 +10,7 @@ namespace JadeWeb
 {
     public partial class single : System.Web.UI.Page
     {
+        public Dictionary<string, string> aboutusDic = new Dictionary<string, string>();
         public Dictionary<string, string> pDic = new Dictionary<string, string>();
         public List<string> imgList = new List<string>();
         public DataTable hotList = new DataTable();
@@ -18,6 +19,7 @@ namespace JadeWeb
         public DataTable likeList = new DataTable();
         protected void Page_Load(object sender, EventArgs e)
         {
+            aboutusDic = com.settings.getAboutUsInfo();
             modelList = com.model.GetModelList();
             try
             {

@@ -10,11 +10,12 @@ namespace JadeWeb
 {
     public partial class blog : System.Web.UI.Page
     {
+        public Dictionary<string, string> aboutusDic = new Dictionary<string, string>();
         public DataTable modelList = new DataTable();
         protected void Page_Load(object sender, EventArgs e)
         {
             modelList = com.model.GetModelList();
-
+            aboutusDic = com.settings.getAboutUsInfo();
         }
     }
 }

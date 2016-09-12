@@ -35,6 +35,16 @@ namespace JadeWeb.admin
                     string newpassword = req.Params["newpassword"];
                     res.Write(Utils.GetReulst("修改成功", "修改失败", com.settings.updatePassword(newpassword, olepassword), "true"));
                     break;
+                case "setseo":
+                    string seotitle = req.Form["txtTitle"];
+                    string keywords = req.Form["txtKeywords"];
+                    string description = req.Form["txtDescription"];
+                    res.Write(Utils.GetReulst("设置成功.","设置失败",com.settings.setSeo(seotitle,keywords,description)));
+                    break;
+                case "getseo":
+                    JavaScriptSerializer js = new JavaScriptSerializer();
+                    res.Write(js.Serialize(com.settings.getAboutUsInfo())); 
+                    break;
                 #endregion
 
                 #region 关于我们
@@ -76,7 +86,7 @@ namespace JadeWeb.admin
                     Dictionary<string, string> jsonDic = new Dictionary<string, string>();
                     jsonDic.Add("data", Utils.DataTableToJSON(com.products.getProductsList(currentIndex, pageCount, name, number, model)));
                     jsonDic.Add("count", com.products.getProductsCount(name, number, model));
-                    JavaScriptSerializer js = new JavaScriptSerializer();
+                    js = new JavaScriptSerializer();
                     res.Write(js.Serialize(jsonDic));
                     break;
                 case "getproductsdetailbyid":
@@ -341,6 +351,38 @@ namespace JadeWeb.admin
                 case "deletemessage":
                       id = req.Params["pid"];
                     res.Write(Utils.GetReulst( "删除成功", "删除失败", com.message.deleteMessage(id)));
+                    break;
+                #endregion
+
+                #region 设置
+                case "getserviceqq":
+                    js = new JavaScriptSerializer();
+                    var json = js.Serialize(com.settings.getServices());
+                    res.Write(json == "[\"\"]" ? "" : json);
+                    break;
+                case "addserviceqq":
+                    string qq = req.Form["serviceQQ"];
+                    name = req.Form["serviceName"];
+                    res.Write(Utils.GetReulst( "保存成功", "保存失败", com.settings.addServices(qq, name)));
+                    break;
+                case "deleteserviceqq":
+                    qq = req.Params["id"];
+                    name = req.Params["name"];
+                    res.Write(Utils.GetReulst( "删除成功", "删除失败", com.settings.deleteQQ(qq, name)));
+                    break;
+                case "addservicephone":
+                    string phone = req.Form["txtPhone"];
+
+                    res.Write(Utils.GetReulst("保存成功", "保存失败", com.settings.addServicesPhone(phone)));
+                    break;
+                case "getservicephone":
+                    js = new JavaScriptSerializer();
+                    json = js.Serialize(com.settings.getServicesPhones());
+                    res.Write(json == "[\"\"]" ? "" : json);
+                    break;
+                case "deleteservicephone":
+                    phone = req.Params["id"];
+                    res.Write(Utils.GetReulst( "删除成功", "删除失败", com.settings.deletePhone(phone)));
                     break;
                     #endregion
             }

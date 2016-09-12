@@ -635,8 +635,20 @@
     <Content Include="admin\settings\banner.aspx" />
     <Content Include="admin\settings\banner.html" />
     <Content Include="admin\settings\seo.html" />
+    <Content Include="admin\settings\setCustomerService.html" />
     <Content Include="admin\settings\setlogo.html" />
     <Content Include="joinin.aspx" />
+    <Content Include="js\customerservice\customer-service.css" />
+    <Content Include="js\customerservice\images\erweima.jpg" />
+    <Content Include="js\customerservice\images\invite_bg.png" />
+    <Content Include="js\customerservice\images\online_arrow.jpg" />
+    <Content Include="js\customerservice\images\online_botbg.jpg" />
+    <Content Include="js\customerservice\images\online_phone.jpg" />
+    <Content Include="js\customerservice\images\open_im.png" />
+    <Content Include="js\customerservice\images\phone.png" />
+    <Content Include="js\customerservice\images\qq.png" />
+    <Content Include="js\customerservice\js.js" />
+    <Content Include="js\customerservice\lanren.css" />
     <Content Include="knowledge.aspx" />
     <Content Include="news.aspx" />
     <Content Include="videos.aspx" />
@@ -662,6 +674,7 @@
     <Content Include="admin\js\font\typicons.eot" />
     <Content Include="admin\js\font\typicons.ttf" />
     <Content Include="admin\js\font\typicons.woff" />
+    <Content Include="js\customerservice\images\online_phone.psd" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

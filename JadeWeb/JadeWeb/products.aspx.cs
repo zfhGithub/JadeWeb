@@ -10,6 +10,7 @@ namespace JadeWeb
 {
     public partial class products : System.Web.UI.Page
     {
+        public Dictionary<string, string> aboutusDic = new Dictionary<string, string>();
         public DataTable modelList = new DataTable();
         public DataTable productList = new DataTable();
         public int productListCount = 0;
@@ -17,7 +18,8 @@ namespace JadeWeb
         public DataTable activityList = new DataTable();
         public string currentIndex = "1", pageCount = "12", modelid = ""; 
         protected void Page_Load(object sender, EventArgs e)
-        { 
+        {
+            aboutusDic = com.settings.getAboutUsInfo();
             modelList = com.model.GetModelList(); 
             if (!string.IsNullOrEmpty(Request.QueryString["page"]))
             {

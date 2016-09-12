@@ -10,6 +10,7 @@ namespace JadeWeb
 {
     public partial class knowledge : System.Web.UI.Page
     {
+        public Dictionary<string, string> aboutusDic = new Dictionary<string, string>();
         public DataTable newsList = new DataTable();
         public int newstListCount = 0;
         public string currentIndex = "1", pageCount = "12", modelid = "";
@@ -18,6 +19,7 @@ namespace JadeWeb
         public DataTable modelList = new DataTable();
         protected void Page_Load(object sender, EventArgs e)
         {
+            aboutusDic = com.settings.getAboutUsInfo();
             modelList = com.model.GetModelList();
             if (!string.IsNullOrEmpty(Request.QueryString["page"]))
             {

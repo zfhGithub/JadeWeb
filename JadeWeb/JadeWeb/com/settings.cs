@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 
@@ -50,8 +51,11 @@ namespace JadeWeb.com
             Dictionary<string, string> dic = new Dictionary<string, string>();
             for (int i = 0; i < str.Length; i++)
             {
-                string[] o = str[i].Split('/');
-                dic[o[0] + "-" + i] = o[1];
+                if (!string.IsNullOrEmpty(str[i]))
+                {
+                    string[] o = str[i].Split('/');
+                    dic[o[0] + "-" + i] = o[1];
+                }
             }
             return dic;
         }
@@ -114,7 +118,7 @@ namespace JadeWeb.com
 
         public static Dictionary<string, string> getAboutUsInfo()
         {
-            string strSql = "select Id, CompanyName, Address, Email, Phone, Contacts, Introduce, AboutusText, AchievementText, MyTeamText, BannerImages, LogoImage from Company";
+            string strSql = "select Id, CompanyName, Address, Email, Phone, Contacts, Introduce, AboutusText, AchievementText, MyTeamText, BannerImages, LogoImage, SeoTitle, SeoKeywords, SeoDescription from Company";
             SQLServerOperating s = new SQLServerOperating();
             DataTable dt = s.Selects(strSql);
             Dictionary<string, string> dic = new Dictionary<string, string>();
@@ -127,5 +131,14 @@ namespace JadeWeb.com
             }
             return dic;
         }
+
+        public static int setSeo(string title, string keywords, string description)
+        {
+            string strSql = "update Company set SeoTitle=@SeoTitle,SeoKeywords=@SeoKeywords,SeoDescription=@SeoDescription ";
+            SQLServerOperating s = new SQLServerOperating();
+            return s.ExecuteSql(strSql, new System.Data.SqlClient.SqlParameter[] {
+                new SqlParameter("SeoTitle", title),new SqlParameter ("SeoKeywords",keywords),new SqlParameter ("SeoDescription",description) });
+        }
+ 
     }
 }

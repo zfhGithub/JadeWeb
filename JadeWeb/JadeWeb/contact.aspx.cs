@@ -10,10 +10,12 @@ namespace JadeWeb
 {
     public partial class contact : System.Web.UI.Page
     {
+        public Dictionary<string, string> aboutusDic = new Dictionary<string, string>();
         public DataTable contactDt = new DataTable();
         public DataTable modelList = new DataTable();
         protected void Page_Load(object sender, EventArgs e)
         {
+            aboutusDic = com.settings.getAboutUsInfo();
             modelList = com.model.GetModelList();
             contactDt = com.aboutinfo.getAboutInfo();
             if (Request.HttpMethod == "POST")

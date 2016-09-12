@@ -10,12 +10,14 @@ namespace JadeWeb
 {
     public partial class joinin : System.Web.UI.Page
     {
+        public Dictionary<string, string> aboutusDic = new Dictionary<string, string>();
         public DataTable joinList = new DataTable();
         public int joinListCount = 0;
         public string currentIndex = "1", pageCount = "20", modelid = "";
         public DataTable modelList = new DataTable();
         protected void Page_Load(object sender, EventArgs e)
         {
+            aboutusDic = com.settings.getAboutUsInfo();
             modelList = com.model.GetModelList();
             if (!string.IsNullOrEmpty(Request.QueryString["page"]))
             {

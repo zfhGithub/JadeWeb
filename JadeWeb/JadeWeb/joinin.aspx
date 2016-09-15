@@ -29,6 +29,16 @@
         <link href="js/customerservice/customer-service.css" rel="stylesheet" />
     <link href="js/customerservice/lanren.css" rel="stylesheet" />
     <script src="js/customerservice/js.js"></script>
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?85e3f6356b675612f50fbd0c87ff9e56";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
 </head>
 <body>
 <!--header-->

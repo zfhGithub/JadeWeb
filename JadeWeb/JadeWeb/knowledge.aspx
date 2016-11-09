@@ -293,7 +293,7 @@ var _hmt = _hmt || [];
                           <li class="<%= className %>"><a href="news.aspx?page=<%= (i+1) %>&id=<%= modelid %>"> <%= (i+1) %> </a></li>
                         <%} %>
                   <%--  <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li> --%>
-                    <li><a href="news.aspx?page=<%= next %>&id=<%= modelid %>" aria-label="Next"><span aria-hidden="true">»</span> </a></li>
+                    <li><a href="knowledge.aspx?page=<%= next %>&id=<%= modelid %>" aria-label="Next"><span aria-hidden="true">»</span> </a></li>
                 </ul>
             </nav>
         </div>

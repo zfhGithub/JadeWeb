@@ -250,13 +250,7 @@ var _hmt = _hmt || [];
                                                 </div>
                                             </a>
                                         </div>   
-                                        <div class="blog-poast-info">
-                                            <ul>
-                                                <li><a class="admin" href="#"><i></i>Admin </a></li>
-                                                <li><span><i class="date"></i><%= newsList.Rows[i]["created"] %></span></li>
-                                            <%--<li><a class="p-blog" href="#"><i class="comment"></i>No Comments</a></li>--%>
-                                            </ul>
-                                        </div>
+                                        
                                         <p class="tun"><%= newsList.Rows[i]["title"]  %></p>
                                    
                                     </div>

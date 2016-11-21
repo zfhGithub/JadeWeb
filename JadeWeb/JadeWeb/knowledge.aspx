@@ -193,7 +193,7 @@ var _hmt = _hmt || [];
                 <!---->
                 <div class="product-bottom">
                     <div class="of-left-in">
-                        <h3 class="best">Best Sellers</h3>
+                        <h3 class="best">最新资讯</h3>
                     </div>
                      <% for (int i = 0; i < newsTop5.Rows.Count; i++)
                         {%>
@@ -251,13 +251,7 @@ var _hmt = _hmt || [];
                                                 </div>
                                             </a>
                                         </div>   
-                                        <div class="blog-poast-info">
-                                            <ul>
-                                                <li><a class="admin" href="#"><i></i>Admin </a></li>
-                                                <li><span><i class="date"></i><%= newsList.Rows[i]["created"] %></span></li>
-                                            <%--<li><a class="p-blog" href="#"><i class="comment"></i>No Comments</a></li>--%>
-                                            </ul>
-                                        </div>
+                                        
                                         <p class="tun"><%= newsList.Rows[i]["title"]  %></p>
                                    
                                     </div>

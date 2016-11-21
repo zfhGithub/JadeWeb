@@ -397,14 +397,14 @@ namespace SqlOper
                 {
                     return "{\"status\":\"0\",\"statusCode\":\"300\"}";
                 }
-                String filepath = HttpContext.Current.Server.MapPath("~") + @"assets\customerservice\images\";
+                String filepath = HttpContext.Current.Server.MapPath("~") + @"js\customerservice\images\";
                 string fileName = "erweima.jpg";
                 if (File.Exists(filepath + fileName))
                 {
                     File.Delete(filepath + fileName);
                 }
                 file.SaveAs(filepath + fileName);
-                return "{ \"statusCode\":\"200\",\"url\":\"../assets/customerservice/images/" + fileName + "\"}"; ;
+                return "{ \"statusCode\":\"200\",\"url\":\"../js/customerservice/images/" + fileName + "\"}"; ;
                 #endregion
             }
             else

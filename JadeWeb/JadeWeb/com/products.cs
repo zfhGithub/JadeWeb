@@ -90,7 +90,7 @@ namespace JadeWeb.com
 
         public static int updateProducts(string name, string price, string model, string photo, string title, string describe, string images, string number,string hot,string buyurl, string id)
         {
-            string strSql = @"update products set name=@name,number=@number,title=@title,price=@price,photo=@photo,images=@images,describe=@describe ,model=@model,hot=@hot,buyurl=@buyurl where id=@id";
+            string strSql = @"update products set name=@name,number=@number,title=@title,price=@price,photo=@photo,images=@images,describe=@describe ,model=@model,hot=@hot,buyurl=@buyurl where id=@id and deleted=0";
 
             SqlParameter[] pars = new SqlParameter[] {
                    new SqlParameter("name", name), new SqlParameter("describe", describe) ,
@@ -123,14 +123,15 @@ namespace JadeWeb.com
             return s.Selects(strSql);
         }
 
-        public static bool DeletedProduct(string id)
+        public static int DeletedProduct(string id)
         {
             if (string.Empty == id)
             {
-                return false;  
+                return -1;  
             }
-            string strSql = "";
-            return true;
+            string strSql = "update products set deleted = 1 where id = @id";
+            SQLServerOperating s = new SQLServerOperating();
+            return s.ExecuteSql(strSql,new SqlParameter[] { new  SqlParameter("id", id) })  ; 
         }
     }
 }

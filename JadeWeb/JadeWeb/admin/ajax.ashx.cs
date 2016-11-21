@@ -102,6 +102,11 @@ namespace JadeWeb.admin
                     r = com.products.updateProducts(pname, price, model, photo, title, describe, images, number,hot, buyurl, id);
                     res.Write(Utils.GetReulst("修改成功.", "修改失败.", r, "true"));
                     break;
+                case "deleteproducts":
+                    id = req.Params["id"];
+                  ;
+                    res.Write(Utils.GetReulst("删除成功.", "删除失败.", com.products.DeletedProduct(id)));
+                    break;
                 #endregion
                 #region 商品类型
                 case "getmodellist":

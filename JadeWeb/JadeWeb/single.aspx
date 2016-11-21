@@ -527,7 +527,7 @@ and promo
             </div>
         </div>--%>
         <div class="footer-class">
-            <p>Copyright &copy; 2016.Company name All rights reserved.</p>
+            <p>Copyright &copy; 2016.四会市东辉珠宝有限公司</p>
         </div>
     </div>
 

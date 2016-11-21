@@ -345,6 +345,34 @@ var _hmt = _hmt || [];
                 
                  
             </div>
+            <div class="clearfix"></div>
+              <div class="content-top">
+                <h1>最新资讯</h1> 
+                    <div class="grid-in">
+                        <div class=" bottom-product">
+                            <%
+                                for (int i = 0; i < newsTop6.Rows.Count; i++)
+                                {%>
+                                  <div class="col-md-4 bottom-cd simpleCart_shelfItem">
+                                    <div class="product-at ">
+                                        <a href="blog_single.aspx?id=<%= newsTop6.Rows[i]["id"] %>" target="_blank">
+                                            <img class="img-responsive" src="<%=newsTop6.Rows[i]["photo"]  %>" alt="">
+                                            <div class="pro-grid">
+                                                <span class="buy-in">查看</span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <p class="tun" style="white-space:nowrap;"> <%= newsTop6.Rows[i]["title"] %></p>
+                            <br />
+                                </div>
+                                <%} %>
+                          
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+	
+              </div>
         </div>
     <div class="content-bottom"></div>
         <!-- 友情链接 -->
@@ -367,51 +395,54 @@ var _hmt = _hmt || [];
         </div>--%>
     </div>
     <div class="footer">
-        <%--<div class="container">
+         <div class="container">
             <div class="footer-top-at">
 
-                <div class="col-md-4 amet-sed">
-                    <h4>MORE INFO</h4>
+                <div class="col-md-3 amet-sed">
+                    <h4>网站地图</h4>
                     <ul class="nav-bottom">
-                        <li><a href="#">How to order</a></li>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="contact.aspx">Location</a></li>
-                        <li><a href="#">Shipping</a></li>
-                        <li><a href="#">Membership</a></li>
+                        <li><a href="index.aspx">首页</a></li>
+                        <li><a href="products.aspx">产品中心</a></li>
+                         <li><a href="news.aspx">资讯中心</a></li> 
+                        <li><a href="activity.aspx">活动中心</a></li>
+                        <li><a href="contact.aspx">关于我们</a></li> 
                     </ul>
                 </div>
-                <div class="col-md-4 amet-sed ">
-                    <h4>CONTACT US</h4>
-
-                    <p>
-                        Contrary to popular belief
-                    </p>
-                    <p>The standard chunk</p>
-                    <p>office:  +12 34 995 0792</p>
-                    <ul class="social">
-                        <li><a href="#"><i></i></a></li>
-                        <li><a href="#"><i class="twitter"></i></a></li>
-                        <li><a href="#"><i class="rss"></i></a></li>
-                        <li><a href="#"><i class="gmail"></i></a></li>
-
+                 <div class="col-md-3 amet-sed">
+                    <h4>产品中心</h4>
+                    <ul class="nav-bottom">
+                         <%
+                             modelLeng = modelList.Rows.Count > 5 ? 5 : modelList.Rows.Count ;
+                             for (int i = 0; i < modelLeng; i++)
+                             {
+                                 %>
+                         <li><a href="products.aspx?id=<%= modelList.Rows[i]["id"] %>"><%= modelList.Rows[i]["name"] %></a></li>
+                          <%
+                             }
+                             %> 
                     </ul>
                 </div>
-                <div class="col-md-4 amet-sed">
-                    <h4>Newsletter</h4>
-                    <p>
-                        Sign Up to get all news update
-and promo
-                    </p>
-                    <form>
-                        <input type="text" value="" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}">
-                        <input type="submit" value="Sign up">
-                    </form>
+                 <div class="col-md-3 amet-sed">
+                    <h4>资讯中心</h4>
+                    <ul class="nav-bottom">
+                        <li><a href="knowledge.aspx">玉器文化</a></li>
+                        <li><a href="joinin.aspx">投资加盟</a></li>
+                        <li><a href="news.aspx">公司新闻</a></li>
+                        <li><a href="activity.aspx">平台活动</a></li>
+                        <li><a href="videos.aspx">宣传视频</a></li>
+                    </ul>
                 </div>
+            <div class="col-md-3 amet-sed ">
+				<h4>联系我们</h4>  
+					<p> 联系电话: <%= contactDt.Rows[0]["Phone"].ToString() %></p>
+					<p> Email: <%= contactDt.Rows[0]["Email"].ToString() %></p> 
+				    <p> 地址: <%= contactDt.Rows[0]["Address"].ToString() %></p>
+				</div>
                 <div class="clearfix"></div>
             </div>
-        </div>--%>
+        </div> 
         <div class="footer-class">
-            <p>Copyright &copy; 2016.Company name All rights reserved.</p>
+            <p>Copyright &copy; 2016 .</p>
         </div>
     </div>
 
@@ -463,6 +494,8 @@ and promo
         </ul>
     </div>--%>
         <!--客服end-->
+
+
 </body>
 </html>
 			

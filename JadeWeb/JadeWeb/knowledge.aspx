@@ -293,7 +293,7 @@ var _hmt = _hmt || [];
                           <li class="<%= className %>"><a href="news.aspx?page=<%= (i+1) %>&id=<%= modelid %>"> <%= (i+1) %> </a></li>
                         <%} %>
                   <%--  <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li> --%>
-                    <li><a href="news.aspx?page=<%= next %>&id=<%= modelid %>" aria-label="Next"><span aria-hidden="true">»</span> </a></li>
+                    <li><a href="knowledge.aspx?page=<%= next %>&id=<%= modelid %>" aria-label="Next"><span aria-hidden="true">»</span> </a></li>
                 </ul>
             </nav>
         </div>
@@ -348,7 +348,7 @@ and promo
             </div>
         </div>--%>
         <div class="footer-class">
-            <p>Copyright &copy; 2016.Company name All rights reserved.</p>
+            <p>Copyright &copy; 2016.四会市东辉珠宝有限公司</p>
         </div>
     </div>
 

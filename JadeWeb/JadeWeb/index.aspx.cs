@@ -15,14 +15,16 @@ namespace JadeWeb
         public DataTable newPro = new DataTable();
         public DataTable hotPro = new DataTable();
         public DataTable modelList = new DataTable();
-
+        public DataTable contactDt = new DataTable();
+        public DataTable newsTop6 = new DataTable();
         protected void Page_Load(object sender, EventArgs e)
         {
             newPro = com.products.getProductsList("1","9","","","");
             hotPro = com.products.GetHotProducts();
             modelList = com.model.GetModelList();
-
+            contactDt = com.aboutinfo.getAboutInfo();
             aboutusDic = com.settings.getAboutUsInfo();
+            newsTop6 = new com.information("").getNewsList("1", "6", "");
             if (!string.IsNullOrEmpty(aboutusDic["BannerImages"]))
             {
                 string[] banners = aboutusDic["BannerImages"].Split(';');

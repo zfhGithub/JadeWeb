@@ -67,13 +67,14 @@ namespace JadeWeb.admin
                     string pname = req.Form["products_name"]; string price = req.Form["products_prict"]; string model = req.Form["product_model"];
                     string photo = req.Form["products_photo"]; string title = req.Form["products_subtitle"]; string describe = req.Form["products_describe"];
                     string images = req.Form["products_images"]; string number = req.Form["products_number"];string hot = req.Form["products_hot"];
+                    string buyurl = req.Form["products_buyurl"];
                     if (com.products.isNumberExists(number))
                     {
                         res.Write(Utils.GetReulst("", "编号已经存在.", -1));
                     }
                     else
                     {
-                        r = com.products.addProduct(pname, price, model, photo, title, describe, images, number, hot);
+                        r = com.products.addProduct(pname, price, model, photo, title, describe, images, number, hot,buyurl);
                         res.Write(Utils.GetReulst("添加成功.", "添加失败.", r, "true"));
                     }
                     break;
@@ -97,8 +98,8 @@ namespace JadeWeb.admin
                     pname = req.Form["products_name"]; price = req.Form["products_prict"]; model = req.Form["product_model"];
                     photo = req.Form["products_photo"]; title = req.Form["products_subtitle"]; describe = req.Form["products_describe"];
                     images = req.Form["products_images"]; number = req.Form["products_number"]; hot = req.Form["products_hot"];
-                    id = req.Params["products_id"];
-                    r = com.products.updateProducts(pname, price, model, photo, title, describe, images, number,hot, id);
+                    id = req.Params["products_id"]; buyurl = req.Form["products_buyurl"];
+                    r = com.products.updateProducts(pname, price, model, photo, title, describe, images, number,hot, buyurl, id);
                     res.Write(Utils.GetReulst("修改成功.", "修改失败.", r, "true"));
                     break;
                 #endregion

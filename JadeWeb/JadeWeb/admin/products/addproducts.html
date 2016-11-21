@@ -56,6 +56,12 @@
                 </tr>
                 <tr>
                     <td colspan="4">
+                        <label for="products_buyurl" class="control-label x85">购买地址：</label>
+                        <textarea name="products_buyurl" id="products_buyurl" data-toggle="autoheight" cols="60" rows="1" data-rule="required"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
                         <label for="products_images_up" class="control-label x85">图片：</label>
                         <div style="display: inline-block; vertical-align: middle;">
                             <div>建议大小(750X500)</div>
@@ -121,7 +127,8 @@
                     $("#products_number").val(d.number);
                     $("#product_model").selectpicker('val', d.model);
                     $("#product_model").selectpicker('refresh');
-                    $("#products_photo").val(d.photo); 
+                    $("#products_photo").val(d.photo);
+                    $("#products_buyurl").val(d.buyurl);
                     $('#products_photo_show').html('已上传图片：<img src="' + d.photo + '" width="100">');
 
                     var is = d.images.split(";");

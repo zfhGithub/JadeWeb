@@ -377,7 +377,7 @@ var _hmt = _hmt || [];
                             <li><span>&nbsp&nbsp 分类: </span>
                                 <span class="women1"><%= pDic["modelname"] %></span></li>
                         </ul>
-                        <a href="#" class="add-cart item_add">购买</a>
+                        <a href="<%= pDic["buyurl"] %>" class="add-cart item_add">购买</a>
 
                     </div>
                 </div>

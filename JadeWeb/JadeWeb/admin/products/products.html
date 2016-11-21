@@ -31,6 +31,7 @@
                     $.each(data, function (k, v) {
                         html.push("<tr><td>" + v.rowIndex + "</td><td>" + v.name + "</td><td>" + v.number + "</td><td>" + v.price + "</td><td>" + v.model + "</td><td>" + v.title + "</td><td>" + v.created + "</td><td>" + v.hot + "</td> <td> <img src='" + v.photo + "' width='70' height='60'/> </td>");
                         html.push(" <td><a href='#' onclick='edit_products(this,\"" + v.id + "\",\"" + v.name + "\")' class='btn btn-green' >编辑</a>");
+                        html.push("<a href='../../single.aspx?id="+v.id+"'  target='_blank' class='btn btn-blue' >查看</a>");
                         html.push(" <a href='ajax.ashx?action=deleteproducts&id=" + v.id + "' class='btn btn-red' data-toggle='doajax' data-confirm-msg='确定要删除该行信息吗？'>删除</a></td></tr>");
                     });
                     $("#products_list tbody").empty().append(html.join(''));

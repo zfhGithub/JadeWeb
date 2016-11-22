@@ -274,7 +274,7 @@ var _hmt = _hmt || [];
                         int prev = Convert.ToInt32(currentIndex) -1 > 1 ? Convert.ToInt32(currentIndex) -1 : 1;
                         int next = Convert.ToInt32(currentIndex) +1 >  Convert.ToInt32(pages) ?  Convert.ToInt32(pages): Convert.ToInt32(currentIndex) +1;
                         %>
-                     <li class=""><a href="news.aspx?page=<%= prev %>&id=<%= modelid %>" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+                     <li class=""><a href="knowledge.aspx?page=<%= prev %>&id=<%= modelid %>" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
                      <%
                         for (int i = 0; i < pages ; i++)
                         {
@@ -284,7 +284,7 @@ var _hmt = _hmt || [];
                                 className = "active";
                             }
                             %>
-                          <li class="<%= className %>"><a href="news.aspx?page=<%= (i+1) %>&id=<%= modelid %>"> <%= (i+1) %> </a></li>
+                          <li class="<%= className %>"><a href="knowledge.aspx?page=<%= (i+1) %>&id=<%= modelid %>"> <%= (i+1) %> </a></li>
                         <%} %>
                   <%--  <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li> --%>
                     <li><a href="knowledge.aspx?page=<%= next %>&id=<%= modelid %>" aria-label="Next"><span aria-hidden="true">»</span> </a></li>

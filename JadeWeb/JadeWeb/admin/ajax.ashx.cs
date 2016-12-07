@@ -390,6 +390,10 @@ namespace JadeWeb.admin
                     phone = req.Params["id"];
                     res.Write(Utils.GetReulst( "删除成功", "删除失败", com.settings.deletePhone(phone)));
                     break;
+                case "deletebanner":
+                    id = req.Params["id"];
+                    res.Write(Utils.GetReulst("删除成功","删除失败", com.settings.deleteBanner(id))); 
+                    break;
                     #endregion
             }
         }

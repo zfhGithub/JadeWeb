@@ -139,6 +139,18 @@ namespace JadeWeb.com
             return s.ExecuteSql(strSql, new System.Data.SqlClient.SqlParameter[] {
                 new SqlParameter("SeoTitle", title),new SqlParameter ("SeoKeywords",keywords),new SqlParameter ("SeoDescription",description) });
         }
+
+        public static int deleteBanner(string banner)
+        {
+            string strSql = "select BannerImages from Company";
+            SQLServerOperating s = new SQLServerOperating();
+            DataTable dt = s.Selects(strSql);
+            string imgs = dt.Rows[0]["BannerImages"].ToStringEmpty();
+            imgs = imgs.Replace(banner+";", "");
+            strSql = "update Company set BannerImages = @imgs";
+            return s.ExecuteSql(strSql,new SqlParameter[] { new SqlParameter ("imgs", imgs) });
+        }
+
  
     }
 }

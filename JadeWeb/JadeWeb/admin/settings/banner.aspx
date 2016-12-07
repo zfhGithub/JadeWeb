@@ -93,7 +93,7 @@
                          <%--   <input type="hidden" id="i_banner_pic<%= i %>" value="" data-rule="图片:required">
                             <span id="j_banner_span_pic<%= i %>"></span>--%>
                         </div> 
-                    <a href='ajax.ashx?action=deletebanner&id=<%= bannerList[i] %>' class='btn btn-red' data-toggle='doajax' data-confirm-msg='确定要删除该行以及所有的子项目吗？'>删除</a>
+                    <a href='ajax.ashx?action=deletebanner&id=<%= bannerList[i] %>' class='btn btn-red' data-toggle='doajax' data-confirm-msg='确定要删除该轮播图？'>删除</a>
                 </td>
             </tr>
                 <%}

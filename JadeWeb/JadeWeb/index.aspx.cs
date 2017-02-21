@@ -20,7 +20,7 @@ namespace JadeWeb
         protected void Page_Load(object sender, EventArgs e)
         {
             newPro = com.products.getProductsList("1","9","","","");
-            hotPro = com.products.GetHotProducts();
+            hotPro = com.products.GetHotProducts("16");
             modelList = com.model.GetModelList();
             contactDt = com.aboutinfo.getAboutInfo();
             aboutusDic = com.settings.getAboutUsInfo();

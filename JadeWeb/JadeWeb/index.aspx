@@ -128,7 +128,7 @@ var _hmt = _hmt || [];
 								<div class="h_nav">
 									<ul>
 										<li><a href="knowledge.aspx">玉器文化</a></li>
-										<li><a href="joinin.aspx">投资加盟</a></li> 
+										<li><a href="activity.aspx">活动中心</a></li> 
 									</ul>	
 								</div>							
 							</div>
@@ -150,7 +150,7 @@ var _hmt = _hmt || [];
 						  </div>
 						</div>
 			    </li>
-				<li><a class="color4" href="activity.aspx">活动中心</a></li>				
+				<li><a class="color4" href="joinin.aspx">投资加盟</a></li>				
 				<li><a class="color6" href="contact.aspx">关于我们</a></li>
 			  </ul> 
 			</div> 
@@ -283,65 +283,41 @@ var _hmt = _hmt || [];
                         </div>
                     </a> 
                 </div>--%>
-             
-         <% int count = hotPro.Rows.Count;
-            double frequency =  Math.Ceiling(Convert.ToDouble(Convert.ToDouble(count) / Convert.ToDouble(3)));
-            %>
-                <% for (int i = 0; i < frequency; i++)
+                <%
+                    int count = hotPro.Rows.Count;
+                    double frequency =  Math.Ceiling(Convert.ToDouble(Convert.ToDouble(count) / Convert.ToDouble(4)));
+                    int rowIndex = 0;
+                     %>
+                <%for (int i = 0; i < frequency; i++)
                     {
-                        int len = (i * 3 + 3) > count ? count : (i * 3 + 3);
-                        %> <div class="col-md-6"><%
-                        for (int j = i * 3; j < len; j++)
-                        {
-                            %>
-                            <% if (j < count)
-                                {%>
-                                <div class="col-md1 ">
-                                    <a href="single.aspx?id=<%= hotPro.Rows[j]["id"] %>" target="_blank" class="b-link-stripe b-animate-go  thickbox">
-                                        <img class="img-responsive" style="width: 600px; height: 226px;" src="<%= hotPro.Rows[j]["photo"] %>" alt="">
+                        int len = (i * 4 + 4) > count ? count : (i * 4 + 4);
+                        %>
+                	<div class="col-md-6">
+                        <%  for (int j = 0; j < 2; j++)
+                            { %>
+                           <div class="col-md2">
+                            <% for (int k =0; k < 2; k++)
+                                { if (rowIndex >= count) continue;%>
+                                 <div class="col-md-6 men<%= (rowIndex % 2 == 0 ? 1 : 2) %>">
+					                  <a href="single.aspx?id=<%= hotPro.Rows[rowIndex]["id"] %>" target="_blank" class="b-link-stripe b-animate-go  thickbox">
+                                        <img class="img-responsive" style="width: 600px; height: 226px;" src="<%= hotPro.Rows[rowIndex]["photo"] %>" alt="">
                                         <div class="b-wrapper">
                                             <h3 class="b-animate b-from-top top-in1   b-delay03 ">
-                                                <span><%= hotPro.Rows[j]["name"] %></span>
+                                                <span><%= hotPro.Rows[rowIndex]["name"] %></span>
                                             </h3>
                                         </div>
                                     </a>
-                                </div><%} %>
-                         
-                                <div class="col-md2"> 
-                                       <% j++; if (j < count)
-                                           {%>
-                                    <div class="col-md-6 men1">
-                                        <a href="single.aspx?id=<%= hotPro.Rows[j]["id"] %>" target="_blank" class="b-link-stripe b-animate-go  thickbox">
-                                            <img class="img-responsive" src="<%= hotPro.Rows[j]["photo"] %>" alt="">
-                                            <div class="b-wrapper">
-                                                <h3 class="b-animate b-from-top top-in2   b-delay03 ">
-                                                    <span><%= hotPro.Rows[j]["name"] %></span>
-                                                </h3>
-                                            </div>
-                                        </a> 
-                                    </div>
-                                    <%} %>
-                                       <% j++; if (j < count)
-                                           {%>
-                                    <div class="col-md-6 men2">
-                                        <a href="single.aspx?id=<%= hotPro.Rows[j]["id"] %>" target="_blank" class="b-link-stripe b-animate-go  thickbox">
-                                            <img class="img-responsive" src="<%= hotPro.Rows[j]["photo"] %>" alt="">
-                                            <div class="b-wrapper">
-                                                <h3 class="b-animate b-from-top top-in2   b-delay03 ">
-                                                    <span><%= hotPro.Rows[j]["name"] %></span>
-                                                </h3>
-                                            </div>
-                                        </a> 
-                                    </div>
-                                        <%} %>
-                                    <div class="clearfix"></div>
-                                </div>
-                            <%
-                        }
-                        %>
-                    <div class="clearfix"></div>
-                               </div>
-                   <% } %>
+				                </div>
+                               <%rowIndex++; } %> 
+                             <div class="clearfix"> </div>
+                           </div>
+                             <%} %>
+                    </div>
+                 <%
+                    } %> 
+                 
+      
+              
                 
                  
             </div>
@@ -442,7 +418,7 @@ var _hmt = _hmt || [];
             </div>
         </div> 
         <div class="footer-class">
-            <p>Copyright &copy; 2016 .</p>
+            <p>Copyright &copy; 2016 . 备案号：粤ICP备16064219号-1 </p>
         </div>
     </div>
 
